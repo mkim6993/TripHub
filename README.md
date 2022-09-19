@@ -17,7 +17,7 @@ Hiro Chen: probably the app UI design.
 
 ### Explanation of Schema
 
-# "Hello World" Version
+## "Hello World" Version
 
 -   user accounts
 -   create trip posts
@@ -28,7 +28,7 @@ Hiro Chen: probably the app UI design.
 -   address validation
 -   event pages
 
-# Example Models  
+## Example Models  
 User\_  
 user_id: varchar  
 username: text  
