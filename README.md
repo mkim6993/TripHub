@@ -29,43 +29,43 @@ Hiro Chen: probably the app UI design.
 -   event pages
 
 example models
-User\_
-user_id: varchar
-username: text
-password: text
-age: integer
+User\_  
+user_id: varchar  
+username: text  
+password: text  
+age: integer  
 ____
-UserInfo\_
-user_id: varchar
-username: text
-//public: boolean
-followers: [user_id]  
-following: [user_id]
-upvoted_trips: [trip_id]
-trip_invites: [trip_id]
+UserInfo\_  
+user_id: varchar  
+username: text  
+//public: boolean  
+followers: [user_id]    
+following: [user_id]  
+upvoted_trips: [trip_id]  
+trip_invites: [trip_id]  
 ____
-Trip__
-trip_id: varchar
-created_by: user_id
-date_created: date  
-trip_date: date
-title: text  
-description: text
-locations: { location_id, time, votes } // used to handle trip merge
-upvotes: integer
-shares: integer
-public: boolean
-invited_members: [user_id]
-who_liked: [user_id]
+Trip\_  
+trip_id: varchar  
+created_by: user_id  
+date_created: date   
+trip_date: date  
+title: text    
+description: text  
+locations: { location_id, time, votes } // used to handle trip merge  
+upvotes: integer  
+shares: integer  
+public: boolean  
+invited_members: [user_id]  
+who_liked: [user_id]  
 ____
-Location\_
-location_id: varchar
-name: text
-description: text
-address: text
-contact: text
-price: text(' '-$-$$$)
-images: [...]
-open_times: {...}
+Location\_  
+location_id: varchar  
+name: text  
+description: text  
+address: text  
+contact: text  
+price: text(' '-$-$$$)  
+images: [...]  
+open_times: {...}  
 
 ...
