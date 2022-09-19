@@ -34,7 +34,7 @@ user_id: varchar
 username: text
 password: text
 age: integer
-
+____
 UserInfo\_
 user_id: varchar
 username: text
