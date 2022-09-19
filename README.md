@@ -43,8 +43,8 @@ followers: [user_id]
 following: [user_id]
 upvoted_trips: [trip_id]
 trip_invites: [trip_id]
-
-Trip\_
+____
+Trip__
 trip_id: varchar
 created_by: user_id
 date_created: date  
@@ -57,7 +57,7 @@ shares: integer
 public: boolean
 invited_members: [user_id]
 who_liked: [user_id]
-
+____
 Location\_
 location_id: varchar
 name: text
