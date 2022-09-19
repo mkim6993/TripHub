@@ -12,7 +12,7 @@ https://trello.com/w/team6784/home
 
 Cole Feuer: primarily backend  
 Jason Tigas:  
-Min Sung Kim: primarily frontend
+Min Sung Kim: primarily frontend  
 Hiro Chen: probably the app UI design.
 
 ### Explanation of Schema
@@ -28,7 +28,7 @@ Hiro Chen: probably the app UI design.
 -   address validation
 -   event pages
 
-example models
+example models  
 User\_  
 user_id: varchar  
 username: text  
