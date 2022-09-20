@@ -11,7 +11,7 @@ https://trello.com/w/team6784/home
 ### Preliminary Teammate Interests
 
 Cole Feuer: primarily backend  
-Jason Tigas:  
+Jason Tigas: full stack
 Min Sung Kim: primarily frontend  
 Hiro Chen: probably the app UI design.
 
