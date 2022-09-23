@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  star_id: MyString
+  fan_id: MyString
+
+two:
+  star_id: MyString
+  fan_id: MyString

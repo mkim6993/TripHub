@@ -1,0 +1,2 @@
+module TripUsersHelper
+end

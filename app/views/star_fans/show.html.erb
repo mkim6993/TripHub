@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @star_fan %>
+
+<div>
+  <%= link_to "Edit this star fan", edit_star_fan_path(@star_fan) %> |
+  <%= link_to "Back to star fans", star_fans_path %>
+
+  <%= button_to "Destroy this star fan", @star_fan, method: :delete %>
+</div>

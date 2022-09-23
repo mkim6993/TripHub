@@ -1,0 +1,2 @@
+class StarFan < ApplicationRecord
+end

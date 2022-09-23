@@ -1,0 +1,2 @@
+module TripLocationsHelper
+end

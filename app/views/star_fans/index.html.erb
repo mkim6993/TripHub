@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Star fans</h1>
+
+<div id="star_fans">
+  <% @star_fans.each do |star_fan| %>
+    <%= render star_fan %>
+    <p>
+      <%= link_to "Show this star fan", star_fan %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New star fan", new_star_fan_path %>
