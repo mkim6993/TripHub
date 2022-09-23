@@ -91,3 +91,6 @@ I like eating fruit. Fruit are sweetie. No cavity. Good in the morning, good at 
 
 Hirochen: 
 Hi there! I have two cats one named Taro and another one named Nezha. 
+
+Cole:
+>:/
