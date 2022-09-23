@@ -86,10 +86,10 @@ pk
 fk user_id
 fk user_id
 
-MinSung:
+MinSung:  
 I like eating fruit. Fruit are sweetie. No cavity. Good in the morning, good at noon, right into my mouth.
 
-Hirochen: 
+Hirochen:  
 Hi there! I have two cats one named Taro and another one named Nezha. 
 
 Cole:
