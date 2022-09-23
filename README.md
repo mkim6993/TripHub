@@ -85,3 +85,6 @@ star
 pk
 fk user_id
 fk user_id
+
+MinSung:
+I like eating fruit. Fruit are sweetie. No cavity. Good in the morning, good at noon, right into my mouth.
