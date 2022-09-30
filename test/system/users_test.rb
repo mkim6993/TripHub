@@ -17,7 +17,7 @@ class UsersTest < ApplicationSystemTestCase
     fill_in "Email", with: @user.email
     fill_in "Name", with: @user.name
     fill_in "Password", with: @user.password
-    fill_in "User", with: @user.user_id
+    fill_in "User", with: @user.username
     click_on "Create User"
 
     assert_text "User was successfully created"
@@ -31,7 +31,7 @@ class UsersTest < ApplicationSystemTestCase
     fill_in "Email", with: @user.email
     fill_in "Name", with: @user.name
     fill_in "Password", with: @user.password
-    fill_in "User", with: @user.user_id
+    fill_in "User", with: @user.username
     click_on "Update User"
 
     assert_text "User was successfully updated"
