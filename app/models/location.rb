@@ -6,4 +6,7 @@ class Location < ApplicationRecord
   validates :price,  presence: true
   validates :image,  presence: true, length: { maximum: 255 }
   validates :open_times,  presence: true, length: { maximum: 100 }
+
+  has_many :trip_locations
+  has_many :trips, through: :trip_locations
 end

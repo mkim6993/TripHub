@@ -6,4 +6,10 @@ class Trip < ApplicationRecord
   validates :upvotes,  presence: true
   validates :shares,  presence: true
   validates :public,  presence: true
+
+  has_many :trip_users
+  has_many :users, through: :trip_users
+
+  has_many :trip_locations
+  has_many :locations, through: :trip_locations
 end
