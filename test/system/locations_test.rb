@@ -18,7 +18,6 @@ class LocationsTest < ApplicationSystemTestCase
     fill_in "Contact", with: @location.contact
     fill_in "Description", with: @location.description
     fill_in "Image", with: @location.image
-    fill_in "Location", with: @location.location_id
     fill_in "Name", with: @location.name
     fill_in "Open times", with: @location.open_times
     fill_in "Price", with: @location.price

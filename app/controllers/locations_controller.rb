@@ -65,6 +65,6 @@ class LocationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def location_params
-      params.require(:location).permit(:location_id, :name, :description, :address, :contact, :price, :image, :open_times)
+      params.require(:location).permit(:name, :description, :address, :contact, :price, :image, :open_times)
     end
 end
