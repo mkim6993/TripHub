@@ -1,23 +1,23 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  trip_id: MyString
-  create_by: MyString
-  date_created: 2022-09-23
-  trip_date: 2022-09-23
-  title: MyString
-  description: MyString
-  upvotes: 1
-  shares: 1
-  public: false
+# one:
+#   trip_id: MyString
+#   create_by: MyString
+#   date_created: 2022-09-23
+#   trip_date: 2022-09-23
+#   title: MyString
+#   description: MyString
+#   upvotes: 1
+#   shares: 1
+#   public: false
 
-two:
-  trip_id: MyString
-  create_by: MyString
-  date_created: 2022-09-23
-  trip_date: 2022-09-23
-  title: MyString
-  description: MyString
-  upvotes: 1
-  shares: 1
-  public: false
+# two:
+#   trip_id: MyString
+#   create_by: MyString
+#   date_created: 2022-09-23
+#   trip_date: 2022-09-23
+#   title: MyString
+#   description: MyString
+#   upvotes: 1
+#   shares: 1
+#   public: false
