@@ -31,5 +31,13 @@
     image: Faker::String.random(length: 4),
     open_times: Faker::Lorem.sentence(word_count: 2)
   )
+
+  10.times do
+    StarFan.create(star: User.all.sample, fan: User.all.sample)
+  end
+
+  10.times do
+    TripLocation.create(trip: Trip.all.sample, location: Location.all.sample)
+  end
   
 end
