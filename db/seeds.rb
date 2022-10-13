@@ -1,7 +1,35 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+10.times do
+  User.create(
+    name: Faker::Name.name,
+    username: Faker::Internet.username,
+    email: Faker::Internet.email,
+    password: Faker::Internet.password(min_length: 8)
+  )
+
+  Trip.create(
+    create_by: Faker::Name.name,
+    trip_date: Faker::Date.in_date_period,
+    title: Faker::Lorem.sentence(word_count: 3),
+    description: Faker::Lorem.paragraph(sentence_count: 2),    
+    
+    # Was getting an error here and with shares: ActiveModel::RangeError: 6299219391 is out of range for ActiveModel::Type::Integer with limit 4 bytes
+    # Had to limit number of digits 
+    upvotes: Faker::Number.number(digits: 3),
+    shares: Faker::Number.number(digits: 5),
+    public: Faker::Boolean.boolean
+  )
+
+  Location.create(
+    name: Faker::Address.street_address,
+    address: Faker::Address.full_address,
+    contact: Faker::PhoneNumber.phone_number,
+    description: Faker::Lorem.paragraph(sentence_count: 2),
+    
+    # Was getting an error here: ActiveModel::RangeError: 6299219391 is out of range for ActiveModel::Type::Integer with limit 4 bytes
+    # Had to limit number of digits 
+    price: Faker::Number.number(digits: 4),
+    image: Faker::String.random(length: 4),
+    open_times: Faker::Lorem.sentence(word_count: 2)
+  )
+  
+end
