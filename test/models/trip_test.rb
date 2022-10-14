@@ -2,7 +2,7 @@ require "test_helper"
 
 class TripTest < ActiveSupport::TestCase
   def setup
-    @trip = Trip.new(create_by: "Example User", trip_date: 10-10-10, title: "Example title", description: "this is an example description", upvotes: 10, shares: 30, public: true)
+    @trip = Trip.new(create_by: "Example User", trip_date: 10-10-10, title: "Example title", description: "this is an example description", upvotes: 10, shares: 30, public: true, parent: 3)
   end
 
   test "should be valid" do
@@ -41,6 +41,11 @@ class TripTest < ActiveSupport::TestCase
 
   test "public should be present" do
     @trip.public = nil
+    assert_not @trip.valid?
+  end
+
+  test "parent should be present" do
+    @trip.parent = nil
     assert_not @trip.valid?
   end
 
