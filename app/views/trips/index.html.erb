@@ -1,15 +1,22 @@
 <% provide(:title, "Home") %>
-<p style="color: green"><%= notice %></p>
+<!--<p style="color: green"><%= notice %></p> %>-->
 
-<h1>Trips</h1>
+<div style="background-color: pink">
+  <div id="trips">
+    <% @trips.each do |trip| %>
+      <div class="singleTripBox">
+        <%= render trip %>
+        <p>
+          <%= link_to "Show this trip", trip %>
+        </p>
+      </div>
+    <% end %>
+    <div class="singleTripBoxD"></div>
+    <div class="singleTripBoxD"></div>
+    <div class="singleTripBoxD"></div>
+    <div class="singleTripBoxD"></div>
+  </div>
 
-<div id="trips">
-  <% @trips.each do |trip| %>
-    <%= render trip %>
-    <p>
-      <%= link_to "Show this trip", trip %>
-    </p>
-  <% end %>
+  <%= link_to "New trip", new_trip_path %>
 </div>
 
-<%= link_to "New trip", new_trip_path %>

@@ -1,6 +1,7 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <nav>
+  <div class="containerHeader" style="background-color: red">
+  <div id="headerTitle"><%= link_to "TripHub", root_path, id: "logo" %></div>
+    <nav style="background-color: blue">
     <div class="navbar-header">
         <button id="hamburger" type="button" class="navbar-toggle collapsed">
           <span class="sr-only">Toggle navigation</span>
@@ -10,9 +11,10 @@
         </button>
       </div>
       <ul id="navbar-menu" class="nav navbar-nav navbar-right collapse navbar-collapse">
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" style="background-color: yellow">
         <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "New trip", new_trip_path %></li>
+        <li><%= link_to "Add Trip", new_trip_path %></li>
+        <li><%= link_to "Add Planner", new_trip_path %></li>
       </ul>
     </nav>
   </div>
