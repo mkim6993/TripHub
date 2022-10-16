@@ -9,11 +9,13 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= render 'layouts/shim' %>
+    <%= javascript_importmap_tags %>
   </head>
-  <body style="background-color: green">
+  <body>
     <%= render 'layouts/header' %>
     <div class="container">
       <%= yield %>
     </div>
+</script>
   </body>
 </html>

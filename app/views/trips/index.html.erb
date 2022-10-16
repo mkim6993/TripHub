@@ -1,14 +1,30 @@
 <% provide(:title, "Home") %>
 <!--<p style="color: green"><%= notice %></p> %>-->
-
 <div style="background-color: pink">
   <div id="trips">
     <% @trips.each do |trip| %>
       <div class="singleTripBox">
-        <%= render trip %>
-        <p>
+        <div class="singleTripImage">
+          <%= image_tag("path.JPG", :alt => "path") %>
+          <div id="arrowRight">
+            <%= image_tag("arrow_right.png", :alt => "arrow") %>  
+          </div>
+          <div id="arrowLeft">
+            <%= image_tag("arrow_left.png", :alt => "arrow") %>  
+          </div>
+          <div id="bookmark">
+            <%= image_tag("save_empty.png", :alt => "save trip") %>
+          </div>
+          <div id="save"></div>
+        </div>
+        <div class="singleTripDetails">
+          <div class="singleTripBold"><%= trip.title %></div>
+          <div class="singleTripBoldUser">@<%= trip.create_by %></div>
+          <div class="singleTripNorm"><%= trip.trip_date %></div>
+        </div>
+        
           <%= link_to "Show this trip", trip %>
-        </p>
+        
       </div>
     <% end %>
     <div class="singleTripBoxD"></div>
@@ -16,7 +32,5 @@
     <div class="singleTripBoxD"></div>
     <div class="singleTripBoxD"></div>
   </div>
-
-  <%= link_to "New trip", new_trip_path %>
 </div>
 
