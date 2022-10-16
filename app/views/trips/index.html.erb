@@ -18,8 +18,14 @@
           <div id="save"></div>
         </div>
         <div class="singleTripDetails">
-          <div class="singleTripBold"><%= trip.title %></div>
-          <div class="singleTripBoldUser">@<%= trip.create_by %></div>
+          <div class="singleTripBold">
+            <div><%= trip.title %></div>
+            <div><%= trip.upvotes %> saves</div>
+          </div>
+          <div class="singleTripBoldUser">
+            <div class="singleUserText">@<%= trip.create_by %></div>
+            <div><%= trip.shares %> recs</div>
+          </div>
           <div class="singleTripNorm"><%= trip.trip_date %></div>
         </div>
         

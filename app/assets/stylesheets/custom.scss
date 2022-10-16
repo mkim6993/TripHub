@@ -3,6 +3,7 @@
 
 body {
     padding-top: 80px;
+    // background-color: teal;
   }
   
   section {
@@ -23,8 +24,9 @@ body {
 
   #headerTitle {
     font-size: 30px;
-    background-color: purple;
+    background-color: rgb(104, 69, 134);
     margin: 10px;
+    margin-left: 20px;
   }
 
   .headerTitleText {
@@ -33,7 +35,7 @@ body {
 
 .container {
   // background-color: brown;
-  width: 90%
+  width: 100%
 }
 
 .containerHeader {
@@ -47,7 +49,7 @@ body {
   height: 300px;
   padding: 10px;
   border-radius: 10px;
-  margin: 5px
+  margin: 10px
 }
 
 #trips {
@@ -109,11 +111,10 @@ body {
   width: 300px;
   height: 400px;
   border-radius: 10px;
-  margin: 5px;
+  margin: 10px;
   flex-direction: column;
   cursor: pointer;
 }
-
 
 .singleTripImage {
   width: 300px;
@@ -130,17 +131,22 @@ body {
 .singleTripBold {
   font-weight: bold;
   font-size: 15px;
+  display: flex;
+  flex: row;
+  justify-content: space-between;
 }
 
 .singleTripBoldUser {
   font-weight: bold;
   font-size: 15px;
   // background-color: red;
-  display: inline-block;
+  display: flex;
+  flex: row;
+  justify-content: space-between;
 }
 
-.singleTripBoldUser:hover {
-  color: rgb(163, 109, 210);
+.singleUserText:hover {
+  color: rgb(149, 99, 192);
 }
 
 img {
