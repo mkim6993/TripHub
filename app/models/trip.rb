@@ -17,22 +17,17 @@ class Trip < ApplicationRecord
   def self.get_children(id)
     children = Trip.where(parent: id)
   end
-
+  
   def self.get_all_children(id)
     children = Trip.where(parent: id)
-    if children.length != 0
-      grandkids = []
-      children.each do |t|
-        gchild = self.get_all_children(t.id)
-        if !gchild.nil?
-          grandkids.append(gchild)
+    all_children = [children]
+    all_children.each do |child_arr|
+      if child_arr.length != 0
+        child_arr.each do |child|
+          all_children.append Trip.where(parent: child.id)
         end
-      end
-      if grandkids.length != 0
-        [children, grandkids]
-      else
-        [children]
       end
     end
   end
+
 end
