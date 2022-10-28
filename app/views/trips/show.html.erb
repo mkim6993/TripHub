@@ -1,10 +1,29 @@
 <p style="color: green"><%= notice %></p>
+<div id="individualPost">
+  <div id="tripHeaders">
+    <div id="postTitle">
+      <%= @trip.title %>
+    </div>
+    <div id="postLocationDate">
+      <%= @trip.trip_date %>
+    </div>
+  </div>
+  <div id="tripImageDetails">
+    <div id="tripImageFrame"><%= image_tag("path.JPG", :alt => "path") %></div>
+    <div id="tripDetails"></div>
+  </div>
+  <div id="tripProgressBar">
+    <div id="openBubble"></div>
+    <div id="closedBubble"></div>
+    <div id="closedBubble"></div>
+  </div>
 
-<%= render @trip %>
+  <%= render @trip %>
+  <div>
+    <%= link_to "Edit this trip", edit_trip_path(@trip) %> |
+    <%= link_to "Back to trips", trips_path %>
 
-<div>
-  <%= link_to "Edit this trip", edit_trip_path(@trip) %> |
-  <%= link_to "Back to trips", trips_path %>
+    <%= button_to "Destroy this trip", @trip, method: :delete %>
+  </div>
 
-  <%= button_to "Destroy this trip", @trip, method: :delete %>
 </div>
