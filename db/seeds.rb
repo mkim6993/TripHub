@@ -39,5 +39,9 @@
   10.times do
     TripLocation.create(trip: Trip.all.sample, location: Location.all.sample)
   end
+
+  10.times do
+    TripUser.create(trip: Trip.all.sample, user: User.all.sample)
+  end
   
 end
