@@ -1,8 +1,4 @@
 <div id="<%= dom_id location %>">
-  <p>
-    <strong>Location:</strong>
-    <%= location.location_id %>
-  </p>
 
   <p>
     <strong>Name:</strong>
@@ -38,5 +34,25 @@
     <strong>Open times:</strong>
     <%= location.open_times %>
   </p>
+
+  <p>
+    <strong>Images:</strong>
+    <ul>
+      <% location.images.each do |file| %>
+        <li>
+          <% if file.representable? %>
+            <%= image_tag file.variant(
+              resize_to_fit: [400, 400]
+            ) %>
+          <% else %>
+            <%= link_to rails_blob_path(file, disposition: "attachment") do %>
+              <%= image_tag "placeholder.png", alt: "Download file" %>
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </p>
+  
 
 </div>
