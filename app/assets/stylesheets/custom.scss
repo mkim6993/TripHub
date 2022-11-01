@@ -25,7 +25,8 @@ body {
   #headerTitle {
     font-size: 30px;
     background-color: rgb(104, 69, 134);
-    margin: 10px;
+    margin-bottom: 12px;
+    margin-top: 4px;
     margin-left: 20px;
   }
 
@@ -156,21 +157,23 @@ img {
   border-radius: 10px;
 }
 
-#arrowRight {
+.arrowRight {
   position: absolute;
   z-index: 10;
   right: 10px;
   top: 50%;
+  // background-color: lightgreen;
 }
 
-#arrowLeft {
+.arrowLeft {
   position: absolute;
   z-index: 10;
   left: 10px;
   top: 50%;
+  // background-color: red;
 }
 
-#bookmark {
+.bookmark {
   position: absolute;
   z-index: 10;
   right: 10px;
@@ -215,29 +218,6 @@ footer {
   margin-bottom: 15px;
 }
 
-/* Individual post progress bar*/
-#openBubble {
-  background-color: black;
-  width: 150px;
-  height: 80px;
-  border-radius: 40px
-}
-
-#closedBubble {
-  background-color: black;
-  width: 80px;
-  height: 80px;
-  margin-left: 30px;
-  border-radius: 40px;
-}
-
-#tripProgressBar {
-  display: flex;
-  flex-direction: row;
-  background-color: orange;
-  margin-bottom: 15px;
-}
-
 /* Trip details */
 #tripImageDetails {
   display: flex;
@@ -245,7 +225,7 @@ footer {
   // background-color: orange;
   border: 2px solid gray;
   border-radius: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 
 #tripImageFrame {
@@ -294,7 +274,6 @@ footer {
     height: 500px;
     background-color: black;
     border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
   }
   
   #tripDetails {
@@ -303,3 +282,11 @@ footer {
     background-color: white;
   }
 }
+
+.logo {
+  width: 110px;
+  cursor: pointer;
+  // background-color: black;
+  height: 53px;
+}
+

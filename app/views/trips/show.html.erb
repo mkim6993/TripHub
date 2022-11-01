@@ -7,18 +7,25 @@
     <div id="postLocationDate">
       <%= @trip.trip_date %>
     </div>
+    <div>
+      <%= render @trip %>
+    </div>
   </div>
   <div id="tripImageDetails">
     <div id="tripImageFrame"><%= image_tag("path.JPG", :alt => "path") %></div>
-    <div id="tripDetails"></div>
+    <div id="tripDetails">
+    </div>
   </div>
-  <div id="tripProgressBar">
-    <div id="openBubble"></div>
-    <div id="closedBubble"></div>
-    <div id="closedBubble"></div>
+  <div id="tripImageDetails">
+    <div id="tripImageFrame"><%= image_tag("path.JPG", :alt => "path") %></div>
+    <div id="tripDetails">
+    </div>
   </div>
-
-  <%= render @trip %>
+  <div id="tripImageDetails">
+    <div id="tripImageFrame"><%= image_tag("path.JPG", :alt => "path") %></div>
+    <div id="tripDetails">
+    </div>
+  </div>
   <div>
     <%= link_to "Edit this trip", edit_trip_path(@trip) %> |
     <%= link_to "Back to trips", trips_path %>
