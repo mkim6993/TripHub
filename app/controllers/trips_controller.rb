@@ -15,6 +15,10 @@ class TripsController < ApplicationController
     @trip = Trip.new
   end
 
+  def branches
+    @trip = Trip.find(params[:id])
+  end
+
   # GET /trips/1/edit
   def edit
   end

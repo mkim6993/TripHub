@@ -9,7 +9,12 @@
     </div>
   </div>
   <div id="tripImageDetails">
-    <div id="tripImageFrame"><%= image_tag("path.JPG", :alt => "path") %></div>
+    <%triplocs = TripLocation.where(:trip_id => @trip.id)%>
+    <%if !triplocs.nil?%>
+      <%triplocs.each do |triploc|%>
+          <div id="tripImageFrame"><%= image_tag(Location.find(id=triploc.location_id).images[0], :alt => "path") %></div>
+      <%end%>
+    <%end%>
     <div id="tripDetails"></div>
   </div>
   <div id="tripProgressBar">
