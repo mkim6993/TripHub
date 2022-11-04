@@ -2,6 +2,7 @@
 @import "bootstrap";
 
 body {
+    margin-bottom: 60px;
     padding-top: 80px;
     // background-color: teal;
   }
@@ -149,12 +150,12 @@ body {
   color: rgb(149, 99, 192);
 }
 
-// img {
-//   width: 100%;
-//   height: 100%;
-//   object-fit: cover;
-//   border-radius: 10px;
-// }
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
 
 #arrowRight {
   position: absolute;

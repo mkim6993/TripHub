@@ -17,17 +17,4 @@ class Trip < ApplicationRecord
   def self.get_children(id)
     children = Trip.where(parent: id)
   end
-  
-  def self.get_all_children(id)
-    children = Trip.where(parent: id)
-    all_children = [children]
-    all_children.each do |child_arr|
-      if child_arr.length != 0
-        child_arr.each do |child|
-          all_children.append Trip.where(parent: child.id)
-        end
-      end
-    end
-  end
-
 end
