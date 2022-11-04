@@ -1,16 +1,4 @@
 <%= form_with(model: trip) do |form| %>
-  <% if trip.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
-
-      <ul>
-        <% trip.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div>
     <%= form.label :create_by, style: "display: block" %>
     <%= form.text_field :create_by %>
@@ -44,11 +32,21 @@
     <%= form.check_box :public %>
   </div>
 
+  <%# parent id %>
+
   <div>
     <%= form.hidden_field :parent, :value => 0 %>
   </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+  <% if trip.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
+
+      <ul>
+        <% trip.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 <% end %>
