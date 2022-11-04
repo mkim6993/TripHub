@@ -32,13 +32,11 @@
   </div>
 
   <div>
-    <%= form.label :upvotes, style: "display: block" %>
-    <%= form.number_field :upvotes %>
+    <%= form.hidden_field :upvotes, :value => 0 %>
   </div>
 
   <div>
-    <%= form.label :shares, style: "display: block" %>
-    <%= form.number_field :shares %>
+    <%= form.hidden_field :shares, :value => 0 %>
   </div>
 
   <div>
@@ -47,8 +45,7 @@
   </div>
 
   <div>
-    <%= form.label :parent, style: "display: block" %>
-    <%= form.number_field :parent %>
+    <%= form.hidden_field :parent, :value => 0 %>
   </div>
 
   <div>

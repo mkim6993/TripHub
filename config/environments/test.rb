@@ -52,6 +52,9 @@ Rails.application.configure do
   # Tell Active Support which deprecation messages to disallow.
   config.active_support.disallowed_deprecation_warnings = []
 
+  # Store uploaded files on the local file system in a temporary directory.
+  config.active_storage.service = :test
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 

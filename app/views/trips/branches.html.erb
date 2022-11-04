@@ -1,0 +1,5 @@
+<ul class="tree">
+  <li> <span><td> <%= link_to @trip.title, "/trips/" << @trip.id.to_s %> </td></span>
+    <%= sanitize make_tree(@trip.id) %>
+  </li>
+</ul>

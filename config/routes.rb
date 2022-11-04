@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   resources :users
   resources :locations
   resources :trip_locations
-  resources :trips
+  resources :trips do
+    member do  
+      get :branches
+    end
+  end
   resources :trip_users
   resources :star_fans
   resources :articles

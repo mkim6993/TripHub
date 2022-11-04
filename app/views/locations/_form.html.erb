@@ -47,6 +47,11 @@
   </div>
 
   <div>
+    <%= form.label :images, styke: "display: block" %><br>
+    <%= form.file_field :images, multiple: true %><br>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
