@@ -7,6 +7,12 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
 
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
   # Will return an array of follows for the given user instance
   has_many :follows, foreign_key: :star_id, class_name: "StarFan"
   # Will return an array of users who follow the user instance
