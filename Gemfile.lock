@@ -269,7 +269,7 @@ DEPENDENCIES
   bootstrap-sass (= 3.4.1)
   capybara
   debug
-  faker
+  faker (~> 2.18)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
