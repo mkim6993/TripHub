@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   # get "users#index"
   root "trips#index" #view all trips in db
 
-  resources :users
+  resources :users do
+    member do  
+      get :trips
+    end
+  end
   resources :locations
   resources :trip_locations
   resources :trips do

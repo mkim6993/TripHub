@@ -25,7 +25,7 @@ class TripsController < ApplicationController
 
   # POST /trips or /trips.json
   def create
-    @trip = Trip.new(trip_params)
+    @trip = current_user.trips.new(trip_params)
 
     respond_to do |format|
       if @trip.save
@@ -36,6 +36,8 @@ class TripsController < ApplicationController
         format.json { render json: @trip.errors, status: :unprocessable_entity }
       end
     end
+    
+    TripUser.create(:user_id => current_user.id, :trip_id => @trip.id)
   end
 
   # PATCH/PUT /trips/1 or /trips/1.json
