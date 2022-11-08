@@ -7,6 +7,9 @@
     <div id="postLocationDate">
       <%= @trip.trip_date %>
     </div>
+    <div>
+      <%= render @trip %>
+    </div>
   </div>
   <div id="tripImageDetails">
     <%triplocs = TripLocation.where(:trip_id => @trip.id)%>
@@ -22,8 +25,16 @@
     <div id="closedBubble"></div>
     <div id="closedBubble"></div>
   </div>
-
-  <%= render @trip %>
+  <div id="tripImageDetails">
+    <div id="tripImageFrame"><%= image_tag("path.JPG", :alt => "path") %></div>
+    <div id="tripDetails">
+    </div>
+  </div>
+  <div id="tripImageDetails">
+    <div id="tripImageFrame"><%= image_tag("path.JPG", :alt => "path") %></div>
+    <div id="tripDetails">
+    </div>
+  </div>
   <div>
     <%= link_to "View related trips", "/trips/" << get_original_parent(@trip.id).to_s << "/branches" %>
     <%if !current_user.nil?%>

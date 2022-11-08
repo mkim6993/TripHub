@@ -1,6 +1,8 @@
 <header class="navbar navbar-fixed-top navbar-inverse" style="background-color: rgb(104, 69, 134);">
   <div class="containerHeader">
-    <div id="headerTitle"><%= link_to "TripHub", root_path, class: "headerTitleText" %></div>
+    <div id="headerTitle">    
+      <a href="<%= root_path %>">
+    <%= image_tag("THLogo.png", :alt => "TripHub logo", class:"logo") %>  </a></div>
     <nav id="headerNav">
       <div class="navbar-header">
         <button id="hamburger" type="button" class="navbar-toggle collapsed">
