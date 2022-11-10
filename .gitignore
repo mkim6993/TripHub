@@ -31,4 +31,5 @@
 /config/master.key
 
 # database config
-database.yml
+
+/config/database.yml
