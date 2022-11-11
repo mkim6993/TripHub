@@ -38,6 +38,10 @@
     <%= form.hidden_field :parent, :value => 0 %>
   </div>
 
+  <div>
+    <%= form.submit %>
+  </div>
+
   <% if trip.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>

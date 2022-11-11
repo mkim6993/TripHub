@@ -13,6 +13,7 @@ class LocationsController < ApplicationController
   # GET /locations/new
   def new
     @location = Location.new
+    @trip = Trip.find(params[:trip_id])
   end
 
   # GET /locations/1/edit
