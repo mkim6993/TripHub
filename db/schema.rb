@@ -49,3 +49,61 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_30_184858) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "address"
+    t.string "contact"
+    t.integer "price"
+    t.string "image"
+    t.string "open_times"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "star_fans", force: :cascade do |t|
+    t.integer "star_id"
+    t.integer "fan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trip_locations", force: :cascade do |t|
+    t.integer "location_id"
+    t.integer "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trip_users", force: :cascade do |t|
+    t.integer "trip_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.string "create_by"
+    t.date "trip_date"
+    t.string "title"
+    t.string "description"
+    t.integer "upvotes"
+    t.integer "shares"
+    t.boolean "public"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "parent"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+end
