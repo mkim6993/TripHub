@@ -29,7 +29,7 @@ class TripsController < ApplicationController
 
     respond_to do |format|
       if @trip.save
-        format.html { redirect_to trip_url(@trip), notice: "Trip was successfully created." }
+        format.html { redirect_to new_location_path(trip_id: @trip.id), notice: "Trip was successfully created." }
         format.json { render :show, status: :created, location: @trip }
       else
         format.html { render :new, status: :unprocessable_entity }

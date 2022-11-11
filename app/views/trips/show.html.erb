@@ -18,13 +18,14 @@
           <div id="tripImageFrame"><%= image_tag(Location.find(id=triploc.location_id).images[0], :alt => "path") %></div>
       <%end%>
     <%end%>
-    <div id="tripDetails"></div>
+    <div id="tripDetails">
+    </div>
   </div>
-  <div id="tripProgressBar">
+  <%# <div id="tripProgressBar">
     <div id="openBubble"></div>
     <div id="closedBubble"></div>
     <div id="closedBubble"></div>
-  </div>
+  </div> %>
   <div id="tripImageDetails">
     <div id="tripImageFrame"><%= image_tag("path.JPG", :alt => "path") %></div>
     <div id="tripDetails">
