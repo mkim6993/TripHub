@@ -41,7 +41,7 @@
     <%if !current_user.nil?%>
         <%if @trip.create_by == current_user.username%>
           |
-          <%= link_to "Edit this trip", edit_trip_path(trip) %> |
+          <%= link_to "Edit this trip", edit_trip_path(@trip) %> |
           <%= button_to "Destroy this trip", @trip, method: :delete %>
         <%end%>
     <%end%>
