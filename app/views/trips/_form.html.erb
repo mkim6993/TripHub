@@ -1,7 +1,6 @@
 <%= form_with(model: trip) do |form| %>
   <div>
-    <%= form.label :create_by, style: "display: block" %>
-    <%= form.text_field :create_by %>
+    <%= form.hidden_field :create_by, :value => current_user.username %>
   </div>
 
   <div>
@@ -35,7 +34,7 @@
   <%# parent id %>
 
   <div>
-    <%= form.hidden_field :parent, :value => 0 %>
+    <%= form.hidden_field :parent, :value => -1 %>
   </div>
 
   <% if trip.errors.any? %>

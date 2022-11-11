@@ -12,6 +12,15 @@ module TripsHelper
         end
     end
 
+    def get_original_parent(id)
+        parent_id = Trip.find_by(id: id).parent
+        if parent_id != -1
+            get_original_parent(parent_id)
+        else
+            id
+        end
+    end
+
     def make_tree(id)
         recurse(id, "")
     end

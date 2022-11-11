@@ -20,6 +20,10 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def trips
+    @user = User.find(params[:id])
+  end
+
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
