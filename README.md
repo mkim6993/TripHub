@@ -14,8 +14,9 @@ https://infinite-coast-27462.herokuapp.com/
 
 ### Preliminary Teammate Interests
 
+Team 6:
 Cole Feuer: primarily backend  
-Jason Tigas: full stack
+Jason Tigas: full stack  
 Min Sung Kim: primarily frontend  
 Hiro Chen: probably the app UI design.
 
@@ -32,72 +33,65 @@ Hiro Chen: probably the app UI design.
 -   address validation
 -   event pages
 
-#### Example Models
+#### Models
 
-User\_  
-user_id: varchar  
-username: text  
-password: text  
-age: integer  
-//public: boolean  
-followers: [user_id]  
-following: [user_id]  
-upvoted_trips: [trip_id]  
-trip_invites: [trip_id]
+Article  
+name: string
+content: text
 
 ---
 
-Trip\_  
-trip_id: varchar  
-created_by: user_id  
-date_created: date  
+User   
+username: string  
+password: string
+email: string
+age: integer  
+password_digest: string
+
+---
+
+StarFan  
+star_id: integer
+fan_id: integer
+
+---
+
+Trip  
+create_by: string  
 trip_date: date  
-title: text  
-description: text  
-locations: { location_id, time, votes } // used to handle trip merge  
+title: string  
+description: string  
 upvotes: integer  
 shares: integer  
 public: boolean  
-invited_members: [user_id]  
-who_liked: [user_id]
+parent: integer
 
 ---
 
-Location\_  
-location_id: varchar  
-name: text  
-description: text  
-address: text  
-contact: text  
-price: text(' '-$-$$$)  
-images: [...]  
-open_times: {...}
+Location  
+name: string  
+description: string  
+address: string  
+contact: string  
+price: integer  
+images: string
+open_times: string
 
 ---
 
-Trip_Location\_
-trip: trip_id
-location: location_id
+Trip_Location  
+trip_id: integer
+location_id: integer
 
 ---
 
-User_Trip\_
+Trip_User  
+trip_id: integer
+user_id: integer
 
 ---
 
-star
-pk
-fk user_id
-fk user_id
+#### To Run Tests:
+```rails test```
 
-MinSung:  
-I like eating fruit. Fruit are sweetie. No cavity. Good in the morning, good at noon, right into my mouth.
 
-Hirochen:  
-Hi there! I have two cats one named Taro and another one named Nezha. 
-
-Cole:  
-\>:/
-
-Jason:
-Jason Tigas
