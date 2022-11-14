@@ -1,0 +1,90 @@
+<h1><%= @trip.title %></h1>
+
+
+<h2>add a location</h2>
+
+<div id="addLocationMethods">
+  <div>
+    <div id="searchLocation">
+      <h3>Search for a location</h3>
+      <div style="margin-bottom: 15px;">
+        <input type="text" placeholder="Search Location" id="locationSearch"/>
+        <button id="searchBtn">search</button>
+      </div>
+    </div>
+    <div id="searchResults">
+      
+    </div>
+  </div>
+  <div id="customLocation">
+    <h3>Create a new location</h3>
+    <%= form_for @location, url: "/create_location" do |form| %>
+      <div>
+        <%= form.label :name, style: "display: block" %>
+        <%= form.text_field :name %>
+      </div>
+
+      <div>
+        <%= form.label :description, style: "display: block" %>
+        <%= form.text_field :description %>
+      </div>
+
+      <div>
+        <%= form.label :address, style: "display: block" %>
+        <%= form.text_field :address %>
+      </div>
+
+      <div>
+        <%= form.label :contact, style: "display: block" %>
+        <%= form.text_field :contact %>
+      </div>
+
+      <div>
+        <%= form.label :price, style: "display: block" %>
+        <%= form.number_field :price %>
+      </div>
+
+      <div>
+        <%= form.label :image, style: "display: block" %>
+        <%= form.text_field :image %>
+      </div>
+
+      <div>
+        <%= form.label :open_times, style: "display: block" %>
+        <%= form.text_field :open_times %>
+      </div>
+
+      <div>
+        <%= form.label :images, style: "display: block" %><br>
+        <%= form.file_field :images, multiple: true %><br>
+      </div>
+
+      <%= form.hidden_field :trip_id, :value => @trip.id %>
+
+      <div>
+        <%= form.submit %>
+      </div>
+      <% if @location.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(@location.errors.count, "error") %> prohibited this @location from being saved:</h2>
+
+          <ul>
+            <% @location.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+
+<br>
+
+<div>
+  <%= link_to "Back to Trip", "/trips/" << @trip.id.to_s %>
+</div>
+
+THISHTISHTISHTIH

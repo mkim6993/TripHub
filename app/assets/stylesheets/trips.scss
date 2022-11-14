@@ -51,3 +51,72 @@
     padding: 5px;
     border-radius: 10px;
 }
+
+/* custom location */
+#customLocation {
+    background-color: aqua;
+    display: block;
+    padding-left: 30px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+}
+
+
+/* search location */
+#searchLocation {
+    background-color: rgb(157, 106, 202);
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#searchLocation:hover {
+    background-color: rgb(170, 125, 208);
+}
+
+#searchResults {
+    background-color: rgb(230, 209, 241);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+}
+
+.locationItem {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    padding: 10px;
+    border-radius: 10px;
+    width: 50%;
+    background-color: white;
+    margin: 5px;
+}
+
+.locDetailAndImage {
+    display: flex;
+    flex-direction: row;
+}
+
+.locImage {
+    width: 80px;
+    height: 40px;
+    margin-left: 15px;
+}
+
+.locName {
+    font-size: 20px;
+}
+
+.detailText {
+
+}
+
+#noResult {
+    margin: 20px;
+    font-size: 15px;
+}
