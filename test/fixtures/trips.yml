@@ -2,8 +2,6 @@
 
 one:
   create_by: MyString
-  created_at: 2022-09-23
-  updated_at: 2022-09-23
   trip_date: 2022-09-23
   title: MyString
   description: MyString
@@ -14,8 +12,6 @@ one:
 
 two:
   create_by: MyString
-  created_at: 2022-09-23
-  updated_at: 2022-09-23
   trip_date: 2022-09-23
   title: MyString
   description: MyString

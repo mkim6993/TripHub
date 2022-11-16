@@ -34,6 +34,29 @@ class TripsController < ApplicationController
     end
   end
 
+  def search
+    puts "SEARCH START"
+    if params[:search].blank? && params[:filter].blank?
+      redirect_to trips_path
+      return
+    elsif !params[:search].blank? && params[:filter].blank?
+      @parameter = params[:search].downcase
+      @results = Trip.all.where("lower(title) LIKE ?", "%#{@parameter}%")
+      puts "HHHH"
+      puts @results
+      puts "bbbbb"
+    elsif params[:search].blank? && !params[:filter].blank?
+      @parameter = params[:filter].to_i
+      @results = Trip.all.where("upvotes > ?", @parameter)
+      puts @results
+      puts "bbbbb"
+    else
+      @parameter1 = params[:search].downcase
+      @parameter2 = params[:filter].to_i
+      @results = Trip.all.where("lower(title) LIKE ? AND upvotes > ?", "%#{@parameter1}%", @parameter2 )
+    end
+  end
+
   # PATCH/PUT /trips/1 or /trips/1.json
   def update
     respond_to do |format|
@@ -65,6 +88,9 @@ class TripsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def trip_params
-      params.require(:trip).permit(:create_by, :updated_at, :created_at, :trip_date, :title, :description, :upvotes, :shares, :public, :parent)
+      params.require(:trip).permit(:create_by, :trip_date, :title, :description, :upvotes, :shares, :public, :parent)
     end
+
+
+
 end
