@@ -49,24 +49,18 @@
     <div class="two">
       <div class="Trip_info">
         <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Monument_Valley.jpg" class="show-picture">
-        <%# <h3>Trip Page</h3> %>
-        <%# <a href="trips_path" class="button">Trip Page</a> %>
         <div class="button">
           <%= link_to "Trip Page",  trips_path %>
         </div>
       </div>
       <div class="Planner_page">
         <img src="https://img.traveltriangle.com/blog/wp-content/uploads/2017/10/Grand-Prismatic-Spring-Yellowstone-National-Park-ss30102017.jpg" class="show-picture">
-        <%# <h3>Planner page</h3> %>
-        <%# <a href="#" class="button">Planner page</a> %>
         <div class="button">
           <%= link_to "Add Planner",  new_trip_path %>
         </div>
       </div>
       <div class="Social">
         <img src="https://cdn.shopify.com/app-store/listing_images/0dce682fb3602fe48c948f046351cae8/icon/CM-lh970lu8CEAE=.png" class="show-picture">
-        <%# <h3>Social</h3> %>
-        <%# <a href="#" class="button">Social</a> %>
         <div class="button">
           <%= link_to "Social",  "#"%>
         </div>
@@ -74,20 +68,14 @@
       </div>
       <div class="Setting">
         <img src="https://cdn-icons-png.flaticon.com/512/81/81020.png" class="show-picture">
-        <%# <h3>Setting</h3> %>
-        <%# <a href="#" class="button">Setting</a> %>
         <div class="button">
           <%= link_to "Setting",  "#"%>
         </div>
       </div>
 
       <section class ="sign-out">
-      <div>
-      <%# <h5>sign out</h5> %>
-      <%# <a href="Log out" class="sign-out-button">sign out</a> %>
       <div class="sign-out-button">
         <%= link_to "Log out",  logout_path, data: { "turbo-method": :delete } %>
-      </div>
       </div>
     </section>
     </div>
