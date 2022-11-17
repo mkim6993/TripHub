@@ -15,7 +15,7 @@
   <%if !triplocs.nil?%>
     <%triplocs.each do |triploc|%>
       <div id="tripImageDetails">
-        <div id="tripImageFrame"><%# image_tag(Location.find(id=triploc.location_id).images[0], :alt => "path") %></div>
+        <div id="tripImageFrame"><%#image_tag(Location.find_by(id: triploc.location_id).images[0], :alt => "path") %></div>
         <div id="tripDetails">
           <% loc = get_loc_info(triploc.id)%>
           <h1><%= loc.name %></h1>
