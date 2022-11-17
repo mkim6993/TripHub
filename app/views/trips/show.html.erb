@@ -11,40 +11,44 @@
       <%= render @trip %>
     </div>
   </div>
-  <div id="tripImageDetails">
-    <%triplocs = TripLocation.where(:trip_id => @trip.id)%>
-    <%if !triplocs.nil?%>
-      <%triplocs.each do |triploc|%>
-          <div id="tripImageFrame"><%= image_tag(Location.find(id=triploc.location_id).images[0], :alt => "path") %></div>
-      <%end%>
+  <%triplocs = TripLocation.where(:trip_id => @trip.id)%>
+  <%if !triplocs.nil?%>
+    <%triplocs.each do |triploc|%>
+      <div id="tripImageDetails">
+        <div id="tripImageFrame"><%#image_tag(Location.find_by(id: triploc.location_id).images[0], :alt => "path") %></div>
+        <div id="tripDetails">
+          <% loc = get_loc_info(triploc.id)%>
+          <h1><%= loc.name %></h1>
+          <h4><%= loc.description %></h4>
+          <div><%= loc.address %></div>
+          <div><%= loc.contact %></div>
+          <div><%= loc.price %></div>
+          <div><%= loc.open_times %></div>
+        </div>
+      </div>
     <%end%>
+  <%end%>
+  <%# <div id="tripImageDetails">
+    <div id="tripImageFrame"></div>
     <div id="tripDetails">
     </div>
-  </div>
-  <%# <div id="tripProgressBar">
-    <div id="openBubble"></div>
-    <div id="closedBubble"></div>
-    <div id="closedBubble"></div>
   </div> %>
-  <div id="tripImageDetails">
-    <div id="tripImageFrame"><%= image_tag("path.JPG", :alt => "path") %></div>
-    <div id="tripDetails">
-    </div>
-  </div>
-  <div id="tripImageDetails">
-    <div id="tripImageFrame"><%= image_tag("path.JPG", :alt => "path") %></div>
-    <div id="tripDetails">
-    </div>
-  </div>
+  <% if !current_user.nil? %>
+    <% if current_user.trips.exists?(@trip.id) %>
+      <div id="addNewLoc">
+        <%= link_to "Add a new location", "/trips/" << @trip.id.to_s << "/locations" %>
+      </div>
+    <% end %>
+  <% end %>
   <div>
     <%= link_to "View related trips", "/trips/" << get_original_parent(@trip.id).to_s << "/branches" %>
-    <%if !current_user.nil?%>
-        <%if @trip.create_by == current_user.username%>
+    <% if !current_user.nil? %>
+        <% if @trip.create_by == current_user.username %>
           |
           <%= link_to "Edit this trip", edit_trip_path(@trip) %> |
           <%= button_to "Destroy this trip", @trip, method: :delete %>
-        <%end%>
-    <%end%>
+        <% end %>
+    <% end %>
   </div>
 
 </div>

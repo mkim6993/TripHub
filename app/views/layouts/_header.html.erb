@@ -15,7 +15,6 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>  
         <% if logged_in? %>
-          <li><%= link_to "Users", users_path %></li>
           <li><%= link_to "My Trips", "/users/" << current_user.id.to_s << "/trips" %></li>
           <li><%= link_to "Add Trip", new_trip_path %></li>
           <li><%= link_to "Add Location", new_location_path %></li>

@@ -3,3 +3,5 @@ import "@hotwired/turbo-rails";
 import "controllers";
 import "./custom/tripIndex";
 import "./custom/menu";
+import "./custom/searchLocations";
+//= require jquery
