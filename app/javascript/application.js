@@ -4,4 +4,5 @@ import "controllers";
 import "./custom/tripIndex";
 import "./custom/menu";
 import "./custom/searchLocations";
+import "./custom/addUserToTrip";
 //= require jquery

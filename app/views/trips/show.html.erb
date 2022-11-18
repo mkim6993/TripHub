@@ -15,9 +15,20 @@
   <%if !triplocs.nil?%>
     <%triplocs.each do |triploc|%>
       <div id="tripImageDetails">
-        <div id="tripImageFrame"><%#image_tag(Location.find_by(id: triploc.location_id).images[0], :alt => "path") %></div>
+        <div id="tripImageFrame">
+          <%file = get_loc_info(triploc.location_id).images[0]%>
+          <%if !file.nil?%>
+            <% if file.representable? %>
+              <%= image_tag file%>
+            <% else %>
+              <%= link_to rails_blob_path(file, disposition: "attachment") do %>
+                <%= image_tag "placeholder.png", alt: "Download file" %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
         <div id="tripDetails">
-          <% loc = get_loc_info(triploc.id)%>
+          <% loc = get_loc_info(triploc.location_id)%>
           <h1><%= loc.name %></h1>
           <h4><%= loc.description %></h4>
           <div><%= loc.address %></div>
