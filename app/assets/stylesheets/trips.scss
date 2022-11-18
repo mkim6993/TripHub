@@ -5,16 +5,6 @@
     border-radius: 10px;
 }
 
-#tripGraphic {
-    width: 50%;
-    background-color: rgb(179, 134, 179);
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-}
-
 #tripInputFields {
     padding: 15px;
     width: 50%;
@@ -39,15 +29,162 @@
     cursor: pointer;
 }
 
-#locationForm {
-    background-color: gray;
-    padding: 5px;
+/* custom location */
+#customLocation {
+    // background-color: rgb(157, 106, 202);
+    padding-bottom: 20px;
     border-radius: 10px;
-    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
 }
 
-#sampleLocation {
-    background-color: gray;
-    padding: 5px;
+
+/* search location */
+#searchLocation {
+    background-color: rgb(106, 202, 125);
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    border-top-left-radius: px;
+    border-top-right-radius: 10px;
+}
+
+#searchLocation:hover {
+    background-color: rgb(170, 125, 208);
+}
+
+#searchResults {
+    background-color: rgb(230, 209, 241);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+}
+
+.locationItem {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    padding: 10px;
     border-radius: 10px;
+    width: 90%;
+    background-color: white;
+    margin: 5px;
+}
+
+.locDetailAndImage {
+    display: flex;
+    flex-direction: row;
+}
+
+.locImage {
+    width: 80px;
+    height: 40px;
+    margin-left: 15px;
+}
+
+.locName {
+    font-size: 20px;
+}
+
+// .detailText {
+
+// }
+
+#noResult {
+    margin: 20px;
+    font-size: 15px;
+}
+
+
+#customLocationCard {
+    background-color: white;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+    border-radius: 15px;
+    border: 1px solid gray;
+}
+
+.new_location {
+    display: flex;
+    flex-direction: column;
+    margin-left: 55px;
+}
+
+/* form styles */
+
+$primary: #8c47c7;
+$secondary: #9b50e1;
+$black: black;
+$gray: #9b9b9b;
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 50%;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 200px;
+  border: 0;
+  border-bottom: 2px solid $gray;
+  outline: 0;
+  font-size: 1.3rem;
+  color: $black;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: $gray;
+}
+
+.form__field:focus {
+  ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: $primary;
+    font-weight:700;    
+  }
+  padding-bottom: 6px;  
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, $primary,$secondary);
+  border-image-slice: 1;
+}
+/* reset input */
+.form__field{
+  &:required,&:invalid { box-shadow:none; }
+}
+
+#searchCard {
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: 45%;
 }
