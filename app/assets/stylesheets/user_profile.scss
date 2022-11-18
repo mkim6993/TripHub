@@ -1,0 +1,149 @@
+@import "bootstrap";
+
+/* typography */
+
+.userContainer{
+    height: 100%;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.one {
+    width: 30%;
+    //height: 100%;
+    //float: left;
+    position: relative;
+}
+  
+.two {
+    margin-left: 10%;
+    height: 100%;
+    width: 80%;
+    justify-content: space-evenly;
+    position: relative;
+    // flex-direction: row;
+    // flex-wrap: wrap;
+  
+  }
+  /*for triphub  onyly*/
+.h3 {
+    font-size: 2em;
+    letter-spacing: 0px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.h4{
+    font-size: 1.5em;
+    letter-spacing: 0px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: gray;
+}
+
+.h5{
+    font-size: 2em;
+    letter-spacing: 0px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+  /*for triphub only*/
+.show-picture{
+  //background: url('www.google.com');
+  width: 200px;
+  height: 150px;
+  border-radius: 10%;
+  size-adjust:relative;
+}
+
+.sign-out{
+  border:1px solid white;
+  background-color: #77ffd7;
+  height: 50px;
+  width: 200px;
+  margin-top: 3em;
+  // position:absolute;
+  // bottom:0px;
+  // right:25%;
+  // left:50%;
+  margin-left:200px;
+}
+
+.TripHub_user {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(104, 69, 134);
+  color:#77ffd7;
+  float: left;
+}
+
+
+.Trip_info{
+  width: 20%;
+  height: 200px;
+  float:left;
+}
+
+.Planner_page{
+  width: 20%;
+  height: 200px;
+  margin-left:40%;
+
+}
+
+.Social{
+  width: 20%;
+  height: 200px;
+  float: left;
+}
+
+.Setting{
+  width: 20%;
+  height: 200px;
+  margin-left:40%;
+}
+
+.Lists{
+  margin-top: 1em;
+}
+.profile_picture{
+  background-color: rgb(104, 69, 134);
+  width: 350px;
+  
+}
+
+.button{
+  font-size: 2em;
+  letter-spacing: 0px;
+  margin-bottom: 30px;
+  margin: 4px 2px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: grey;
+  
+}
+
+.sign-out-button{
+  font-size: 2em;
+  letter-spacing: 0px;
+  margin-bottom: 30px;
+  margin: 4px 40px;
+}
+
+.user-button{
+  font-size: 1.5em;
+  letter-spacing: 0px;
+  margin-bottom: 30px;
+  text-align: center;
+  padding-top:20px;
+  color: grey;
+
+}
+.link_text{
+    font-size: 1em; 
+    color: grey;
+}

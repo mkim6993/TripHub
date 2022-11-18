@@ -1,0 +1,101 @@
+<h1><%= @trip.title %></h1>
+
+
+<h2>add a location</h2>
+
+<div id="addLocationMethods">
+  <%# <div>
+    <div id="searchLocation">
+      <h3>Search for a location</h3>
+      <div style="margin-bottom: 15px;">
+        <input type="text" placeholder="Search Location" id="locationSearch"/>
+        <button id="searchBtn">search</button>
+      </div>
+    </div>
+    <div id="searchResults"></div>
+  </div> %>
+  <div id="customLocation">
+    <div id="searchCard">
+      <div id="searchLocation">
+        <h3>Search for a location</h3>
+        <div style="margin-bottom: 15px;">
+          <input type="text" placeholder="Search Location" id="locationSearch"/>
+          <button id="searchBtn">search</button>
+        </div>
+      </div>
+      <div id="searchResults"></div>
+    </div>
+    <div id="customLocationCard">
+      <h3>Create a new location</h3>
+      <%= form_for @location, url: "/create_location" do |form| %>
+
+        <div class="form__group field">
+          <%= form.text_field :name, placeholder: "Name", class: "form__field" %>
+          <label for="name" class="form__label">Name</label>
+        </div>
+
+        <div class ="form__group field">
+          <%= form.text_field :description, placeholder: "Description", class: "form__field" %>
+          <label for="description" class="form__label">Description</label>
+        </div>
+
+        <div class ="form__group field">
+          <%= form.text_field :address, placeholder: "Address", class: "form__field" %>
+          <label for="address" class="form__label">Address</label>
+        </div>
+
+        <div class ="form__group field">
+          <%= form.text_field :contact, placeholder: "Contact", class: "form__field" %>
+          <label for="contact" class="form__label">Contact</label>
+        </div>
+
+        <div class ="form__group field">
+          <%= form.number_field :price, placeholder: "Price", class: "form__field" %>
+          <label for="price" class="form__label">Price</label>
+        </div>
+
+        <div class ="form__group field">
+          <%= form.text_field :image, placeholder: "Image", class: "form__field" %>
+          <label for="image" class="form__label">Image</label>
+        </div>
+
+        <div class ="form__group field">
+          <%= form.text_field :open_times, placeholder: "Open Times", class: "form__field" %>
+          <label for="open_times" class="form__label">Open Times</label>
+        </div>
+
+        <div>
+          <%= form.label :images, style: "display: block" %><br>
+          <%= form.file_field :images, multiple: true %><br>
+        </div>
+
+        <%= form.hidden_field :trip_id, :value => @trip.id %>
+
+        <div>
+          <%= form.submit %>
+        </div>
+        <% if @location.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(@location.errors.count, "error") %> prohibited this @location from being saved:</h2>
+
+            <ul>
+              <% @location.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+<br>
+
+<div>
+  <%= link_to "Back to Trip", "/trips/" << @trip.id.to_s %>
+</div>
+
+THISHTISHTISHTIH

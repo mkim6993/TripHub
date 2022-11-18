@@ -1,10 +1,80 @@
-<p style="color: green"><%= notice %></p>
+<%# <p style="color: green"><%= notice %>
 
-<%= render @user %>
+<%# <%= render @user %>
 
-<div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
+<%# <div>
+  <%= link_to "Edit this user", edit_user_path(@user) %> 
+  <%# <%= link_to "Back to users", users_path %> 
 
-  <%= button_to "Destroy this user", @user, method: :delete %>
+  <%# <%= button_to "Destroy this user", @user, method: :delete %> 
+<%# </div> %>
+
+<%# <% provide(:title, @user.name) %> 
+   
+  <section class="userContainer">
+    <div class="one">
+      <section class = "TripHub_user">
+        <div class="h3">
+          <%= @user.name %>
+        </div>
+        <h4> </h4>
+        <div class="user-button">
+          <%= link_to "followers: #{@user.followers.count}", "@user.followers" %>
+        </div>
+        
+        <h4> </h4>
+        
+        <div class="user-button">
+          <%= link_to "followings: #{@user.followings.count}", "@user.followings" %>
+        </div>
+        
+        <h4> </h4>
+        
+        <div class="user-button">
+          <%= link_to "attended trips: " %>
+        </div>
+        
+        <h4> </h4>
+        
+        <div class="user-button">
+          <%= link_to "origanzied trips:" %>
+        </div>
+
+      </section>
+    </div>
+    <div class="two">
+      <div class="Trip_info">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Monument_Valley.jpg" class="show-picture">
+        <div class="button">
+          <%= link_to "Trip Page",  trips_path %>
+        </div>
+      </div>
+      <div class="Planner_page">
+        <img src="https://img.traveltriangle.com/blog/wp-content/uploads/2017/10/Grand-Prismatic-Spring-Yellowstone-National-Park-ss30102017.jpg" class="show-picture">
+        <div class="button">
+          <%= link_to "Add Planner",  new_trip_path %>
+        </div>
+      </div>
+      <div class="Social">
+        <img src="https://cdn.shopify.com/app-store/listing_images/0dce682fb3602fe48c948f046351cae8/icon/CM-lh970lu8CEAE=.png" class="show-picture">
+        <div class="button">
+          <%= link_to "Social",  "/users/" << current_user.id.to_s << "/trips"%>
+        </div>
+        
+      </div>
+      <div class="Setting">
+        <img src="https://cdn-icons-png.flaticon.com/512/81/81020.png" class="show-picture">
+        <div class="button">
+          <%= link_to "Setting",  edit_user_path%>
+        </div>
+      </div>
+
+      <section class ="sign-out">
+      <div class="sign-out-button">
+        <%= link_to "Log out",  logout_path, data: { "turbo-method": :delete } %>
+      </div>
+    </section>
+    </div>
+  </section>
+  </aside>
 </div>

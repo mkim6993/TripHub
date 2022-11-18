@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :trips do
     member do  
       get :branches
+      get :locations
     end
     member do
       get :new_child
@@ -21,10 +22,13 @@ Rails.application.routes.draw do
   resources :star_fans
   resources :articles
 
-  get '/signup', to: 'users#new'
+  get "/signup", to: "users#new"
   get    "/login",   to: "sessions#new"
   post   "/login",   to: "sessions#create"
   delete "/logout",  to: "sessions#destroy"
+
+  post "/create_location", to: "trips#create_location"
+  get "/search", to: "locations#search"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

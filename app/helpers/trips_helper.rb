@@ -33,4 +33,10 @@ module TripsHelper
         child.save
         child
     end
+    
+    def get_loc_info(id)
+        trip_location = TripLocation.find_by(id: id)
+        location = Location.find_by(id: trip_location.location_id)
+        return location
+    end
 end
