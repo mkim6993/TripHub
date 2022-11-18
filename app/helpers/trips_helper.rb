@@ -24,4 +24,13 @@ module TripsHelper
     def make_tree(id)
         recurse(id, "")
     end
+
+    def create_child(parent)
+        child = parent.amoeba_dup
+        child.parent = parent.id
+        child.title = parent.title << " copy"
+        child.public = false
+        child.save
+        child
+    end
 end

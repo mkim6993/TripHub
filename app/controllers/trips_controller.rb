@@ -19,6 +19,10 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
   end
 
+  def new_child
+    @trip = Trip.find(params[:id])
+  end
+
   # GET /trips/1/edit
   def edit
   end

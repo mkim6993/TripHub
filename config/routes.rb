@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     member do  
       get :branches
     end
+    member do
+      get :new_child
+    end
   end
   resources :trip_users
   resources :star_fans

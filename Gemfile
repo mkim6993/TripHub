@@ -14,6 +14,9 @@ gem "bcrypt"
 
 gem 'faker', "~> 2.18"
 
+# Deep cloning for trip child creation
+gem 'amoeba'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 

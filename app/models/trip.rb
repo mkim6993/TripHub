@@ -18,6 +18,10 @@ class Trip < ApplicationRecord
   after_initialize :set_defaults, unless: :persisted?
   # The set_defaults will only work if the object is new
 
+  amoeba do
+    enable
+  end
+  
   def set_defaults
     self.upvotes  ||= 0
     self.shares ||= 0
