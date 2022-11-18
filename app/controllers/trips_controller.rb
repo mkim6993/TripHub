@@ -35,6 +35,17 @@ class TripsController < ApplicationController
   end
 
   def search
+    if params[:month].blank? || params[:day].blank? || params[:year].blank?
+      @results = Trip.where("lower(title) LIKE ?", "%#{params[:name].downcase}%").and(Trip.where("upvotes > ?", params[:saves].to_i)) 
+    else 
+      @results = Trip.where("lower(title) LIKE ?", "%#{params[:name].downcase}%").and(Trip.where("upvotes > ?", params[:saves].to_i)).and(Trip.where("trip_date > ?", params[:year] + "-" + params[:month] + "-" + params[:day]))
+    end
+  end
+
+ 
+
+'''
+  def search
     puts "SEARCH START"
     if params[:search].blank? && params[:filter].blank?
       redirect_to trips_path
@@ -56,6 +67,7 @@ class TripsController < ApplicationController
       @results = Trip.all.where("lower(title) LIKE ? AND upvotes > ?", "%#{@parameter1}%", @parameter2 )
     end
   end
+'''
 
   # PATCH/PUT /trips/1 or /trips/1.json
   def update
