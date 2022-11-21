@@ -58,8 +58,8 @@
     <button id="userSearchPopUp">Invite User to Trip</button>
   </div>
   <div id="userSearch"></div>
-  <div>
 
+  <div class="bottomNavigation">
     <%= link_to "View related trips", "/trips/" << get_original_parent(@trip.id).to_s << "/branches" %>
     <% if !current_user.nil? %>
       <%if TripUser.where(trip_id: @trip.id).pluck(:user_id).include? current_user.id%>
