@@ -25,7 +25,9 @@
                 <%= image_tag "placeholder.png", alt: "Download file" %>
               <% end %>
             <% end %>
-          <% end %>
+          <% else %>
+            <%= image_tag "no_image_found.png", alt: "Download file" %>
+          <%end%>
         </div>
         <div id="tripDetails">
           <% loc = get_loc_info(triploc.location_id)%>
@@ -51,7 +53,13 @@
       </div>
     <% end %>
   <% end %>
+
+  <div style="margin-bottom: 15px;">
+    <button id="userSearchPopUp">Invite User to Trip</button>
+  </div>
+  <div id="userSearch"></div>
   <div>
+
     <%= link_to "View related trips", "/trips/" << get_original_parent(@trip.id).to_s << "/branches" %>
     <% if !current_user.nil? %>
       <%if TripUser.where(trip_id: @trip.id).pluck(:user_id).include? current_user.id%>
