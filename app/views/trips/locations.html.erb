@@ -1,7 +1,4 @@
-<h1><%= @trip.title %></h1>
-
-
-<h2>add a location</h2>
+<div class="pageTitleText">Add a new location to <strong><%= @trip.title %></strong></div>
 
 <div id="addLocationMethods">
   <%# <div>
@@ -20,7 +17,7 @@
   <div id="customLocation">
     <div id="searchCard">
       <div id="searchLocation">
-        <h3>Search for a location</h3>
+        <%= image_tag("THLogo.png", :alt => "TripHub logo", class:"logo") %>
         <div style="margin-bottom: 15px;">
           <input type="text" placeholder="Search Location" id="locationSearch"/>
           <button id="searchBtn">search</button>
@@ -38,10 +35,10 @@
         </div>
 
         <div class ="form__group field">
-          <%= form.text_field :description, placeholder: "Description", class: "form__field" %>
+          <textarea placeholder="Description" name="location[description]" id="location_description"></textarea>
           <label for="description" class="form__label">Description</label>
         </div>
-
+        
         <div class ="form__group field">
           <%= form.text_field :address, placeholder: "Address", class: "form__field" %>
           <label for="address" class="form__label">Address</label>
@@ -94,9 +91,6 @@
 </div>
 
 
-
-<br>
-
 <div>
-  <%= link_to "Back to Trip", "/trips/" << @trip.id.to_s %>
+  <%= link_to "Back to #{@trip.title}", "/trips/" << @trip.id.to_s %>
 </div>

@@ -1,11 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body {
-    margin-bottom: 60px;
-    padding-top: 80px;
-    // background-color: teal;
-  }
+// body {
+//     // margin-bottom: 60px;
+//     padding-top: 80px;
+//     background-color: teal;
+//   }
   
   section {
     overflow: auto;
@@ -35,11 +35,6 @@ body {
     color: white;
   }
 
-.container {
-  // background-color: brown;
-  width: 100%
-}
-
 .containerHeader {
   display: flex;
   flex-direction: row;
@@ -55,7 +50,7 @@ body {
 }
 
 #trips {
-  background-color: white;
+  // background-color: red;
   flex-wrap: wrap;
   // align-items: center;
   display: flex;
