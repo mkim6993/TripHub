@@ -1,24 +1,33 @@
 document.addEventListener("turbo:load", function () {
-    let searchBtn = document.querySelector("#searchBtn");
+    var searchBtn = document.querySelector("#searchBtn");
+    var tools = document.getElementById("searchTools");
     searchBtn.addEventListener("click", function (event) {
         event.stopPropagation();
+        tools.style.marginTop = "10px";
         returnLocations();
     });
 
-    let locationSearch = document.querySelector("#locationSearch");
+    var locationSearch = document.querySelector("#locationSearch");
     locationSearch.addEventListener("click", function (event) {
         event.stopPropagation();
     });
-
-    let searchBar = document.querySelector("#searchLocation");
-    let searchResults = document.querySelector("#searchResults");
-    searchBar.addEventListener("click", function (event) {
-        event.preventDefault();
-        if (searchResults.style.maxHeight) {
-            searchResults.style.maxHeight = null;
-        } else {
-            searchResults.style.maxHeight = searchResults.scrollHeight + "px";
+    locationSearch.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("searchBtn").click();
         }
+    });
+
+    var showCreateLocation = document.getElementById("showCreateLocation");
+    showCreateLocation.addEventListener("click", function (event) {
+        document.getElementById("customLocationCard").style.display = "flex";
+        document.getElementById("shade").style.display = "block";
+    });
+
+    var closeCreateLocationWindow = document.getElementById("xiconContainer");
+    closeCreateLocationWindow.addEventListener("click", function (event) {
+        document.getElementById("customLocationCard").style.display = "none";
+        document.getElementById("shade").style.display = "none";
     });
 });
 
@@ -41,7 +50,6 @@ const returnLocations = async () => {
         "<div id='noResult'>No results. Create a new location?</div>";
     const locationSearch = document.getElementById("locationSearch").value;
     if (locationSearch == "") {
-        alert("no search");
     } else {
         try {
             var locations = await getData(locationSearch);
@@ -52,15 +60,17 @@ const returnLocations = async () => {
                     htmlString +=
                         "<div class='locationItem'><div class='locName'>" +
                         locations[i].name +
-                        "</div><div class='locDetailAndImage'><div class='locDetails'><div class='detailText'>" +
+                        "</div><div class='locDetailAndImage'><div class='locDetails'><div class='detailText'><strong>Address: </strong>" +
                         locations[i].address +
-                        "</div><div class='detailText'>" +
+                        "</div><div class='detailText'><strong>Contact: </strong>" +
                         locations[i].contact +
-                        "</div></div></div></div>";
+                        "</div></div><div class='locDetails'><strong>Description: </strong>" +
+                        locations[i].description +
+                        "</div></div><div class='addLocationBtnContainer'><button class='addLocationBtn'>Add this location</button></div></div>";
                 }
             }
             document.getElementById("searchResults").innerHTML += htmlString;
-            let searchResults = document.querySelector("#searchResults");
+            var searchResults = document.querySelector("#searchResults");
             searchResults.style.maxHeight = searchResults.scrollHeight + "px";
         } catch (err) {
             console.log("there was an error when fetching data", err);

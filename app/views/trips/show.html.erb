@@ -1,14 +1,19 @@
 <p style="color: green"><%= notice %></p>
 <div id="individualPost">
   <div id="tripHeaders">
-    <div id="postTitle">
-      <%= @trip.title %>
-    </div>
-    <div id="postLocationDate">
-      <%= @trip.trip_date %>
+    <div id="headerPrimary">
+      <div id="postTitle">
+        <%= @trip.title %> ·
+      </div>
+      <div id="postLocationDate">
+        <%= convert_date(@trip.trip_date) %>
+      </div>
     </div>
     <div>
-      <%= render @trip %>
+      <strong>@<%= @trip.create_by %></strong>
+    </div>
+    <div>
+      <%= @trip.description %>
     </div>
   </div>
   <%triplocs = TripLocation.where(:trip_id => @trip.id)%>
