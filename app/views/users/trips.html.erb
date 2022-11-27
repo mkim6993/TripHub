@@ -1,0 +1,47 @@
+<%user_trips = @user.trips%>
+<%if !user_trips.nil?%>
+    <%user_trips.each do |trip|%>
+        <p style="color: green"><%= notice %></p>
+        <div id="individualPost">
+        <div id="tripHeaders">
+            <div id="postTitle">
+            <%= trip.title %>
+            </div>
+            <div id="postLocationDate">
+            <%= trip.trip_date %>
+            </div>
+        </div>
+        <div id="tripImageDetails">
+            <%triplocs = TripLocation.where(:trip_id => trip.id)%>
+            <%if !triplocs.nil?%>
+            <%triplocs.each do |triploc|%>
+                <div id="tripImageFrame"> 
+                  <%# <%= image_tag(Location.find(id=triploc.location_id).images[0], :alt => "path") %> 
+                </div>
+            <%end%>
+            <%end%>
+            <div id="tripDetails"></div>
+        </div>
+        <div id="tripProgressBar">
+            <div id="openBubble"></div>
+            <div id="closedBubble"></div>
+            <div id="closedBubble"></div>
+        </div>
+
+        <%= render trip %>
+        <div>
+            <%= link_to "View related trips", "/trips/" << get_original_parent(trip.id).to_s << "/branches" %> 
+            <%if !current_user.nil?%>
+                <%if trip.create_by == current_user.username%>
+                    |
+                    <%= link_to "Edit this trip", edit_trip_path(trip) %> |
+                    <%= button_to "Destroy this trip", trip, method: :delete %>
+                <%end%>
+            <%end%>
+        </div>
+
+        </div>
+    <%end%>
+<%else%>
+    <h1> "No trips to display"</h1>
+<%end%>

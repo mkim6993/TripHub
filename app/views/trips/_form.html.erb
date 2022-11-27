@@ -1,19 +1,6 @@
 <%= form_with(model: trip) do |form| %>
-  <% if trip.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
-
-      <ul>
-        <% trip.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div>
-    <%= form.label :create_by, style: "display: block" %>
-    <%= form.text_field :create_by %>
+    <%= form.hidden_field :create_by, :value => current_user.username %>
   </div>
 
   <div>
@@ -32,13 +19,11 @@
   </div>
 
   <div>
-    <%= form.label :upvotes, style: "display: block" %>
-    <%= form.number_field :upvotes %>
+    <%= form.hidden_field :upvotes, :value => 0 %>
   </div>
 
   <div>
-    <%= form.label :shares, style: "display: block" %>
-    <%= form.number_field :shares %>
+    <%= form.hidden_field :shares, :value => 0 %>
   </div>
 
   <div>
@@ -46,12 +31,25 @@
     <%= form.check_box :public %>
   </div>
 
+  <%# parent id %>
+
   <div>
-    <%= form.label :parent, style: "display: block" %>
-    <%= form.number_field :parent %>
+    <%= form.hidden_field :parent, :value => -1 %>
   </div>
 
   <div>
     <%= form.submit %>
   </div>
+
+  <% if trip.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
+
+      <ul>
+        <% trip.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 <% end %>

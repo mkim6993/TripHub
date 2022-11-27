@@ -9,6 +9,12 @@ document.addEventListener("turbo:load", function () {
         menu.classList.toggle("collapse");
     });
 
+    // let test = document.querySelector("#addNewLoc");
+    // test.addEventListener("click", function (event) {
+    //     event.preventDefault();
+    //     alert("hi");
+    // });
+
     // let account = document.querySelector("#account");
     // account.addEventListener("click", function (event) {
     //     event.preventDefault();
