@@ -8,11 +8,29 @@
       <div id="postLocationDate">
         <%= convert_date(@trip.trip_date) %>
       </div>
+      <div id="interactiveButtons">
+        <div class="socialBtn">
+          <div>
+            <%= @trip.upvotes %> Upvotes
+          </div>
+        </div>
+        <div class="socialBtn">
+          <div>
+            <%= @trip.shares %> Shares
+          </div>
+        </div>
+      </div>
     </div>
     <div>
+      <div>
+        Created at <%= @trip.created_at %>
+      </div>
+    </div>
+    <div style="font-size: 20px">
       <strong>@<%= @trip.create_by %></strong>
     </div>
     <div>
+      <div><strong>Description:</strong></div>
       <%= @trip.description %>
     </div>
   </div>
@@ -37,11 +55,11 @@
         <div id="tripDetails">
           <% loc = get_loc_info(triploc.location_id)%>
           <h1><%= loc.name %></h1>
-          <h4><%= loc.description %></h4>
-          <div><%= loc.address %></div>
-          <div><%= loc.contact %></div>
-          <div><%= loc.price %></div>
-          <div><%= loc.open_times %></div>
+          <h4>Description: <%= loc.description %></h4>
+          <div>Address: <%= loc.address %></div>
+          <div>Contact Information: <%= loc.contact %></div>
+          <div>Price: <%= loc.price %></div>
+          <div>Open Times: <%= loc.open_times %></div>
         </div>
       </div>
     <%end%>

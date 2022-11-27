@@ -29,25 +29,25 @@ class TripTest < ActiveSupport::TestCase
     assert_not @trip.valid?
   end
 
-  test "upvotes should be present" do
-    @trip.upvotes = nil
-    assert_not @trip.valid?
-  end
+  # test "upvotes should be present" do
+  #   @trip.upvotes = nil
+  #   assert_not @trip.valid?
+  # end
 
-  test "shares should be present" do
-    @trip.shares = nil
-    assert_not @trip.valid?
-  end
+  # test "shares should be present" do
+  #   @trip.shares = nil
+  #   assert_not @trip.valid?
+  # end
 
-  test "public should be present" do
-    @trip.public = nil
-    assert_not @trip.valid?
-  end
+  # test "public should be present" do
+  #   @trip.public = nil
+  #   assert_not @trip.valid?
+  # end
 
-  test "parent should be present" do
-    @trip.parent = nil
-    assert_not @trip.valid?
-  end
+  # test "parent should be present" do
+  #   @trip.parent = nil
+  #   assert_not @trip.valid?
+  # end
 
   test "create_by should not be too long" do
     @trip.create_by = "a" * 51

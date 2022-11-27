@@ -57,6 +57,13 @@ class TripLocationsController < ApplicationController
     end
   end
 
+  # GET find number of tripLocation instances given location
+  def triplocation_instances
+    location_id = params[:location_id]
+    instances = TripLocation.where(location_id: location_id).count
+    render json: instances
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_trip_location

@@ -1,4 +1,5 @@
 document.addEventListener("turbo:load", function () {
+    // move search bar on search
     var searchBtn = document.querySelector("#searchBtn");
     var tools = document.getElementById("searchTools");
     searchBtn.addEventListener("click", function (event) {
@@ -7,6 +8,7 @@ document.addEventListener("turbo:load", function () {
         returnLocations();
     });
 
+    // search location on "enter" keypress
     var locationSearch = document.querySelector("#locationSearch");
     locationSearch.addEventListener("click", function (event) {
         event.stopPropagation();
@@ -18,12 +20,14 @@ document.addEventListener("turbo:load", function () {
         }
     });
 
+    // open create new location window
     var showCreateLocation = document.getElementById("showCreateLocation");
     showCreateLocation.addEventListener("click", function (event) {
         document.getElementById("customLocationCard").style.display = "flex";
         document.getElementById("shade").style.display = "block";
     });
 
+    // close create new location window
     var closeCreateLocationWindow = document.getElementById("xiconContainer");
     closeCreateLocationWindow.addEventListener("click", function (event) {
         document.getElementById("customLocationCard").style.display = "none";
@@ -31,19 +35,45 @@ document.addEventListener("turbo:load", function () {
     });
 });
 
+// returns all db objects from search
 const getData = (searchInput) => {
     return $.ajax({
         type: "GET",
         dataType: "json",
         url: "/search",
         data: { search: searchInput },
+        success: function (data) {},
+    });
+};
+
+// returns number of instances the location was used in other trips
+const getInstances = (locationId) => {
+    return $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "/triplocation_instances",
+        data: { location_id: locationId },
         success: function (data) {
-            console.log(data);
-            console.log("success");
+            console.log("found", data);
         },
     });
 };
 
+// add selected location to Trip
+const addSearchLocationToTrip = (locationId) => {
+    var url = window.location.href;
+    for (let i = 0; i < 4; i++) {
+        url = url.substring(url.indexOf("/") + 1);
+    }
+    url = url.substring(0, url.indexOf("/"));
+    $.ajax({
+        type: "POST",
+        url: "/add_search_location",
+        data: { location_id: locationId, trip_id: url },
+    });
+};
+
+// returns results from a location search
 const returnLocations = async () => {
     document.getElementById("searchResults").innerHTML = "";
     var htmlString =
@@ -53,23 +83,39 @@ const returnLocations = async () => {
     } else {
         try {
             var locations = await getData(locationSearch);
-            console.log("here", locations);
             if (locations.length != 0) {
                 htmlString = "";
                 for (let i = 0; i < locations.length; i++) {
-                    htmlString +=
-                        "<div class='locationItem'><div class='locName'>" +
+                    var locId = locations[i].id;
+                    var locationInstance = await getInstances(locId);
+                    htmlString =
+                        "<div class='locationItem'><div class='locName'><div>" +
                         locations[i].name +
-                        "</div><div class='locDetailAndImage'><div class='locDetails'><div class='detailText'><strong>Address: </strong>" +
+                        "</div><div class='foundIn'>Found in " +
+                        locationInstance +
+                        " other trips</div></div><div class='locDetailAndImage'><div class='locDetails'><div class='detailText'><strong>Address: </strong>" +
                         locations[i].address +
                         "</div><div class='detailText'><strong>Contact: </strong>" +
                         locations[i].contact +
                         "</div></div><div class='locDetails'><strong>Description: </strong>" +
                         locations[i].description +
-                        "</div></div><div class='addLocationBtnContainer'><button class='addLocationBtn'>Add this location</button></div></div>";
+                        "</div></div><div class='addLocationBtnContainer'><button class='addLocationBtn' id='code" +
+                        locId +
+                        "'>Add this location</button></div></div>";
+                    document.getElementById("searchResults").innerHTML +=
+                        htmlString;
                 }
+                for (let i = 0; i < locations.length; i++) {
+                    var addSearchedLocation = document.getElementById(
+                        "code" + locId
+                    );
+                    addSearchedLocation.addEventListener("click", function () {
+                        addSearchLocationToTrip(locId);
+                    });
+                }
+            } else {
+                document.getElementById("searchResults").innerHTML = htmlString;
             }
-            document.getElementById("searchResults").innerHTML += htmlString;
             var searchResults = document.querySelector("#searchResults");
             searchResults.style.maxHeight = searchResults.scrollHeight + "px";
         } catch (err) {

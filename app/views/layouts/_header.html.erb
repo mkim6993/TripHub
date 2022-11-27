@@ -30,7 +30,7 @@
               <li class="divider"></li>
           <li class="divider"></li>
             <li>
-              <%= link_to "Log out", logout_path, data: { "turbo-method": :delete } %>
+              <%= link_to "Log out", root_path, data: { "turbo-method": :delete } %>
             </li>
             </ul>
         </li>
@@ -41,7 +41,11 @@
     </nav>
     <div id="quickProfileContainer">
       <div id="quickProfile">
-        <div id="quickProfileAction"></div>
+        <div id="quickProfileAction">
+        <% if logged_in? %>
+          <%= current_user.username %>
+        <% end %>
+        </div>
         <div id="quickProfilePhoto"></div>
       </div>
     </div>

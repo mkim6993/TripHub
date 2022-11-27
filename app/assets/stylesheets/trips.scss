@@ -84,7 +84,7 @@
   align-items: center;
   // background-color: aqua;
   margin-top: 12%;
-  transition: margin-top .2s ease-out;
+  transition: margin-top .3s ease-out;
   margin-bottom: 5px;
 }
 
@@ -110,10 +110,10 @@
   height: 30px;
 }
 
-::-webkit-scrollbar {
-  width: 0px;
-  background: transparent; /* make scrollbar transparent */
-}
+// ::-webkit-scrollbar {
+//   width: 0px;
+//   background: transparent; /* make scrollbar transparent */
+// }
 
 #searchResults {
     // align-items: center;
@@ -169,6 +169,14 @@
 .locName {
     font-size: 20px;
     font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    // background-color: green;
+}
+
+.foundIn {
+  font-size: 12px;
+  // background-color: red;
 }
 
 .locDetails {
@@ -348,4 +356,24 @@ $gray: #9b9b9b;
   display: flex;
   justify-content: center;
   position: relative;
+}
+
+#interactiveButtons {
+  display: flex;
+  flex-direction: row;
+  // background-color: red;
+  gap: 15px;
+  margin-left: 20px;
+}
+
+.socialBtn {
+  background-color: rgb(231, 211, 243);
+  border-radius: 10px;
+  border: 1px solid rgb(189, 189, 189);
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
 }
