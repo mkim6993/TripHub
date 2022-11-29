@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @abc = 1
+    user_trips = @user.trips
+    @trips = user_trips
   end
 
   # GET /users/new
@@ -73,6 +75,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:username, :name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:username, :name, :email, :user_slogen, :password, :password_confirmation)
     end
 end
