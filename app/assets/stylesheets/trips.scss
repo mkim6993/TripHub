@@ -1,4 +1,11 @@
+#tripTitleLink:hover {
+  color: #9b50e1;
+}
 
+#tripTitleLink {
+  color: black;
+  text-decoration: none;
+}
 
 #newTripForm {
     display: flex;
@@ -362,18 +369,64 @@ $gray: #9b9b9b;
   display: flex;
   flex-direction: row;
   // background-color: red;
-  gap: 15px;
+  gap: 0px;
   margin-left: 20px;
+  align-items: center;
 }
 
 .socialBtn {
-  background-color: rgb(231, 211, 243);
-  border-radius: 10px;
-  border: 1px solid rgb(189, 189, 189);
-  width: 100px;
+  // background-color: aqua;
+  padding: 5px;
+  padding-left: 5px;
+  padding-right: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
+  border-radius: 10px;
+  height: 40px;
+}
+
+@media (max-width: 825px) {
+  #headerPrimary {
+    flex-direction: column;
+  }
+
+  #postLocationDate {
+    margin-left: 0px;
+  }
+
+  #interactiveButtons {
+    margin-left: 0px;
+  }
+}
+
+.socialIconBtn:hover {
+  background-color: rgb(233, 233, 233);
+  border-radius: 10px;
   cursor: pointer;
 }
+
+#tripCreatorName {
+  font-size: 20px; 
+  background-color: white; 
+  padding: 5px; 
+  display: inline;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#createdAtInfo {
+  margin-bottom: 10px;
+  color: rgb(108, 108, 108);
+  font-weight: bold;
+}
+
+#tripDescriptionBox {
+  margin-top: 10px;
+}
+
+.descriptionPadding {
+  background-color: white;
+}
+

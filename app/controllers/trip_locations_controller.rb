@@ -49,12 +49,11 @@ class TripLocationsController < ApplicationController
 
   # DELETE /trip_locations/1 or /trip_locations/1.json
   def destroy
-    @trip_location.destroy
+    triploc = params[:triploc_id]
+    trip_id = params[:trip_id]
+    TripLocation.find(triploc).destroy
 
-    respond_to do |format|
-      format.html { redirect_to trip_locations_url, notice: "Trip location was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to "/trips/" << trip_id.to_s
   end
 
   # GET find number of tripLocation instances given location

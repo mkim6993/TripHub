@@ -83,10 +83,12 @@ const returnLocations = async () => {
     } else {
         try {
             var locations = await getData(locationSearch);
+            var locationIdArr = [];
             if (locations.length != 0) {
                 htmlString = "";
                 for (let i = 0; i < locations.length; i++) {
                     var locId = locations[i].id;
+                    locationIdArr.push(locId);
                     var locationInstance = await getInstances(locId);
                     htmlString =
                         "<div class='locationItem'><div class='locName'><div>" +
@@ -105,12 +107,12 @@ const returnLocations = async () => {
                     document.getElementById("searchResults").innerHTML +=
                         htmlString;
                 }
-                for (let i = 0; i < locations.length; i++) {
+                for (let i = 0; i < locationIdArr.length; i++) {
                     var addSearchedLocation = document.getElementById(
-                        "code" + locId
+                        "code" + locationIdArr[i]
                     );
                     addSearchedLocation.addEventListener("click", function () {
-                        addSearchLocationToTrip(locId);
+                        addSearchLocationToTrip(locationIdArr[i]);
                     });
                 }
             } else {

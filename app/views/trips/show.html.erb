@@ -3,35 +3,37 @@
   <div id="tripHeaders">
     <div id="headerPrimary">
       <div id="postTitle">
-        <%= @trip.title %> ·
+        <div>
+          <%= @trip.title %> ·
+        </div>
       </div>
       <div id="postLocationDate">
-        <%= convert_date(@trip.trip_date) %>
+        <div>
+          <%= convert_date(@trip.trip_date) %>
+        </div>
       </div>
       <div id="interactiveButtons">
         <div class="socialBtn">
-          <div>
-            <%= @trip.upvotes %> Upvotes
-          </div>
+          <%= @trip.upvotes %>
+          <ion-icon name="heart-outline" style="font-size: 25px; margin-left: 10px" class="socialIconBtn"></ion-icon>
         </div>
         <div class="socialBtn">
-          <div>
-            <%= @trip.shares %> Shares
-          </div>
+          <%= @trip.shares %> 
+          <ion-icon name="share-outline" style="font-size: 25px;  margin-left: 10px"  class="socialIconBtn"></ion-icon>
         </div>
       </div>
     </div>
-    <div>
-      <div>
-        Created at <%= @trip.created_at %>
-      </div>
+    <div id="createdAtInfo">
+      Created at <%= @trip.created_at %>
     </div>
-    <div style="font-size: 20px">
-      <strong>@<%= @trip.create_by %></strong>
+    <div id="tripCreatorName">
+      @<%= @trip.create_by %>
     </div>
-    <div>
+    <div id="tripDescriptionBox">
       <div><strong>Description:</strong></div>
-      <%= @trip.description %>
+      <div>
+        <%= @trip.description %>
+      </div>
     </div>
   </div>
   <%triplocs = TripLocation.where(:trip_id => @trip.id)%>
@@ -60,6 +62,10 @@
           <div>Contact Information: <%= loc.contact %></div>
           <div>Price: <%= loc.price %></div>
           <div>Open Times: <%= loc.open_times %></div>
+          <div id="locationActions">
+            <button>Save this location</button>
+            <%= button_to 'Remove this location', {:controller => "trip_locations", :action => "destroy", :triploc_id => triploc.id, :trip_id => triploc.trip_id} , :method=>:delete  %>
+        </div>
         </div>
       </div>
     <%end%>
