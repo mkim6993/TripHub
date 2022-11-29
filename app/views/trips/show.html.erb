@@ -15,9 +15,22 @@
   <%if !triplocs.nil?%>
     <%triplocs.each do |triploc|%>
       <div id="tripImageDetails">
-        <div id="tripImageFrame"><%#image_tag(Location.find_by(id: triploc.location_id).images[0], :alt => "path") %></div>
+        <div id="tripImageFrame">
+          <%file = get_loc_info(triploc.location_id).images[0]%>
+          <%if !file.nil?%>
+            <% if file.representable? %>
+              <%= image_tag file%>
+            <% else %>
+              <%= link_to rails_blob_path(file, disposition: "attachment") do %>
+                <%= image_tag "placeholder.png", alt: "Download file" %>
+              <% end %>
+            <% end %>
+          <% else %>
+            <%= image_tag "no_image_found.png", alt: "Download file" %>
+          <%end%>
+        </div>
         <div id="tripDetails">
-          <% loc = get_loc_info(triploc.id)%>
+          <% loc = get_loc_info(triploc.location_id)%>
           <h1><%= loc.name %></h1>
           <h4><%= loc.description %></h4>
           <div><%= loc.address %></div>
@@ -40,7 +53,13 @@
       </div>
     <% end %>
   <% end %>
-  <div>
+
+  <div style="margin-bottom: 15px;">
+    <button id="userSearchPopUp">Invite User to Trip</button>
+  </div>
+  <div id="userSearch"></div>
+
+  <div class="bottomNavigation">
     <%= link_to "View related trips", "/trips/" << get_original_parent(@trip.id).to_s << "/branches" %>
     <% if !current_user.nil? %>
       <%if TripUser.where(trip_id: @trip.id).pluck(:user_id).include? current_user.id%>
