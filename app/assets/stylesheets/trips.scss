@@ -5,6 +5,7 @@
 #tripTitleLink {
   color: black;
   text-decoration: none;
+  font-weight: bold;
 }
 
 #newTripForm {
@@ -75,7 +76,7 @@
 }
 
 #searchLocation {
-    background-color: rgb(157, 106, 202);
+    background-color: rgb(144, 96, 186);
     flex-direction: column;
     display: flex;
     align-items: center;
@@ -427,10 +428,12 @@ $gray: #9b9b9b;
   margin-top: 5px;
   background-color: rgb(247, 247, 247);
   padding: 10px;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   border-radius: 10px;
   border: 1px solid rgb(134, 120, 146);
   // box-shadow: 5px 5px 5px rgb(134, 120, 146);
+  padding-right: 20px;
 }
 
 .descriptionPadding {
@@ -446,6 +449,10 @@ $gray: #9b9b9b;
   display: flex;
   flex-direction: row;
   align-items: center;
+  // background-color: purple;
+  border-bottom: 1px solid rgb(221, 221, 221);
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 :root {
@@ -455,8 +462,23 @@ $gray: #9b9b9b;
 .locationName {
   font-size: 30px;
   font-weight: bold;
+  border-bottom: 1px solid rgb(221, 221, 221);
+  padding-bottom: 5px;
+  margin-bottom: 5px;
 }
 
-* {
-  font-family: Outfit;
+.iconAndDes {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid rgb(221, 221, 221);
+  padding-bottom: 5px;
+}
+
+.detailIcons {
+  font-size: 25px;
+  flex: 1;
+}
+
+.detailText {
+  flex: 9;
 }
