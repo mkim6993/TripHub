@@ -2,15 +2,8 @@
 
 // Add toggle listeners to listen for clicks.
 // document.addEventListener("turbo:load", function () {
-//     // let hamburger = document.querySelector("#hamburger");
-//     // hamburger.addEventListener("click", function (event) {
-//     //     event.preventDefault();
-//     //     let menu = document.querySelector("#navbar-menu");
-//     //     menu.classList.toggle("collapse");
-//     // });
+//     var toTrip = document.getElementById("tripTitleLink");
+//     toTrip.addEventListener("click", function (event) {
 
-//     let bookmark = document.querySelector(".bookmark");
-//     bookmark.addEventListener("click", function (event) {
-//         alert("bookmarked");
-//     });
+//     })
 // });

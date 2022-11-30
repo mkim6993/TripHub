@@ -1,11 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body {
-    margin-bottom: 60px;
-    padding-top: 80px;
-    // background-color: teal;
-  }
+// body {
+//     // margin-bottom: 60px;
+//     padding-top: 80px;
+//     background-color: teal;
+//   }
   
   section {
     overflow: auto;
@@ -35,11 +35,6 @@ body {
     color: white;
   }
 
-.container {
-  // background-color: brown;
-  width: 100%
-}
-
 .containerHeader {
   display: flex;
   flex-direction: row;
@@ -55,7 +50,7 @@ body {
 }
 
 #trips {
-  background-color: white;
+  // background-color: red;
   flex-wrap: wrap;
   // align-items: center;
   display: flex;
@@ -198,20 +193,40 @@ footer {
 
 /* Individual post */
 #individualPost {
-  margin-left: 10px;
-  margin-right: 10px;
-  // background-color: teal;
+  // margin-left: 5px;
+  // margin-right: 5px;
+  background-color: rgb(217, 208, 228); 
+  // padding: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 20px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border: 5px solid rgb(134, 120, 146);
+  box-shadow: 1px 2px 2px rgb(134, 120, 146);
 }
 
 /* Individual post headers */
 #postTitle {
   font-weight: bold;
   font-size: 32px;
+  // background-color: teal;
+  display: flex;
+  align-items: center;
 }
 
 #postLocationDate {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  // background-color: yellow;
+  // margin-left: 10px;
+}
+
+#locationActions {
+  display: flex;
+  flex-direction: row;
 }
 
 #tripHeaders {
@@ -219,13 +234,20 @@ footer {
   margin-bottom: 15px;
 }
 
+#headerPrimary {
+  display: flex;
+  flex-direction: row;
+  // background-color: purple;
+}
+
 /* Trip details */
 #tripImageDetails {
   display: flex;
   flex-direction: column;
-  border: 2px solid gray;
+  border: 3px solid gray;
   border-radius: 15px;
   margin-bottom: 25px;
+  box-shadow: 1px 1px 1px rgb(134, 120, 146);
 }
 
 #tripImageFrame {
@@ -307,5 +329,6 @@ footer {
 .bottomNavigation {
   margin-bottom: 50px;
 }
+
 
 

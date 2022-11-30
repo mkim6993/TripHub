@@ -6,12 +6,12 @@
     height: 100%;
     width: 90%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     
 }
 
 .one {
-    width: 30%;
+    width: 100%;
     //height: 100%;
     //float: left;
     position: relative;
@@ -78,8 +78,17 @@
   background-color: rgb(104, 69, 134);
   color:#77ffd7;
   float: left;
+  column-count: 2;
 }
 
+.TripHub_userhead {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(104, 69, 134);
+  color:#77ffd7;
+  float: left;
+  column-count: 2;
+}
 
 .Trip_info{
   width: 20%;
@@ -146,4 +155,90 @@
 .link_text{
     font-size: 1em; 
     color: grey;
+}
+
+
+/* Profile Section */
+
+.profile {
+  padding: 5rem 0;
+}
+
+.profile::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.profile-image {
+  float: left;
+  width: calc(33.333% - 1rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 3rem;
+}
+
+.profile-image img {
+  border-radius: 50%;
+}
+
+.profile-user-settings,
+.profile-stats,
+.profile-bio {
+  float: left;
+  width: calc(66.666% - 2rem);
+}
+
+.profile-user-settings {
+  margin-top: 1.1rem;
+}
+
+.profile-user-name {
+  display: inline-block;
+  font-size: 3.2rem;
+  font-weight: 300;
+}
+
+.profile-edit-btn {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  border: 0.1rem solid #dbdbdb;
+  border-radius: 0.3rem;
+  padding: 0 2.4rem;
+  margin-left: 2rem;
+}
+
+.profile-settings-btn {
+  font-size: 2rem;
+  margin-left: 1rem;
+}
+
+.profile-stats {
+  margin-top: 2.3rem;
+}
+
+.profile-stats li {
+  display: inline-block;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  margin-right: 4rem;
+  cursor: pointer;
+}
+
+.profile-stats li:last-of-type {
+  margin-right: 0;
+}
+
+.profile-bio {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-top: 2.3rem;
+}
+
+.profile-real-name,
+.profile-stat-count,
+.profile-edit-btn {
+  font-weight: 600;
 }

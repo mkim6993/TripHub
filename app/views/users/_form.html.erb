@@ -31,6 +31,12 @@
     <%= form.text_field :password %>
   </div>
 
+  <% if !@user.id.nil? %>
+    <div>
+      <%= form.label :user_slogen, style: "display: block" %>
+      <%= form.text_area :user_slogen %>
+    </div>
+  <% end %>
   <div>
     <%= form.submit %>
   </div>
