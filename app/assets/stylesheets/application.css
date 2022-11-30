@@ -18,9 +18,10 @@
     margin-bottom: 60px;
     padding-top: 80px;
     /* background-color: teal; */
+    background-color: rgb(241, 236, 246); 
   }
 
   .container {
-    /* background-color: brown; */
+    background-color: rgb(241, 236, 246); 
     width: 100%;
   }

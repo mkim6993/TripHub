@@ -4,12 +4,7 @@
     <div id="headerPrimary">
       <div id="postTitle">
         <div>
-          <%= @trip.title %> ·
-        </div>
-      </div>
-      <div id="postLocationDate">
-        <div>
-          <%= convert_date(@trip.trip_date) %>
+          <%= @trip.title %>
         </div>
       </div>
       <div id="interactiveButtons">
@@ -23,16 +18,24 @@
         </div>
       </div>
     </div>
+    <div id="postLocationDate">
+      <ion-icon name="calendar-outline" style="margin-right: 10px"></ion-icon>
+      <div>
+        <%= convert_date(@trip.trip_date) %>
+      </div>
+    </div>
     <div id="createdAtInfo">
       Created at <%= @trip.created_at %>
     </div>
-    <div id="tripCreatorName">
-      @<%= @trip.create_by %>
-    </div>
-    <div id="tripDescriptionBox">
-      <div><strong>Description:</strong></div>
-      <div>
-        <%= @trip.description %>
+    <div id="nameAndDescription">
+      <div id="tripCreatorName">
+        @<%= @trip.create_by %>
+      </div>
+      <div id="tripDescriptionBox">
+        <div><ion-icon name="reader-outline" style="font-size: 25px;" ></ion-icon>  :</div>
+        <div>
+          <%= @trip.description %>
+        </div>
       </div>
     </div>
   </div>
@@ -56,12 +59,12 @@
         </div>
         <div id="tripDetails">
           <% loc = get_loc_info(triploc.location_id)%>
-          <h1><%= loc.name %></h1>
-          <h4>Description: <%= loc.description %></h4>
-          <div>Address: <%= loc.address %></div>
-          <div>Contact Information: <%= loc.contact %></div>
-          <div>Price: <%= loc.price %></div>
-          <div>Open Times: <%= loc.open_times %></div>
+          <div class="locationName"><%= loc.name %></div>
+          <div class="rowCenter"><ion-icon name="reader-outline" style="font-size: 25px;" color="secondary"></ion-icon>  <%= loc.description %></div>
+          <div class="rowCenter"><ion-icon name="location-outline" style="font-size: 25px;" color="secondary"></ion-icon>  Address: <%= loc.address %></div>
+          <div class="rowCenter"><ion-icon name="call-outline" style="font-size: 25px;" color="secondary"></ion-icon> <%= loc.contact %></div>
+          <div class="rowCenter"><ion-icon name="logo-usd" style="font-size: 25px;" color="secondary"></ion-icon> <%= loc.price %></div>
+          <div class="rowCenter"><ion-icon name="time-outline" style="font-size: 25px;" color="secondary"></ion-icon> <%= loc.open_times %></div>
           <div id="locationActions">
             <button>Save this location</button>
             <%= button_to 'Remove this location', {:controller => "trip_locations", :action => "destroy", :triploc_id => triploc.id, :trip_id => triploc.trip_id} , :method=>:delete  %>

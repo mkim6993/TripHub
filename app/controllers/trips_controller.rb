@@ -37,7 +37,10 @@ class TripsController < ApplicationController
     modified_location_params.extract!(:trip_id)
 
     puts "^^^^^^^^^^^^^^^^^"
+    puts trip_id
+    puts modified_location_params
     @location = Location.new(modified_location_params)
+    puts @location.id
     puts "^^^^^^^^^^^^^^^^^"
 
     respond_to do |format|

@@ -408,25 +408,55 @@ $gray: #9b9b9b;
 }
 
 #tripCreatorName {
-  font-size: 20px; 
-  background-color: white; 
-  padding: 5px; 
-  display: inline;
+  font-size: 18px; 
+  // background-color: rgb(247, 247, 247);
+  display: flex;
+  align-items: center;
   border-radius: 5px;
   font-weight: bold;
 }
 
 #createdAtInfo {
-  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   color: rgb(108, 108, 108);
   font-weight: bold;
 }
 
 #tripDescriptionBox {
-  margin-top: 10px;
+  margin-top: 5px;
+  background-color: rgb(247, 247, 247);
+  padding: 10px;
+  display: inline-block;
+  border-radius: 10px;
+  border: 1px solid rgb(134, 120, 146);
+  // box-shadow: 5px 5px 5px rgb(134, 120, 146);
 }
 
 .descriptionPadding {
   background-color: white;
 }
 
+#nameAndDescription {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.rowCenter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+:root {
+  --ion-color-secondary: rgb(104, 69, 134);
+}
+
+.locationName {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+* {
+  font-family: Outfit;
+}

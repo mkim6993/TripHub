@@ -195,13 +195,15 @@ footer {
 #individualPost {
   // margin-left: 5px;
   // margin-right: 5px;
-  background-color: rgb(224, 224, 224);
+  background-color: rgb(217, 208, 228); 
   // padding: 20px;
   padding-left: 30px;
   padding-right: 30px;
   border-radius: 20px;
   padding-top: 20px;
   padding-bottom: 10px;
+  border: 5px solid rgb(134, 120, 146);
+  box-shadow: 1px 2px 2px rgb(134, 120, 146);
 }
 
 /* Individual post headers */
@@ -219,7 +221,7 @@ footer {
   display: flex;
   align-items: center;
   // background-color: yellow;
-  margin-left: 10px;
+  // margin-left: 10px;
 }
 
 #locationActions {
@@ -242,9 +244,10 @@ footer {
 #tripImageDetails {
   display: flex;
   flex-direction: column;
-  border: 2px solid gray;
+  border: 3px solid gray;
   border-radius: 15px;
   margin-bottom: 25px;
+  box-shadow: 1px 1px 1px rgb(134, 120, 146);
 }
 
 #tripImageFrame {
