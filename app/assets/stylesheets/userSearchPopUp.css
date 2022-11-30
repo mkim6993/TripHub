@@ -1,11 +1,20 @@
-#userSearch{
-    background-color: brown;
-    color: white;
-    height: 300px;
-    width: 300px;
+#searchUser{
+    background-color: rgb(220, 188, 239);
+    color: black;
+    border-radius: 25px;
+    height: 500px;
+    width: 800px;
     z-index: 10;
     position: fixed;
-    bottom: 0;
-    right: 0;
     display: none;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#screen{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #000;
 }
