@@ -34,11 +34,6 @@ class LocationTest < ActiveSupport::TestCase
     assert_not @location.valid?
   end
 
-  test "image should be present" do
-    @location.image = ""
-    assert_not @location.valid?
-  end
-
   test "open_times should be present" do
     @location.open_times = ""
     assert_not @location.valid?
@@ -61,11 +56,6 @@ class LocationTest < ActiveSupport::TestCase
 
   test "contact should not be too long" do
     @location.contact = "a" * 101
-    assert_not @location.valid?
-  end
-
-  test "image should not be too long" do
-    @location.image = "a" * 256
     assert_not @location.valid?
   end
 
