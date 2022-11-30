@@ -55,4 +55,18 @@ module TripsHelper
         location = Location.find_by(id: trip_location.location_id)
         return location
     end
+
+    def liked?(trip)
+      like = Like.where(user:current_user, trip: Trip.find(trip.id))
+      if like.empty?
+        return true
+      else
+        return false
+      end
+    end
+
+    def get_likes(trip)
+      Like.where(trip: Trip.find(trip.id)).count
+    end
+
 end

@@ -30,7 +30,11 @@
             <%= image_tag("arrow_left.png", :alt => "arrow") %>  
           </div>
           <div class="bookmark">
-            <%= image_tag("save_empty.png", :alt => "save trip") %>
+          <% if liked?(trip) %>
+            <%= link_to image_tag("save_empty.png", :alt => "save trip"), likesupdate_path(trip: trip) %>
+          <% else %>
+            <%= link_to image_tag("save_filled.png", :alt => "save trip"), likesupdate_path(trip: trip) %>
+          <% end %>
           </div>
           <div id="save"></div>
         </div>
@@ -41,7 +45,7 @@
           </div>
           <div class="singleTripBoldUser">
             <div class="singleUserText">@<%= trip.create_by %></div>
-            <div><%= trip.shares %> recs</div>
+            <div><%= get_likes(trip) %> recs</div>
           </div>
           <div class="singleTripNorm"><%= trip.trip_date %></div>
         </div>
