@@ -29,6 +29,11 @@ class TripsController < ApplicationController
     @location = Location.new
   end
 
+  def add_user
+    puts params[:id]
+    # TripUser.create(:user_id => params[:user_id], :trip_id => params[:id].id)
+  end
+
   # post method when new location is created from /trips/:id/locations
   def create_location
     trip_id = location_params["trip_id"]

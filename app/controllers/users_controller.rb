@@ -21,6 +21,11 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def search
+    users = User.where("username LIKE ? OR name LIKE ? OR email LIKE ?", "#{params[:search_user]}%", "#{params[:search_user]}%", "#{params[:search_user]}%")
+    render json: users
+  end
+
   def trips
     @user = User.find(params[:id])
   end
