@@ -2,37 +2,45 @@ document.addEventListener("turbo:load", function () {
     // move search bar on search
     var searchBtn = document.querySelector("#searchBtn");
     var tools = document.getElementById("searchTools");
-    searchBtn.addEventListener("click", function (event) {
-        event.stopPropagation();
-        tools.style.marginTop = "10px";
-        returnLocations();
-    });
+    if(searchBtn){
+        searchBtn.addEventListener("click", function (event) {
+            event.stopPropagation();
+            tools.style.marginTop = "10px";
+            returnLocations();
+        });
+    }
 
     // search location on "enter" keypress
     var locationSearch = document.querySelector("#locationSearch");
-    locationSearch.addEventListener("click", function (event) {
-        event.stopPropagation();
-    });
-    locationSearch.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            document.getElementById("searchBtn").click();
-        }
-    });
+    if(locationSearch){
+        locationSearch.addEventListener("click", function (event) {
+            event.stopPropagation();
+        });
+        locationSearch.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById("searchBtn").click();
+            }
+        });
+    }
 
     // open create new location window
     var showCreateLocation = document.getElementById("showCreateLocation");
-    showCreateLocation.addEventListener("click", function (event) {
-        document.getElementById("customLocationCard").style.display = "flex";
-        document.getElementById("shade").style.display = "block";
-    });
+    if(showCreateLocation){
+        showCreateLocation.addEventListener("click", function (event) {
+            document.getElementById("customLocationCard").style.display = "flex";
+            document.getElementById("shade").style.display = "block";
+        });
+    }
 
     // close create new location window
     var closeCreateLocationWindow = document.getElementById("xiconContainer");
-    closeCreateLocationWindow.addEventListener("click", function (event) {
-        document.getElementById("customLocationCard").style.display = "none";
-        document.getElementById("shade").style.display = "none";
-    });
+    if(closeCreateLocationWindow){
+        closeCreateLocationWindow.addEventListener("click", function (event) {
+            document.getElementById("customLocationCard").style.display = "none";
+            document.getElementById("shade").style.display = "none";
+        });
+    }
 });
 
 // returns all db objects from search
