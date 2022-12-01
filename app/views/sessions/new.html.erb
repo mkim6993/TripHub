@@ -1,8 +1,12 @@
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
+<h1>Weclome back Triper! </h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+<div class="formcontainer">
+  <div class="formbox">
+    <div id="headerTitle">    
+      <a href="<%= root_path %>">
+      <%= image_tag("THLogo.png", :alt => "TripHub logo", class:"logo") %>  
+    </a></div>
     <%= form_with(url: login_path, scope: :session) do |f| %>
 
       <%= f.label :email %>
@@ -14,6 +18,10 @@
       <%= f.submit "Log in", class: "btn btn-primary" %>
     <% end %>
 
+    
+  </div>
+
+  <div class="formbox">
     <p>New user? <%= link_to "Sign up now!", signup_path %></p>
   </div>
 </div>
