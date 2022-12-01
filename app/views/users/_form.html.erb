@@ -11,6 +11,12 @@
     </div>
   <% end %>
 
+  
+<div class="formcontainer">
+  <div class="formbox">
+    <div id="headerTitle">    
+      <a href="<%= root_path %>">
+    <%= image_tag("THLogo.png", :alt => "TripHub logo", class:"logo") %>  </a></div>
   <div>
     <%= form.label :username, style: "display: block" %>
     <%= form.text_field :username %>
@@ -36,8 +42,23 @@
       <%= form.label :user_slogen, style: "display: block" %>
       <%= form.text_area :user_slogen %>
     </div>
+
+    <%# <div>
+      <%= link_to "back to profile", @user %> 
+    <%# </div> %> 
   <% end %>
   <div>
     <%= form.submit %>
   </div>
+</div>
+
+  <% if !@user.id.nil? %>
+    <div class="formbox">
+      <%= link_to "back to profile", @user %> 
+    </div>
+  <% end %>
+
+</div>
 <% end %>
+
+
