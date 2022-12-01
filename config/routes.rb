@@ -29,9 +29,9 @@ Rails.application.routes.draw do
 
   get '/search_user', to: 'users#search'
 
-  post "/create_location", to: "trips#create_location"
   # Add Locations to Trip from Search or new Location
   get "/triplocation_instances", to: "trip_locations#triplocation_instances"
+  get "/search", to: "locations#search"
   post "/create_location", to: "trips#create_location"
   post "/add_search_location", to: "trips#add_search_location"
 
