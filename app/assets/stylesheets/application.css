@@ -25,3 +25,7 @@
     background-color: rgb(241, 236, 246); 
     width: 100%;
   }
+
+  * {
+    font-family: Outfit;
+  }
