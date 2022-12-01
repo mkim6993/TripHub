@@ -45,11 +45,15 @@ class TripsController < ApplicationController
         format.html { redirect_to "/trips/" << trip_id.to_s, notice: "Location was successfully created." }
         format.json { render :show, status: :created, location: @location }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to trip_locations_path, id: trip_id, :locals=> {:location=> @location}, status: :unprocessable_entity }
+        puts "controller_________________________________"
+        puts @location.errors
+        puts @location.name
         format.json { render json: @location.errors, status: :unprocessable_entity }
       end
     end
   end
+  # "/trips/#{trip_id.to_s}/locations"
 
   # GET /trips/1/edit
   def edit

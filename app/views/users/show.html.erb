@@ -1,79 +1,179 @@
-<%# <p style="color: green"><%= notice %>
+<header>
 
-<%# <%= render @user %>
+	<div class="container">
 
-<%# <div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> 
-  <%# <%= link_to "Back to users", users_path %> 
+		<div class="profile">
 
-  <%# <%= button_to "Destroy this user", @user, method: :delete %> 
-<%# </div> %>
+			<div class="profile-image">
 
-<%# <% provide(:title, @user.name) %> 
-   
-  <section class="userContainer">
-    <div class="one">
-      <section class = "TripHub_user">
-        <div class="h3">
+				<img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt="">
+
+			</div>
+
+			<div class="profile-user-settings">
+
+				<h1 class="profile-user-name">
           <%= @user.name %>
-        </div>
-        <h4> </h4>
-        <div class="user-button">
-          <%= link_to "followers: #{@user.followers.count}", "@user.followers" %>
-        </div>
-        
-        <h4> </h4>
-        
-        <div class="user-button">
-          <%= link_to "followings: #{@user.followings.count}", "@user.followings" %>
-        </div>
-        
-        <h4> </h4>
-        
-        <div class="user-button">
-          <%= link_to "attended trips: " %>
-        </div>
-        
-        <h4> </h4>
-        
-        <div class="user-button">
-          <%= link_to "origanzied trips:" %>
-        </div>
+        </h1>
 
-      </section>
-    </div>
+				<button class="btn profile-edit-btn">
+          <%= link_to "Setting",  edit_user_path%>
+        </button>
+
+
+			</div>
+
+			<div class="profile-stats">
+
+				<ul>
+					<li><span class="profile-stat-count">0</span> posts</li>
+					<li><span class="profile-stat-count"><%= link_to "followers: #{@user.followers.count}", "@user.followers" %></span></li>
+					<li><span class="profile-stat-count"><%= link_to "followings: #{@user.followings.count}", "@user.followings" %></span></li>
+				</ul>
+
+			</div>
+
+			<div class="profile-bio">
+
+				<p><%= @user.user_slogen %></p>
+
+			</div>
+      
+       <div class="sign-out-button">
+            <%= link_to "Log out",  logout_path, data: { "turbo-method": :delete } %>
+       </div> 
+		</div>
+	</div>
+</header>
+
+<section class="userContainer">
+    <%# <div class="one">
+      <section class="TripHub_userhead">
+        <div class = "h3">
+          <%= @user.name %>
+        <%# </div>
+        <div class = "h3">
+          <%= link_to "Log out",  logout_path, data: { "turbo-method": :delete } %>
+        <%# </div> %> 
+        <%# <section class ="sign-out">
+          <div class="sign-out-button">
+            <%= link_to "Log out",  logout_path, data: { "turbo-method": :delete } %>
+          <%# </div> %>
+        <%# </section> %> 
+      <%# </section> %>
+      <%# <section class = "TripHub_user"> %>
+        <%# <div class="user-button">
+          <%= link_to "followers: #{@user.followers.count}", "@user.followers" %>
+        <%# </div> %> 
+        
+        <%# <div class="user-button">
+          <%= link_to "followings: #{@user.followings.count}", "@user.followings" %>
+        <%# </div>  %> 
+
+        <%# <div class="user-button">
+          <%= link_to "attended trips: " %>
+        <%# </div>   %>
+
+        <%# <div class="user-button">
+          <%= link_to "origanzied trips:" %>
+        <%# </div> %>
+
+
+        <%# <div class="h3">
+          <%= @user.name %>
+        <%# </div> %>
+        <%# <h4> </h4> %>
+        <%# <div class="user-button">
+          <%= link_to "followers: #{@user.followers.count}", "@user.followers" %>
+        <%# </div> %>
+        
+        <%# <h4> </h4> %>
+        
+        <%# <div class="user-button">
+          <%= link_to "followings: #{@user.followings.count}", "@user.followings" %>
+        <%# </div>  %>
+        
+        <%# <h4> </h4> %>
+        
+        <%# <div class="user-button">
+          <%= link_to "attended trips: " %>
+        <%# </div>  %>
+        
+        <%# <h4> </h4> %>
+        
+        <%# <div class="user-button">
+          <%= link_to "origanzied trips:" %>
+        <%# </div> %>
+
+      <%# </section> %>
+    <%# </div> %> 
     <div class="two">
-      <div class="Trip_info">
+      <%# <div class="Trip_info">
         <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Monument_Valley.jpg" class="show-picture">
         <div class="button">
           <%= link_to "Trip Page",  trips_path %>
-        </div>
-      </div>
-      <div class="Planner_page">
+        <%# </div> %>
+      <%# </div> %>
+      <%# <div class="Planner_page">
         <img src="https://img.traveltriangle.com/blog/wp-content/uploads/2017/10/Grand-Prismatic-Spring-Yellowstone-National-Park-ss30102017.jpg" class="show-picture">
         <div class="button">
           <%= link_to "Add Planner",  new_trip_path %>
-        </div>
-      </div>
-      <div class="Social">
+        <%# </div> %>
+      <%# </div> %> 
+      <%# <div class="Social">
         <img src="https://cdn.shopify.com/app-store/listing_images/0dce682fb3602fe48c948f046351cae8/icon/CM-lh970lu8CEAE=.png" class="show-picture">
         <div class="button">
           <%= link_to "Social",  "/users/" << current_user.id.to_s << "/trips"%>
-        </div>
+        <%# </div> %>
         
-      </div>
-      <div class="Setting">
+      <%# </div> %> 
+      <%# <div class="Setting">
         <img src="https://cdn-icons-png.flaticon.com/512/81/81020.png" class="show-picture">
         <div class="button">
           <%= link_to "Setting",  edit_user_path%>
+        <%# </div> 
+      </div> %>
+      <div style="background-color: pink">
+  <div id="trips">
+    <% @trips.each do |trip| %>
+      <div class="singleTripBox">
+        <div class="singleTripImage">
+          <%= image_tag("path.JPG", :alt => "path") %>
+          <div class="arrowRight">
+            <%= image_tag("arrow_right.png", :alt => "arrow") %>  
+          </div>
+          <div class="arrowLeft">
+            <%= image_tag("arrow_left.png", :alt => "arrow") %>  
+          </div>
+          <div class="bookmark">
+            <%= image_tag("save_empty.png", :alt => "save trip") %>
+          </div>
+          <div id="save"></div>
         </div>
+        <div class="singleTripDetails">
+          <div class="singleTripBold">
+            <div><%= trip.title %></div>
+            <div><%= trip.upvotes %> saves</div>
+          </div>
+          <div class="singleTripBoldUser">
+            <div class="singleUserText">@<%= trip.create_by %></div>
+            <div><%= trip.shares %> recs</div>
+          </div>
+          <div class="singleTripNorm"><%= trip.trip_date %></div>
+        </div>
+        
+          <%= link_to "Show this trip", trip %>
+        
       </div>
+    <% end %>
+    <div class="singleTripBoxD"></div>
+    <div class="singleTripBoxD"></div>
+    <div class="singleTripBoxD"></div>
+    <div class="singleTripBoxD"></div>
+  </div>
+</div>
 
-      <section class ="sign-out">
-      <div class="sign-out-button">
-        <%= link_to "Log out",  logout_path, data: { "turbo-method": :delete } %>
-      </div>
-    </section>
+      
     </div>
   </section>
   </aside>

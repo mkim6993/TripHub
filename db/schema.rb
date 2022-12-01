@@ -111,6 +111,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_164556) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "user_slogen"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
