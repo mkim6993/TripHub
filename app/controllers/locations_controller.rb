@@ -23,9 +23,6 @@ class LocationsController < ApplicationController
   def create
     @location = Location.new(location_params)
 
-    puts @location
-    puts "^^^^^^^^^^^^^^^^^"
-
     respond_to do |format|
       if @location.save
         format.html { redirect_to location_url(@location), notice: "Location was successfully created." }
@@ -35,7 +32,6 @@ class LocationsController < ApplicationController
         format.json { render json: @location.errors, status: :unprocessable_entity }
       end
     end
-    puts "ALKSJDFLKAJLKWAJLSKD JFKJSAKDJFSALKD JFKJASK DF"
   end
 
   # PATCH/PUT /locations/1 or /locations/1.json

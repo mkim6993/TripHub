@@ -23,6 +23,12 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def search
+    users = User.where("username LIKE ? OR name LIKE ? OR email LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
+    render json: users
+  end
+  
+
   def trips
     @user = User.find(params[:id])
   end
@@ -35,11 +41,13 @@ class UsersController < ApplicationController
       if @user.save
         reset_session
         log_in @user
-        format.html { redirect_to user_url(@user), notice: "User was successfully created." }
+        format.html { redirect_to user_url(@user), success: "Sign up successful" }
         format.json { render :show, status: :created, location: @user }
+        flash[:success] = "Sign up successful"
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
+        flash[:danger] = "Sign up failed"
       end
     end
   end
@@ -77,4 +85,7 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :name, :email, :user_slogen, :password, :password_confirmation)
     end
+
+    
+
 end

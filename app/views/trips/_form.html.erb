@@ -3,20 +3,21 @@
     <%= form.hidden_field :create_by, :value => current_user.username %>
   </div>
 
-  <div>
-    <%= form.label :trip_date, style: "display: block" %>
-    <%= form.date_field :trip_date %>
+    <div class = "form__group field">
+    <%= form.date_field :trip_date, placeholder: "mm/dd/yyyy", class: "form__field" %>
+    <label for="date" class="form__label">Date</label>
   </div>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
+ <div class ="form__group field">
+  <%= form.text_field :title, placeholder: "Title", class: "form__field" %>
+  <label for="title" class="form__label">Title</label>
+</div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
-  </div>
+<div class ="form__group field">
+  <%= form.text_field :description, placeholder: "Description", class: "form__field" %>
+  <label for="description" class="form__label">Description</label>
+</div>
+
 
   <div>
     <%= form.hidden_field :upvotes, :value => 0 %>
@@ -26,10 +27,10 @@
     <%= form.hidden_field :shares, :value => 0 %>
   </div>
 
-  <div>
-    <%= form.label :public, style: "display: block" %>
-    <%= form.check_box :public %>
-  </div>
+ <div class ="form__group field">
+  <%= form.check_box :public %>
+  <label for="description" class="form__label">Public</label>
+</div>
 
   <%# parent id %>
 

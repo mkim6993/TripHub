@@ -1,8 +1,11 @@
-<div id="newTripForm">
+<%= render 'layouts/flash' %>
+<div class="pageTitleText">Create a new Trip</div>
   <div id="tripInputFields">
     <%= render "form", trip: @trip %>
   </div>
-</div>
 <div>
   <%= link_to "Back to trips", trips_path %>
 </div>
+
+
+

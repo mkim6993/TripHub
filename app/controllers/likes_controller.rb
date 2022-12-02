@@ -48,7 +48,7 @@ class LikesController < ApplicationController
       Trip.find(params[:trip]).shares += -1
     end
     respond_to do |format|     
-      format.html { redirect_to trips_url, notice: "Like was successfully updated." }
+      format.html { redirect_to request.referrer}
       format.json { render :show, status: :ok, location: @like }
     end
   end

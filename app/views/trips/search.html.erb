@@ -1,10 +1,12 @@
 <h3>Search Results</h3>
-<div style="background-color: pink">
+
+<div>
   <div id="trips">
     <% @results.each do |trip| %>
+    <% if trip.public == true  or current_user.id == @user.id or !following?(@user)%>
       <div class="singleTripBox">
         <div class="singleTripImage">
-          <%= image_tag("path.JPG", :alt => "path") %>
+          <%= image_tag("path.JPG", :class => "indexImages", :alt => "path") %>
           <div class="arrowRight">
             <%= image_tag("arrow_right.png", :alt => "arrow") %>  
           </div>
@@ -12,18 +14,30 @@
             <%= image_tag("arrow_left.png", :alt => "arrow") %>  
           </div>
           <div class="bookmark">
-            <%= image_tag("save_empty.png", :alt => "save trip") %>
+          <% if liked?(trip) %>
+            <%= link_to '<ion-icon name="heart-outline" style="font-size: 30px; margin-left: 10px; color: white" class="socialIconBtn"></ion-icon>'.html_safe, likesupdate_path(trip: trip) %>
+          <% else %>
+            <%= link_to '<ion-icon name="heart" style="font-size: 30px; margin-left: 10px; color: white" class="socialIconBtn"></ion-icon>'.html_safe, likesupdate_path(trip: trip) %>
+          <% end %>
           </div>
           <div id="save"></div>
         </div>
         <div class="singleTripDetails">
           <div class="singleTripBold">
-            <div><%= trip.title %></div>
+            <a href="/trips/<%= trip.id %>" id="tripTitleLink"><%= trip.title %></a>
             <div><%= trip.upvotes %> saves</div>
           </div>
           <div class="singleTripBoldUser">
-            <div class="singleUserText">@<%= trip.create_by %></div>
-            <div><%= trip.shares %> recs</div>
+          <%= link_to user_path(User.where("username LIKE ?", trip.create_by).ids) do %>
+            <div class="singleUserText"><%= trip.create_by %></div>
+          <% end %>
+            <div><%= get_likes(trip) %> 
+            <% if get_likes(trip) == 1 %>
+            like
+            <% else %>
+            likes
+            <% end %>
+            </div>
           </div>
           <div class="singleTripNorm"><%= trip.trip_date %></div>
         </div>
@@ -31,10 +45,6 @@
           <%= link_to "Show this trip", trip %>
         
       </div>
+      <% end %>
     <% end %>
-    <div class="singleTripBoxD"></div>
-    <div class="singleTripBoxD"></div>
-    <div class="singleTripBoxD"></div>
-    <div class="singleTripBoxD"></div>
   </div>
-</div>
