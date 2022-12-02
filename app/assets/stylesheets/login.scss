@@ -1,0 +1,62 @@
+@import"bootstrap";
+
+.field {
+    margin: 10px 0;
+    position: relative;
+    font-size: 14px;
+    width: 100%;
+    text-overflow: ellipsis;
+  }
+
+.formcontainer{
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+  font-size: 14px;
+}
+
+.formbox{
+  max-width: 350px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 1px;
+  margin: 0 0 10px;
+  padding: 10px 0;
+  flex-grow: 1;
+}
+
+.formbutton{
+  max-width: 350px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(104, 69, 134);
+  border: 1px solid #e6e6e6;
+  border-radius: 1px;
+  margin: 0 0 10px;
+  padding: 10px 0;
+  flex-grow: 1;
+}
+
+.backbotton{
+  max-width: 350px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 0 10px;
+  padding: 10px 0;
+  flex-grow: 1;
+}
