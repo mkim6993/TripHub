@@ -1,3 +1,10 @@
+<%# <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">     %>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://toert.github.io/Isolated-Bootstrap/versions/4.0.0-beta/iso_bootstrap4.0.0min.css">
+<p id="notice"><%= notice %></p>
+
 <% provide(:title, "Home") %>
 <!--<p style="color: green"><%= notice %></p> %>-->
 
@@ -34,15 +41,16 @@
       </div>
     <% end %>
 
-    <%#<% imgs = [] %>
-    <%#<%TripLocation.where(trip_id: 23).each do |triploc|%>
-     <%#<% file = Location.where(id: triploc.location_id)[0].images[0] %>
-      <%#<%if !file.nil?%>
-        <%#<% imgs.append(file) %>
-      <%#<%end%>
-    <%#<% end %>
-
-    <div id="d211df9506ff" class="carousel slide"><ol class="carousel-indicators"><li class="active" data-target="d211df9506ff" data-slide-to="0"></li><li class="" data-target="d211df9506ff" data-slide-to="1"></li></ol><div class="carousel-inner"><div class="item active"><img src="http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--50a7039d9c22bde362a465ecdc9b776d42ccf66a/cooks.jpeg" /></div><div class="item"><img src="http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--78054cb9f16774b50bf5aa96619aae7daa26b59f/window.jpeg" /></div></div><a class="left carousel-control" data-slide="prev" href="#d211df9506ff"><i class="glyphicon glyphicon-chevron-left"></i></a><a class="right carousel-control" data-slide="next" href="#d211df9506ff"><i class="glyphicon glyphicon-chevron-right"></i></a></div>
+    <% imgs = [] %>
+    <%TripLocation.where(trip_id: 23).each do |triploc|%>
+     <% file = Location.where(id: triploc.location_id)[0].images[0] %>
+      <%if !file.nil?%>
+        <% imgs.append(file) %>
+      <%end%>
+    <% end %>
+    <div class="bootstrap">
+      <%=carousel_for(imgs)%>
+    </div>
 
     <div class="singleTripBoxD"></div>
     <div class="singleTripBoxD"></div>

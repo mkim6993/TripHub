@@ -43,23 +43,28 @@ module CarouselHelper
   
       def slide_tag(image, is_active)
         options = {
-          class: (is_active ? 'item active' : 'item'),
+          class: (is_active ? 'carousel-item active' : 'carousel-item'),
         }
   
         content_tag(:div, image_tag(image), options)
       end
   
       def controls
-        safe_join([control_tag('left'), control_tag('right')])
+        safe_join([control_tag('prev'), control_tag('next')])
       end
   
       def control_tag(direction)
         options = {
-          class: "#{direction} carousel-control",
+          class: "carousel-control-#{direction}",
           data: { slide: direction == 'left' ? 'prev' : 'next' }
         }
-  
-        icon = content_tag(:i, '', class: "glyphicon glyphicon-chevron-#{direction}")
+        
+        if(direction == 'next')
+            icon = image_tag("arrow_right.png", :class => "carousel_icon")
+        else
+            icon = image_tag("arrow_left.png", :class => "carousel_icon")
+        end
+
         control = link_to(icon, "##{uid}", options)
       end
     end
