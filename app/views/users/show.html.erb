@@ -27,8 +27,8 @@
 
 				<ul>
 					<li><span class="profile-stat-count"><%=@user.trips.count%></span> posts</li>
-					<li><span class="profile-stat-count"><%= link_to "followers: #{@user.followers.count}", "@user.followers" %></span></li>
-					<li><span class="profile-stat-count"><%= link_to "followings: #{@user.followings.count}", "@user.followings" %></span></li>
+					<li><span class="profile-stat-count"><%= link_to "followers: #{@user.followers.count}", @user %></span></li>
+					<li><span class="profile-stat-count"><%= link_to "followings: #{@user.followings.count}", @user %></span></li>
 				</ul>
 
 			</div>
