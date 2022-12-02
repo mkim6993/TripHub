@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
   resources :locations
   resources :trip_locations
+  resources :likes
   resources :trips do
     member do  
       get :branches
@@ -28,6 +29,17 @@ Rails.application.routes.draw do
   delete "/logout",  to: "sessions#destroy"
 
   get '/search_user', to: 'users#search'
+
+  # Add Locations to Trip from Search or new Location
+  get "/triplocation_instances", to: "trip_locations#triplocation_instances"
+  get "/search", to: "locations#search"
+  get '/tripsearch', to:"trips#search"
+  get 'likesupdate', to:"likes#update"
+  post "/create_location", to: "trips#create_location"
+  get '/search_user', to: 'users#search'
+
+  get 'followuser', to: 'star_fans#follow'
+  get 'follows', to: 'star_fans#follows'
 
   # Add Locations to Trip from Search or new Location
   get "/triplocation_instances", to: "trip_locations#triplocation_instances"

@@ -57,6 +57,26 @@ class StarFansController < ApplicationController
     end
   end
 
+  def follow
+    starfan = StarFan.where(star_id: params[:star], fan_id: params[:fan])
+    if starfan == []
+      StarFan.create(star_id: params[:star], fan_id: params[:fan])
+    else 
+      starfan.destroy_all
+    end
+    respond_to do |format|
+      format.html { redirect_to request.referrer}
+    end
+  end
+
+  def follows
+    if params[:type] == 'follower'
+      @follows = StarFan.where(star_id: params[:id]).pluck(:fan_id)
+    elsif params[:type] == 'following'
+      @follows = StarFan.where(fan_id: params[:id]).pluck(:star_id)
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_star_fan
@@ -67,4 +87,7 @@ class StarFansController < ApplicationController
     def star_fan_params
       params.require(:star_fan).permit(:star_id, :fan_id)
     end
+
+ 
+
 end

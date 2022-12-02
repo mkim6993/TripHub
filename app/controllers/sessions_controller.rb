@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       # Log the user in and redirect to the user's show page.
       reset_session
       log_in user
+      flash[:success] = "Successful login"
       redirect_to user
     else
       flash.now[:danger] = 'Invalid email/password combination' # Not quite right!
@@ -17,6 +18,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    flash.now[:success] = "Successful logout"
     log_out
     redirect_to root_url, status: :see_other
   end

@@ -9,8 +9,12 @@
       </div>
       <div id="interactiveButtons">
         <div class="socialBtn">
-          <%= @trip.upvotes %>
-          <ion-icon name="heart-outline" style="font-size: 25px; margin-left: 10px" class="socialIconBtn"></ion-icon>
+          <%= get_likes(@trip) %>
+          <% if liked?(@trip) %>
+            <%= link_to '<ion-icon name="heart-outline" style="font-size: 25px; margin-left: 10px; color: rgb(104, 69, 134)" class="socialIconBtn"></ion-icon>'.html_safe, likesupdate_path(trip: @trip) =%>
+          <% else %>
+            <%= link_to '<ion-icon name="heart" style="font-size: 25px; margin-left: 10px; color: rgb(104, 69, 134)" class="socialIconBtn"></ion-icon>'.html_safe, likesupdate_path(trip: @trip) =%>
+          <% end %>
         </div>
         <div class="socialBtn">
           <%= @trip.shares %> 
