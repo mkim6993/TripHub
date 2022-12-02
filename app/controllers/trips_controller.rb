@@ -4,7 +4,7 @@ class TripsController < ApplicationController
 
   # GET /trips or /trips.json
   def index
-    @trips = Trip.all
+    @trips = Trip.all.paginate(:page => params[:page], :per_page => 6)
   end
 
   # GET /trips/1 or /trips/1.json
@@ -94,11 +94,25 @@ class TripsController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @trip.errors, status: :unprocessable_entity }
+        flash[:danger] = @trip.errors.size.to_s + " Error".pluralize(@trip.errors.size) + ": " 
+        @trip.errors.full_messages.each do |msg|
+          flash[:danger] += msg + "   "
+          puts flash[:danger]
+        end
       end
     end
     
     TripUser.create(:user_id => current_user.id, :trip_id => @trip.id)
   end
+
+  def search
+    if params[:month].blank? || params[:day].blank? || params[:year].blank?
+      @results = Trip.where("lower(title) LIKE ?", "%#{params[:name].downcase}%").and(Trip.where("upvotes >= ?", params[:saves].to_i)) 
+    else 
+      @results = Trip.where("lower(title) LIKE ?", "%#{params[:name].downcase}%").and(Trip.where("upvotes >= ?", params[:saves].to_i)).and(Trip.where("trip_date > ?", params[:year] + "-" + params[:month] + "-" + params[:day]))
+    end
+  end
+
 
   # PATCH/PUT /trips/1 or /trips/1.json
   def update
@@ -109,6 +123,7 @@ class TripsController < ApplicationController
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @trip.errors, status: :unprocessable_entity }
+        flash[:danger] = @trip.errors.full_messages
       end
     end
   end
@@ -138,5 +153,6 @@ class TripsController < ApplicationController
     def location_params
       params.require(:location).permit(:trip_id, :name, :description, :address, :contact, :price, :image, :open_times, images: [])
     end
+
 end
 

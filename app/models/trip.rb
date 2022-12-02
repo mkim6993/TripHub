@@ -14,6 +14,8 @@ class Trip < ApplicationRecord
   has_many :trip_locations
   has_many :locations, through: :trip_locations
 
+  has_many :likes
+
   # sets upvotes and shares to 0 by default
   after_initialize :set_defaults, unless: :persisted?
   # The set_defaults will only work if the object is new

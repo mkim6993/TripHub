@@ -1,4 +1,20 @@
 module TripsHelper
+
+  def month_collector
+    months = (1..12).to_a
+    return months
+  end
+
+  def day_collector
+    days = (1..31).to_a
+    return days
+  end
+
+  def year_collector
+    years = (1900..2023).to_a
+    return years
+  end
+
     def recurse(id, tree_str)
         cur_children = Trip.get_children(id)
         if cur_children.length != 0
@@ -38,6 +54,19 @@ module TripsHelper
     def get_loc_info(location_id)
         location = Location.find_by(id: location_id)
         return location
+    end
+
+    def liked?(trip)
+      like = Like.where(user:current_user, trip: Trip.find(trip.id))
+      if like.empty?
+        return true
+      else
+        return false
+      end
+    end
+
+    def get_likes(trip)
+      Like.where(trip: Trip.find(trip.id)).count
     end
 
     # return date in human readable form
@@ -90,4 +119,12 @@ module TripsHelper
 
         readable_date += year
     end
+
+    def usersearch(search)
+        user = User.where("username LIKE ?", "%#{search}%")
+        respond_to do |format|
+          format.html { redirect_to users_path, notice: "Article was successfully updated." }
+        end
+    end
+
 end
