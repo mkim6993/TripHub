@@ -1,14 +1,25 @@
+#tripTitleLink:hover {
+  color: #9b50e1;
+}
+
+#tripTitleLink {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 #newTripForm {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     border: 1px solid gray;
     border-radius: 10px;
+    background-color: rgb(252, 206, 206);
 }
 
 #tripInputFields {
     padding: 15px;
     width: 50%;
-    background-color: white;
+    background-color: rgb(196, 196, 255);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -31,36 +42,100 @@
 
 /* custom location */
 #customLocation {
-    // background-color: rgb(157, 106, 202);
-    padding-bottom: 20px;
+    background-color: rgb(157, 106, 202);
     border-radius: 10px;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    height: 75vh;
+    overflow: hidden;
 }
 
 
 /* search location */
+#locationSearch {
+  width: 470px;
+  height: 45px;
+  padding: 5px;
+  border-radius: 15px;
+  font-size: 15px;
+  outline: none;
+  border: none;
+}
+
+@media (max-width: 578px) {
+  #locationSearch {
+    width: 270px;
+    height: 45px;
+    padding: 5px;
+    border-radius: 15px;
+    font-size: 15px;
+    outline: none;
+    border: none;
+  }
+}
+
 #searchLocation {
-    background-color: rgb(106, 202, 125);
+    background-color: rgb(144, 96, 186);
     flex-direction: column;
     display: flex;
     align-items: center;
-    border-top-left-radius: px;
-    border-top-right-radius: 10px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding-bottom: 35px;
 }
 
-#searchLocation:hover {
-    background-color: rgb(170, 125, 208);
+#searchTools {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // background-color: aqua;
+  margin-top: 12%;
+  transition: margin-top .3s ease-out;
+  margin-bottom: 5px;
 }
+
+#searchBtn {
+  border-radius: 23px;
+  padding: 8px;
+  background-color: white;
+  border: none;
+}
+
+#searchBar {
+  margin-top: 15px;
+  background-color: white;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgb(223, 223, 223);
+  box-shadow: 0 2px 2px 2px 5px gray;
+}
+
+#searchIcon {
+  width: 30px;
+  height: 30px;
+}
+
+// ::-webkit-scrollbar {
+//   width: 0px;
+//   background: transparent; /* make scrollbar transparent */
+// }
 
 #searchResults {
-    background-color: rgb(230, 209, 241);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: hidden;
+    // align-items: center;
+    margin-top: 5px;
+    overflow-y: scroll;
     max-height: 0;
     transition: max-height 0.2s ease-out;
+    flex-wrap: wrap;
+  // align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    width: 90%;
 }
 
 .locationItem {
@@ -73,6 +148,20 @@
     background-color: white;
     margin: 5px;
 }
+
+@media (min-width: 841px) {
+  .locationItem {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    padding: 10px;
+    border-radius: 10px;
+    width: 50%;
+    background-color: white;
+    margin: 5px;
+}
+}
+
 
 .locDetailAndImage {
     display: flex;
@@ -87,6 +176,19 @@
 
 .locName {
     font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    // background-color: green;
+}
+
+.foundIn {
+  font-size: 12px;
+  // background-color: red;
+}
+
+.locDetails {
+  width: 200px;
 }
 
 // .detailText {
@@ -96,24 +198,29 @@
 #noResult {
     margin: 20px;
     font-size: 15px;
+    color: rgb(255, 196, 0);
 }
 
 
 #customLocationCard {
     background-color: white;
     padding: 15px;
-    display: flex;
+    // display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
-    width: 45%;
+    justify-content: center;
+    width: 500px;
     border-radius: 15px;
     border: 1px solid gray;
+    position: absolute;
+    top: 25vh;
+    z-index: 101;
 }
 
 .new_location {
     display: flex;
     flex-direction: column;
-    margin-left: 55px;
 }
 
 /* form styles */
@@ -183,8 +290,195 @@ $gray: #9b9b9b;
 }
 
 #searchCard {
-    background-color: white;
-    border: 1px solid gray;
-    border-radius: 10px;
-    width: 45%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pageTitleText {
+  font-size: 25px;
+}
+
+#location_description {
+  resize: none;
+  width: 200px;
+  border: 1px solid rgb(212, 212, 212);
+  border-radius: 10px;
+  height: 160px;
+  padding: 8px;
+}
+
+.rowBlock {
+  display: flex;
+  flex-direction: row;
+  // background-color: orange;
+  gap: 15px;
+}
+
+.columnBlock {
+  display: flex;
+  flex-direction: column;
+  // background-color: blue;
+}
+
+#shade {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(92, 39, 145, 0.443);
+  position: fixed;
+  top: 0px;
+  z-index: 100;
+  display: none;
+}
+
+#xicon {
+  width: 15px;
+  height: 15px;
+}
+
+#xiconContainer {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 18px;
+  padding-right: 18px;
+  margin: 5px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+#xiconContainer:hover {
+  background-color: rgb(244, 244, 244);
+}
+
+.addLocationBtn {
+  width: 170px;
+
+}
+
+.addLocationBtnContainer {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+#interactiveButtons {
+  display: flex;
+  flex-direction: row;
+  // background-color: red;
+  gap: 0px;
+  margin-left: 20px;
+  align-items: center;
+}
+
+.socialBtn {
+  // background-color: aqua;
+  padding: 5px;
+  padding-left: 5px;
+  padding-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  border-radius: 10px;
+  height: 40px;
+}
+
+@media (max-width: 825px) {
+  #headerPrimary {
+    flex-direction: column;
+  }
+
+  #postLocationDate {
+    margin-left: 0px;
+  }
+
+  #interactiveButtons {
+    margin-left: 0px;
+  }
+}
+
+.socialIconBtn:hover {
+  background-color: rgb(233, 233, 233);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#tripCreatorName {
+  font-size: 18px; 
+  // background-color: rgb(247, 247, 247);
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#createdAtInfo {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: rgb(108, 108, 108);
+  font-weight: bold;
+}
+
+#tripDescriptionBox {
+  margin-top: 5px;
+  background-color: rgb(247, 247, 247);
+  padding: 10px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid rgb(134, 120, 146);
+  // box-shadow: 5px 5px 5px rgb(134, 120, 146);
+  padding-right: 20px;
+}
+
+.descriptionPadding {
+  background-color: white;
+}
+
+#nameAndDescription {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.rowCenter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  // background-color: purple;
+  border-bottom: 1px solid rgb(221, 221, 221);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+:root {
+  --ion-color-secondary: rgb(104, 69, 134);
+}
+
+.locationName {
+  font-size: 30px;
+  font-weight: bold;
+  border-bottom: 1px solid rgb(221, 221, 221);
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+.iconAndDes {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid rgb(221, 221, 221);
+  padding-bottom: 5px;
+}
+
+.detailIcons {
+  font-size: 25px;
+  flex: 1;
+}
+
+.detailText {
+  flex: 10;
 }

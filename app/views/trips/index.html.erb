@@ -1,12 +1,11 @@
 <% provide(:title, "Home") %>
 <!--<p style="color: green"><%= notice %></p> %>-->
 
-<div style="background-color: pink">
   <div id="trips">
     <% @trips.each do |trip| %>
       <div class="singleTripBox">
         <div class="singleTripImage">
-          <%= image_tag("path.JPG", :alt => "path") %>
+          <%= image_tag("path.JPG", :class => "indexImages", :alt => "path") %>
           <div class="arrowRight">
             <%= image_tag("arrow_right.png", :alt => "arrow") %>  
           </div>
@@ -20,7 +19,7 @@
         </div>
         <div class="singleTripDetails">
           <div class="singleTripBold">
-            <div><%= trip.title %></div>
+            <a href="/trips/<%= trip.id %>" id="tripTitleLink"><%= trip.title %></a>
             <div><%= trip.upvotes %> saves</div>
           </div>
           <div class="singleTripBoldUser">
@@ -39,5 +38,4 @@
     <div class="singleTripBoxD"></div>
     <div class="singleTripBoxD"></div>
   </div>
-</div>
 

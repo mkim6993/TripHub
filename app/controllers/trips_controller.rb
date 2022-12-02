@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[ show edit update destroy ]
+  skip_before_action :verify_authenticity_token # make ajax request work csrf
 
   # GET /trips or /trips.json
   def index
@@ -29,6 +30,11 @@ class TripsController < ApplicationController
     @location = Location.new
   end
 
+  def add_user
+    puts params[:id]
+    # TripUser.create(:user_id => params[:user_id], :trip_id => params[:id].id)
+  end
+
   # post method when new location is created from /trips/:id/locations
   def create_location
     trip_id = location_params["trip_id"]
@@ -36,13 +42,16 @@ class TripsController < ApplicationController
     modified_location_params.extract!(:trip_id)
 
     puts "^^^^^^^^^^^^^^^^^"
+    puts trip_id
+    puts modified_location_params
     @location = Location.new(modified_location_params)
+    puts @location.id
     puts "^^^^^^^^^^^^^^^^^"
 
     respond_to do |format|
       if @location.save
         TripLocation.create(trip_id: trip_id, location_id: @location.id)
-        format.html { redirect_to "/trips/" << trip_id.to_s, notice: "Location was successfully created." }
+        format.html { redirect_to "/trips/" << trip_id.to_s, notice: "Location was successfully added." }
         format.json { render :show, status: :created, location: @location }
       else
         format.html { redirect_to trip_locations_path, id: trip_id, :locals=> {:location=> @location}, status: :unprocessable_entity }
@@ -53,7 +62,22 @@ class TripsController < ApplicationController
       end
     end
   end
-  # "/trips/#{trip_id.to_s}/locations"
+
+  
+  # post method to add searched location to Trip
+  def add_search_location
+    location_id = params[:location_id]
+    trip_id = params[:trip_id]
+    @trip_location = TripLocation.new(trip_id: trip_id, location_id: location_id)
+
+    respond_to do |format|
+      if @trip_location.save
+        format.js { render :js => "window.location.href ='/trips/" + trip_id.to_s + "'"}
+      else
+        puts "failed ajax"
+      end
+    end
+  end
 
   # GET /trips/1/edit
   def edit

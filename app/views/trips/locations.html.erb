@@ -1,7 +1,4 @@
-<h1><%= @trip.title %></h1>
-
-
-<h2>add a location</h2>
+<div class="pageTitleText">Add a new location to <strong><%= @trip.title %></strong></div>
 
 <div id="addLocationMethods">
   <%# <div>
@@ -14,68 +11,80 @@
     </div>
     <div id="searchResults"></div>
   </div> %>
-  <%puts "html_________________________________"%>
   
         
   <div id="customLocation">
     <div id="searchCard">
       <div id="searchLocation">
-        <h3>Search for a location</h3>
-        <div style="margin-bottom: 15px;">
-          <input type="text" placeholder="Search Location" id="locationSearch"/>
-          <button id="searchBtn">search</button>
+        <div id="searchTools">
+          <%= image_tag("THLogo.png", :alt => "TripHub logo", class:"logo") %>
+          <div id="searchBar">
+            <button id="searchBtn"><%= image_tag("searchIcon.png", id: "searchIcon", :alt => "search trip") %></button>
+            <input type="text" placeholder="Search Location" id="locationSearch" autocomplete="off"/>
+          </div>
+          <div style="margin-top: 10px; color: white">Cant find a location? <button id="showCreateLocation" style="color: black; border-radius: 10px">Create Location</button></div>
+        </div>
+        <div id="searchResults">
+        </div>
+        <div style="position: absolute; bottom: 10px; left: 15px">
+          <%= link_to "Back to #{@trip.title}", "/trips/" << @trip.id.to_s %>
         </div>
       </div>
-      <div id="searchResults"></div>
     </div>
+    <div id="shade"></div>
     <div id="customLocationCard">
-      <h3>Create a new location</h3>
+      <div class="pageTitleText">Create a new location</div>
+      <div id="xiconContainer">
+        <%= image_tag("xicon.png", :alt => "close create location window", id:"xicon") %>
+      </div>
       <%= form_for @location, url: "/create_location" do |form| %>
 
-        <div class="form__group field">
-          <%= form.text_field :name, placeholder: "Name", class: "form__field" %>
-          <label for="name" class="form__label">Name</label>
+        <div class="rowBlock">
+          <div class="columnBlock">
+            <div class="form__group field">
+              <%= form.text_field :name, placeholder: "Name", class: "form__field" %>
+              <label for="name" class="form__label">Name</label>
+            </div>
+
+            <div class ="form__group field" style="margin-top: 5px">
+              <textarea placeholder="Description" name="location[description]" id="location_description"></textarea>
+            </div>
+          </div>
+          
+          <div class="columnBlock">
+            <div class ="form__group field">
+              <%= form.text_field :address, placeholder: "Address", class: "form__field" %>
+              <label for="address" class="form__label">Address</label>
+            </div>
+
+            <div class ="form__group field">
+              <%= form.text_field :contact, placeholder: "Contact", class: "form__field" %>
+              <label for="contact" class="form__label">Contact</label>
+            </div>
+
+            <div class ="form__group field">
+              <%= form.text_field :open_times, placeholder: "Open Times", class: "form__field" %>
+              <label for="open_times" class="form__label">Open Times</label>
+            </div>
+
+            <div class ="form__group field">
+              <%= form.number_field :price, placeholder: "Price", class: "form__field" %>
+              <label for="price" class="form__label">Price</label>
+            </div>
+          </div>
         </div>
 
-        <div class ="form__group field">
-          <%= form.text_field :description, placeholder: "Description", class: "form__field" %>
-          <label for="description" class="form__label">Description</label>
-        </div>
+        <div class="rowBlock" style=" display: flex; justify-content: space-between">
+          <div style="margin-top: 15px;">
+            <div style="margin-bottom: 15px;">Image</div>
+            <%= form.file_field :images, multiple: true %><br>
+          </div>
 
-        <div class ="form__group field">
-          <%= form.text_field :address, placeholder: "Address", class: "form__field" %>
-          <label for="address" class="form__label">Address</label>
-        </div>
+          <%= form.hidden_field :trip_id, :value => @trip.id %>
 
-        <div class ="form__group field">
-          <%= form.text_field :contact, placeholder: "Contact", class: "form__field" %>
-          <label for="contact" class="form__label">Contact</label>
-        </div>
-
-        <div class ="form__group field">
-          <%= form.number_field :price, placeholder: "Price", class: "form__field" %>
-          <label for="price" class="form__label">Price</label>
-        </div>
-
-        <div class ="form__group field">
-          <%= form.text_field :image, placeholder: "Image", class: "form__field" %>
-          <label for="image" class="form__label">Image</label>
-        </div>
-
-        <div class ="form__group field">
-          <%= form.text_field :open_times, placeholder: "Open Times", class: "form__field" %>
-          <label for="open_times" class="form__label">Open Times</label>
-        </div>
-
-        <div>
-          <%= form.label :images, style: "display: block" %><br>
-          <%= form.file_field :images, multiple: true %><br>
-        </div>
-
-        <%= form.hidden_field :trip_id, :value => @trip.id %>
-
-        <div>
-          <%= form.submit %>
+          <div style="display: flex; align-items: flex-end; margin-bottom: 20px;">
+            <%= form.submit %>
+          </div>
         </div>
         <% if @location.errors.any? %>
           <div style="color: red">
@@ -91,12 +100,4 @@
       <% end %>
     </div>
   </div>
-</div>
-
-
-
-<br>
-
-<div>
-  <%= link_to "Back to Trip", "/trips/" << @trip.id.to_s %>
 </div>

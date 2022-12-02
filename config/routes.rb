@@ -27,8 +27,13 @@ Rails.application.routes.draw do
   post   "/login",   to: "sessions#create"
   delete "/logout",  to: "sessions#destroy"
 
-  post "/create_location", to: "trips#create_location"
+  get '/search_user', to: 'users#search'
+
+  # Add Locations to Trip from Search or new Location
+  get "/triplocation_instances", to: "trip_locations#triplocation_instances"
   get "/search", to: "locations#search"
+  post "/create_location", to: "trips#create_location"
+  post "/add_search_location", to: "trips#add_search_location"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
