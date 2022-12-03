@@ -43,7 +43,7 @@
             <div><%= trip.upvotes %> saves</div>
           </div>
           <div class="singleTripBoldUser">
-          <%= link_to user_path(User.where("username LIKE ?", trip.create_by).ids),  :style => 'color:black' do %>
+          <%= link_to user_path(User.where("username = ?", trip.create_by).ids),  :style => 'color:black' do %>
             <div class="singleUserText"><%= trip.create_by %></div>
           <% end %>
             <div><%= get_likes(trip) %> 

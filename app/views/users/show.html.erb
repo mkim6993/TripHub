@@ -39,8 +39,8 @@
 
 				<ul>
 					<li><span class="profile-stat-count"><%=@user.trips.count%></span> posts</li>
-					<li><span class="profile-stat-count"><%= link_to "followers: #{@user.followers.count}", @user %></span></li>
-					<li><span class="profile-stat-count"><%= link_to "followings: #{@user.followings.count}", @user %></span></li>
+					<li><span class="profile-stat-count"><%= link_to "followers: #{@user.followers.count}", follows_path(:id => @user.id, :type => 'follower') %></span></li>
+					<li><span class="profile-stat-count"><%= link_to "followings: #{@user.followings.count}", follows_path(:id => @user.id, :type => 'following') %></span></li>
 				</ul>
 
 			</div>
