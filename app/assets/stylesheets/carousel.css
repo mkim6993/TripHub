@@ -6,11 +6,15 @@
 .carousel {
   width: 300px;
   height: 300px;
-}
-
-.carousel {
   position: relative;
 }
+
+.carousel-item{
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+};
+
 .carousel.pointer-event {
   touch-action: pan-y;
 }
@@ -90,7 +94,7 @@
   text-align: center;
   background: 0 0;
   border: 0;
-  opacity: 0.5;
+  opacity: 0.75;
   transition: opacity 0.15s ease;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -106,7 +110,7 @@
   color: #fff;
   text-decoration: none;
   outline: 0;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 .carousel-control-prev {
   left: 0;
