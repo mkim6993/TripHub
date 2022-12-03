@@ -1,0 +1,20 @@
+#mergeWindow{
+    background-color: rgb(220, 188, 239);
+    color: black;
+    border-radius: 25px;
+    height: 500px;
+    width: 800px;
+    z-index: 10;
+    position: fixed;
+    display: none;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#mergeScreen{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #000;
+}
