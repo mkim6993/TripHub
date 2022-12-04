@@ -30,7 +30,7 @@
     margin-top: 4px;
     margin-left: 20px;
   }
-  
+
   .headerTitleText {
     color: white;
   }
@@ -150,7 +150,18 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  // border-radius: 10px;
+}
+
+.indexImages {
   border-radius: 10px;
+}
+
+.showTripImage {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
 }
 
 .arrowRight {
@@ -193,25 +204,51 @@ footer {
 
 /* Individual post */
 #individualPost {
-  margin-left: 10px;
-  margin-right: 10px;
-  // background-color: teal;
+  // margin-left: 5px;
+  // margin-right: 5px;
+  background-color: rgb(217, 208, 228); 
+  // padding: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 20px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border: 5px solid rgb(134, 120, 146);
+  box-shadow: 1px 2px 2px rgb(134, 120, 146);
 }
 
 /* Individual post headers */
 #postTitle {
   font-weight: bold;
   font-size: 32px;
+  // background-color: teal;
+  display: flex;
+  align-items: center;
 }
 
 #postLocationDate {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  // background-color: yellow;
+  // margin-left: 10px;
+}
+
+#locationActions {
+  display: flex;
+  flex-direction: row;
 }
 
 #tripHeaders {
   // background-color: red;
   margin-bottom: 15px;
+}
+
+#headerPrimary {
+  display: flex;
+  flex-direction: row;
+  // background-color: purple;
 }
 
 /* Trip details */
@@ -221,35 +258,34 @@ footer {
   border: 2px solid gray;
   border-radius: 15px;
   margin-bottom: 25px;
+  box-shadow: 1px 1px 1px rgb(127, 107, 144);
 }
 
 #tripImageFrame {
   width: 60%;
   height: 600px;
-  background-color: black;
+  // background-color: black;
   border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
 }
 
 #tripDetails {
   width: 40%;
-  height: 600px;
+  height: inline-block;
   background-color: white;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
   padding: 10px;
 }
 
 #tripImageFrame {
   width: 100%;
-  height: 400px
+  height: 400px;
+  overflow: hidden;
 }
 
 #tripDetails {
   width: 100%;
-  height: 300px;
   background-color: white;
-  border-radius: 15px;
 }
 
 @media (min-width: 800px) {
@@ -268,14 +304,24 @@ footer {
   #tripImageFrame {
     width: 65%;
     height: 500px;
-    background-color: black;
-    border-bottom-left-radius: 10px;
+    // background-color: black;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+
+  .showTripImage {
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
   }
   
   #tripDetails {
     width: 35%;
     height: 500px;
-    background-color: white;
+    // background-color: red;
+    border-top-right-radius: 14px;
+    border-bottom-left-radius: 0px;
+    border-left: 2px solid rgb(134, 120, 146);
   }
 }
 
@@ -288,10 +334,11 @@ footer {
 
 #addNewLoc {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  background-color: rgb(226, 186, 243);
-  border: 2px dotted gray;
+  justify-content: center;
+  background-color: rgb(193, 246, 211);
+  border: 2px dashed rgb(134, 120, 146);
   border-radius: 15px;
   margin-bottom: 25px;
   padding: 40px;
@@ -299,9 +346,26 @@ footer {
   cursor: pointer;
 }
 
+#addNewLocButton {
+  color: black;
+}
+
+#addNewLoc:hover {
+  background-color: rgb(176, 245, 199);
+}
+
+#addNewLoc a:link {
+  text-decoration: none;
+  color:rgb(104, 69, 134)
+}
+
 .bottomNavigation {
   margin-bottom: 50px;
 }
+
+
+
+
 
 .datefields {
   color: white;
