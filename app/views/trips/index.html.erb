@@ -51,19 +51,18 @@
         <div class="singleTripDetails">
           <div class="singleTripBold">
             <a href="/trips/<%= trip.id %>" id="tripTitleLink"><%= trip.title %></a>
-            <div><%= trip.upvotes %> saves</div>
+            <div><%= get_likes(trip) %> 
+              <% if get_likes(trip) == 1 %>
+                like
+              <% else %>
+                likes
+              <% end %>
+            </div>
           </div>
           <div class="singleTripBoldUser">
           <%= link_to user_path(User.where("username = ?", trip.create_by).ids),  :style => 'color:black' do %>
             <div class="singleUserText"><%= trip.create_by %></div>
           <% end %>
-            <div><%= get_likes(trip) %> 
-            <% if get_likes(trip) == 1 %>
-            like
-            <% else %>
-            likes
-            <% end %>
-            </div>
           </div>
           <div class="singleTripNorm"><%= trip.trip_date %></div>
         </div>
