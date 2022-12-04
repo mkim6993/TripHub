@@ -23,12 +23,20 @@
         <% if !current_user.nil? %>
           <% if @trip.create_by == current_user.username %>
             <button id="popUp" class="showPageButton" >Invite a Friend</button>
+            <div id="screen"></div>
             <div id="searchUser">
-              <div style="margin-bottom: 15px;">
+              <div id="inviteContainer">
+                <div class="flexDirectionRowCenter" style="justify-content: space-between;">
+                  <div style="font-size: 30px">Invite a Friend</div>
+                  <div id="closeInvite">
+                    <%= image_tag("xicon.png", :alt => "close invite friend window", id:"xicon") %>
+                  </div>
+                </div>
                 <input type="text" placeholder="Search User" id="userSearch"/>
                 <button id="showUsers">search</button>
+                <div id="userResults">
+                </div>
               </div>
-              <div id="userResults"></div>
             </div>
           <% end %>
         <% end %>
@@ -102,7 +110,7 @@
       </div>
     <% end %>
   <% end %>
-</div>
-
-<div id='screen'>
+  <div id="backToHome">
+    <ion-icon name="return-down-back-outline" style="font-size: 30px; margin-right: 10px;"></ion-icon><div>Back To Home</div>
+  </div>
 </div>

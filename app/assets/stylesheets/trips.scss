@@ -513,3 +513,38 @@ $gray: #9b9b9b;
   border: none;
   background-color: rgb(224, 224, 224);
 }
+
+#backToHome {
+  display: inline-flex; 
+  flex-direction: row;
+  justify-items: center;
+  align-content: center;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#backToHome:hover {
+  background-color: rgb(194, 186, 204); 
+}
+
+#backToTrip {
+  display: inline-flex; 
+  flex-direction: row;
+  justify-items: center;
+  align-content: center;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  background-color: rgb(144, 96, 186);
+}
+
+#backToTrip:hover {
+  background-color: rgb(123, 82, 159);
+}
+
+.rmBtnStyles {
+  background-color: none;
+  border: none;
+}

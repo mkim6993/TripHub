@@ -1,22 +1,22 @@
 document.addEventListener("turbo:load", function () {
     let popBtn = document.querySelector("#popUp");
-    if(popBtn){
+    if (popBtn) {
         popBtn.addEventListener("click", function (event) {
             event.stopPropagation();
             popup();
         });
     }
-    
+
     let searchBtn = document.querySelector("#showUsers");
-    if(searchBtn){
+    if (searchBtn) {
         searchBtn.addEventListener("click", function (event) {
             event.stopPropagation();
             showSearch();
         });
     }
-    
+
     let userSearch = document.querySelector("#userSearch");
-    if(userSearch){
+    if (userSearch) {
         userSearch.addEventListener("click", function (event) {
             event.stopPropagation();
         });
@@ -24,16 +24,23 @@ document.addEventListener("turbo:load", function () {
 
     let searchBar = document.querySelector("#searchUser");
     let searchResults = document.querySelector("#userResults");
-    if(searchBar){
+    if (searchBar) {
         searchBar.addEventListener("click", function (event) {
             event.preventDefault();
             if (searchResults.style.maxHeight) {
                 searchResults.style.maxHeight = null;
             } else {
-                searchResults.style.maxHeight = searchResults.scrollHeight + "px";
+                searchResults.style.maxHeight =
+                    searchResults.scrollHeight + "px";
             }
         });
     }
+
+    var closeInvite = document.getElementById("closeInvite");
+    closeInvite.addEventListener("click", function () {
+        document.getElementById("screen").style.display = "none";
+        searchBar.style.display = "none";
+    });
 });
 
 const getData = (searchInput) => {
@@ -50,20 +57,19 @@ const getData = (searchInput) => {
 };
 
 const popup = async () => {
-    $('#screen').css({ opacity: 0.7, 'width':$(document).width(),'height':$(document).height()});
-
-    var userSearch = document.getElementById("searchUser")
-    userSearch.style.display = 'block';
-}
+    $("#screen").css({
+        display: "block",
+    });
+    $("#searchUser").css({
+        display: "block",
+    });
+};
 
 const showSearch = async () => {
-
     document.getElementById("userResults").innerHTML = "";
-    var htmlString =
-        "<div id='noResult'>No results. Create a new location?</div>";
+    var htmlString = "<div>User Not Found</div>";
     const userSearch = document.getElementById("userSearch").value;
     if (userSearch == "") {
-        alert("no search");
     } else {
         try {
             var users = await getData(userSearch);
@@ -72,13 +78,14 @@ const showSearch = async () => {
                 htmlString = "";
                 for (let i = 0; i < users.length; i++) {
                     htmlString +=
-                        "<div class='userItem'><div class='usrName'>" +
-                        users[i].name +
-                        "</div><div class='usrDetailAndImage'><div class='usrDetails'><div class='detailText'>" +
+                        '<div class="searchedUserContainer"><div class="searchedUserInfo">' +
+                        '<div style="font-size: 15px">@' +
                         users[i].username +
-                        "</div><div class='detailText'>" +
+                        "</div>" +
+                        '<div style="color: gray">' +
                         users[i].email +
-                        "</div></div></div></div>";
+                        "</div>" +
+                        "</div><div>Invite</div></div>";
                 }
             }
             document.getElementById("userResults").innerHTML += htmlString;
