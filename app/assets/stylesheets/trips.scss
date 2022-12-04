@@ -488,3 +488,28 @@ $gray: #9b9b9b;
   display: flex;
   justify-content: center;
 }
+
+.flexRowCenter {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.showPageButton {
+  background-color: rgb(197, 171, 228);
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 3px;
+  margin-right: 10px;
+}
+
+.showPageButton:hover {
+  background-color: rgb(143, 92, 188);
+}
+
+.removeLocationBtn {
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(224, 224, 224);
+}

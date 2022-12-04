@@ -16,12 +16,33 @@
             <%= link_to '<ion-icon name="heart" style="font-size: 25px; margin-left: 10px; color: rgb(104, 69, 134)" class="socialIconBtn"></ion-icon>'.html_safe, likesupdate_path(trip: @trip) =%>
           <% end %>
         </div>
-        <div class="socialBtn">
-          <%= @trip.shares %> 
-          <ion-icon name="share-outline" style="font-size: 25px;  margin-left: 10px"  class="socialIconBtn"></ion-icon>
-        </div>
-      </div>
+      </div>  
     </div>
+    <%# Invite user to trip popup and search %>
+    <div class="flexRowCenter">
+        <% if !current_user.nil? %>
+          <% if @trip.create_by == current_user.username %>
+            <button id="popUp" class="showPageButton" >Invite a Friend</button>
+            <div id="searchUser">
+              <div style="margin-bottom: 15px;">
+                <input type="text" placeholder="Search User" id="userSearch"/>
+                <button id="showUsers">search</button>
+              </div>
+              <div id="userResults"></div>
+            </div>
+          <% end %>
+        <% end %>
+        <%= button_to "View Planning Tree", "/trips/" << get_original_parent(@trip.id).to_s << "/branches", method: :get, class: "showPageButton" %>
+        <% if !current_user.nil? %>
+          <%if TripUser.where(trip_id: @trip.id).pluck(:user_id).include? current_user.id%>
+            <%= button_to "Create a New Branch", "/trips/" << @trip.id.to_s << "/new_child", method: :get, class: "showPageButton" %>
+          <%end%>
+          <% if @trip.create_by == current_user.username %>
+            <%= button_to "Edit this Trip", edit_trip_path(@trip), method: :get, class: "showPageButton" %>
+            <%= button_to "Destroy this trip", @trip, method: :delete, class: "showPageButton" %>
+          <% end %>
+        <% end %>
+      </div>
     <div id="postLocationDate">
       <ion-icon name="calendar-outline" style="margin-right: 10px"></ion-icon>
       <div>
@@ -67,7 +88,7 @@
           <div class="rowCenter"><ion-icon name="time-outline" class="detailIcons" color="secondary"></ion-icon><div class="detailText"><%= loc.open_times %></div></div>
           <div class="rowCenter"><ion-icon name="call-outline" class="detailIcons" color="secondary"></ion-icon><div class="detailText"><%= loc.contact %></div></div>
           <div id="locationActions">
-            <%= button_to 'Remove this location', {:controller => "trip_locations", :action => "destroy", :triploc_id => triploc.id, :trip_id => triploc.trip_id} , :method=>:delete  %>
+            <%= button_to 'Remove this location', {:controller => "trip_locations", :action => "destroy", :triploc_id => triploc.id, :trip_id => triploc.trip_id} , :method=>:delete, class: "removeLocationBtn"  %>
           </div>
         </div>
       </div>
@@ -81,37 +102,6 @@
       </div>
     <% end %>
   <% end %>
-
-  <%# Invite user to trip popup and search %>
-  <div>
-    <% if !current_user.nil? %>
-      <% if @trip.create_by == current_user.username %>
-        <button id="popUp">Invite User to Trip</button>
-        <div id="searchUser">
-          <div style="margin-bottom: 15px;">
-            <input type="text" placeholder="Search User" id="userSearch"/>
-            <button id="showUsers">search</button>
-          </div>
-          <div id="userResults"></div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div class="bottomNavigation">
-    <%= link_to "View related trips", "/trips/" << get_original_parent(@trip.id).to_s << "/branches" %>
-    <% if !current_user.nil? %>
-      <%if TripUser.where(trip_id: @trip.id).pluck(:user_id).include? current_user.id%>
-        |
-        <%= link_to "Create new version", "/trips/" << @trip.id.to_s << "/new_child" %>
-      <%end%>
-      <% if @trip.create_by == current_user.username %>
-        |
-        <%= link_to "Edit this trip", edit_trip_path(@trip) %> |
-        <%= button_to "Destroy this trip", @trip, method: :delete %>
-      <% end %>
-    <% end %>
-  </div>
 </div>
 
 <div id='screen'>

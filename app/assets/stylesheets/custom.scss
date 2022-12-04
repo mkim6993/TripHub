@@ -238,6 +238,8 @@ footer {
 #locationActions {
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
+  padding-top: 10px;
 }
 
 #tripHeaders {
