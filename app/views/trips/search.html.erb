@@ -3,7 +3,7 @@
 <div>
   <div id="trips">
     <% @results.each do |trip| %>
-    <% if trip.public == true  or current_user.id == @user.id or !following?(@user)%>
+    <% if trip.public == true  or current_user.id == User.where("username = ?", trip.create_by).ids or !following?(User.where("username = ?", trip.create_by).first)%>
       <div class="singleTripBox">
         <div class="singleTripImage">
           <%= image_tag("path.JPG", :class => "indexImages", :alt => "path") %>
@@ -28,7 +28,7 @@
             <div><%= trip.upvotes %> saves</div>
           </div>
           <div class="singleTripBoldUser">
-          <%= link_to user_path(User.where("username LIKE ?", trip.create_by).ids) do %>
+          <%= link_to user_path(User.where("username LIKE ?", trip.create_by).ids), :style => 'color:black' do %>
             <div class="singleUserText"><%= trip.create_by %></div>
           <% end %>
             <div><%= get_likes(trip) %> 

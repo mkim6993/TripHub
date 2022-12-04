@@ -1,4 +1,5 @@
 <% @follows.each do |follow| %>
+<% if User.find(follow) != current_user %>
  <%= link_to user_path(User.find(follow).id),  :style => 'color:black' do %>
     <%= User.find(follow).name  %>
     <% end %>
@@ -11,4 +12,7 @@
             <%= link_to "Unfollow",  followuser_path(:star => User.find(follow).id, :fan => current_user.id), :style => 'color:black'%>
             </button>
           <% end %>
+  <br>
+  <br>
+  <% end %>
 <% end %>

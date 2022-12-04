@@ -94,11 +94,7 @@ class TripsController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @trip.errors, status: :unprocessable_entity }
-        flash[:danger] = @trip.errors.size.to_s + " Error".pluralize(@trip.errors.size) + ": " 
-        @trip.errors.full_messages.each do |msg|
-          flash[:danger] += msg + "   "
-          puts flash[:danger]
-        end
+        flash.now[:danger] = (@trip.errors.full_messages.join("<br/>" + "\u2022").prepend(@trip.errors.size.to_s + " Error".pluralize(@trip.errors.size) + ": " + "<br/>" + "\u2022").html_safe).html_safe 
       end
     end
     
@@ -123,7 +119,7 @@ class TripsController < ApplicationController
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @trip.errors, status: :unprocessable_entity }
-        flash[:danger] = @trip.errors.full_messages
+        flash.now[:danger] = (@trip.errors.full_messages.join("<br/>" + "\u2022").prepend(@trip.errors.size.to_s + " Error".pluralize(@trip.errors.size) + ": " + "<br/>" + "\u2022").html_safe).html_safe 
       end
     end
   end
