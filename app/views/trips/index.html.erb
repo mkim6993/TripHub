@@ -7,7 +7,7 @@
 <p id="notice"><%= notice %></p>
 
 <% provide(:title, "Home") %>
- <%= form_tag(tripsearch_path, :method => "get") do %>
+ <%= form_tag(tripsearch_path, :method => "get", id: "searchFormOnIndex") do %>
     <div class = "searchfields">
       <%= search_field_tag :name, params[:name], placeholder: "Search Trips by Name", class: "form-control" %>
       <%= search_field_tag :saves, params[:saves], placeholder: "Filter Trips by Min Saves", class: "form-control" %>
@@ -72,6 +72,10 @@
       </div>
       <% end %>
     <% end %>
+    <div class="singleTripBoxD"></div>
+    <div class="singleTripBoxD"></div>
+    <div class="singleTripBoxD"></div>
+    <div class="singleTripBoxD"></div>
   </div>
   <div>
       <%= will_paginate @trips, class: :"paginator"%>
