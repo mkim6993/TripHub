@@ -8,11 +8,36 @@
   <button id="merge">Merge Trips</button>
   <div id="mergeWindow">
     <div style="margin-bottom: 15px;">
+      <%pop_trips = getMostPopularRelated(@trip)%>
+      <%pop_trips.each do |top_trip|%>
+        <div class="tripLocsColumn">
+          <%trip_locs = TripLocation.where(trip_id: top_trip.id)%>
+          <%trip_locs.sort_by { |loc| loc.start_time }%>
+          <%total_end_minutes = 0%>
+          <%trip_locs.each do |trip_loc|%>
+
+            <%l1hours, l1minutes = trip_loc.start_time.split(':')%>
+            <%total_start_minutes = l1hours.to_i*60 + l1minutes.to_i%>
+
+            <div class="spacer" style="<%="height: " + (((total_start_minutes-total_end_minutes)/1440.0)*100).to_s + 'vh;'%>"></div>
+  
+            <%l1hours, l1minutes = trip_loc.end_time.split(':')%>
+            <%total_end_minutes = l1hours.to_i*60 + l1minutes.to_i%>
+
+            <div class="locTime" style="<%="height:" + (((total_end_minutes-total_start_minutes)/1440.0)*100).to_s + 'vh;'%>">
+              <%=Location.find_by(id: trip_loc.location_id).name%>
+              <button onclick="myFunction()">Click me!</button>
+            </div>
+
+          <%end%>
+        </div>
+      <%end%>
       
     </div>
   </div>
 </div>
 
+<div id='mergeScreen'></div>
 
 <%# popUp -> merge %>
 

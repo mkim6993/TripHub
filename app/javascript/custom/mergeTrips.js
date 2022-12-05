@@ -50,7 +50,7 @@ const showSearch = async () => {
                         users[i].username +
                         "</div><div class='detailText'>" +
                         users[i].email +
-                        "</div></div></div></div>";
+                           "</div></div></div></div>";
                 }
             }
             document.getElementById("userResults").innerHTML += htmlString;

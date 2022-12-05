@@ -1,7 +1,7 @@
 module MergeHelper
     def getMostPopularRelated(trip)  
         all_related = get_all_children(trip.id, []).append(trip)
-        all_related.sort_by{|t| -1*get_likes(trip)}.first(5)
+        all_related.sort_by{|t| -1*get_likes(t)}.first(5)
     end
         
     def get_all_children(trip_id, child_arr)
