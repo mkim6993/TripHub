@@ -20,6 +20,13 @@ document.addEventListener("turbo:load", function () {
         userSearch.addEventListener("click", function (event) {
             event.stopPropagation();
         });
+        userSearch.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById("showUsers").click();
+                console.log("hi");
+            }
+        });
     }
 
     let searchBar = document.querySelector("#searchUser");
@@ -37,10 +44,12 @@ document.addEventListener("turbo:load", function () {
     }
 
     var closeInvite = document.getElementById("closeInvite");
-    closeInvite.addEventListener("click", function () {
-        document.getElementById("screen").style.display = "none";
-        searchBar.style.display = "none";
-    });
+    if (closeInvite) {
+        closeInvite.addEventListener("click", function () {
+            document.getElementById("screen").style.display = "none";
+            searchBar.style.display = "none";
+        });
+    }
 });
 
 const getData = (searchInput) => {
@@ -65,6 +74,18 @@ const popup = async () => {
     });
 };
 
+const addUserToTrip = (userId) => {
+    var url = window.location.href;
+    for (let i = 0; i < 4; i++) {
+        url = url.substring(url.indexOf("/") + 1);
+    }
+    $.ajax({
+        type: "POST",
+        url: "/invite_user",
+        data: { user_id: userId, trip_id: url },
+    });
+};
+
 const showSearch = async () => {
     document.getElementById("userResults").innerHTML = "";
     var htmlString = "<div>User Not Found</div>";
@@ -73,11 +94,14 @@ const showSearch = async () => {
     } else {
         try {
             var users = await getData(userSearch);
-            console.log("here", users);
+            var userIdArr = [];
             if (users.length != 0) {
                 htmlString = "";
                 for (let i = 0; i < users.length; i++) {
-                    htmlString +=
+                    var userId = users[i].id;
+                    userIdArr.push(userId);
+                    // can add number of results
+                    htmlString =
                         '<div class="searchedUserContainer"><div class="searchedUserInfo">' +
                         '<div style="font-size: 15px">@' +
                         users[i].username +
@@ -85,10 +109,24 @@ const showSearch = async () => {
                         '<div style="color: gray">' +
                         users[i].email +
                         "</div>" +
-                        "</div><div>Invite</div></div>";
+                        "</div><div class='inviteUserBtn' id='invite" +
+                        userId +
+                        "'>Invite</div></div>";
+                    document.getElementById("userResults").innerHTML +=
+                        htmlString;
                 }
+                console.log(userIdArr);
+                for (let i = 0; i < userIdArr.length; i++) {
+                    var inviteUser = document.getElementById(
+                        "invite" + userIdArr[i]
+                    );
+                    inviteUser.addEventListener("click", function () {
+                        addUserToTrip(userIdArr[i]);
+                    });
+                }
+            } else {
+                document.getElementById("userResults").innerHTML += htmlString;
             }
-            document.getElementById("userResults").innerHTML += htmlString;
             let userResults = document.querySelector("#userResults");
             userResults.style.maxHeight = userResults.scrollHeight + "px";
         } catch (err) {

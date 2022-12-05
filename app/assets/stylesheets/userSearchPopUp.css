@@ -1,7 +1,8 @@
 #searchUser{
     background-color: rgb(220, 188, 239);
     padding: 15px;
-    display: block;
+    /* display: block; */
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -9,7 +10,7 @@
     border: 1px solid gray;
     position: absolute;
     top: 25vh;
-    left: 25vh;
+    left: 40vw;
     z-index: 101;
 }
 
@@ -21,7 +22,8 @@
     top: 0px;
     left: 0px;
     z-index: 100;
-    display: block;
+    /* display: block; */
+    display: none;
 }
 
 .flexDirectionRowCenter {
@@ -69,4 +71,12 @@
 
 #closeInvite {
     cursor: pointer;
+}
+
+.inviteUserBtn:hover {
+    background-color: rgb(223, 223, 223);
+}
+
+.inviteUserBtn {
+    border-radius: 5px;
 }

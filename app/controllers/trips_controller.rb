@@ -113,6 +113,22 @@ class TripsController < ApplicationController
     end
   end
 
+  def invite
+    puts "()()()()(("
+    user_id = params[:user_id]
+    trip_id = params[:trip_id]
+    @trip_user = TripUser.new(trip_id: trip_id, user_id: user_id)
+
+    respond_to do |format|
+      if @trip_user.save
+        format.js { render :js => "window.location.href ='/trips/" + trip_id.to_s + "'"}
+        puts "*****************D**D*D*D*D*"
+      else
+        puts "failed ajax"
+      end
+    end
+  end
+
 
   # PATCH/PUT /trips/1 or /trips/1.json
   def update
@@ -131,6 +147,7 @@ class TripsController < ApplicationController
   # DELETE /trips/1 or /trips/1.json
   def destroy
     TripLocation.where(trip_id: @trip.id).destroy_all # destroy all TripLocations relationships related to trip
+    Like.where(trip_id: @trip.id).destroy_all
     @trip.destroy
     respond_to do |format|
       format.html { redirect_to trips_url, notice: "Trip was successfully destroyed." }

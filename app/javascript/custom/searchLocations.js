@@ -2,7 +2,7 @@ document.addEventListener("turbo:load", function () {
     // move search bar on search
     var searchBtn = document.querySelector("#searchBtn");
     var tools = document.getElementById("searchTools");
-    if(searchBtn){
+    if (searchBtn) {
         searchBtn.addEventListener("click", function (event) {
             event.stopPropagation();
             tools.style.marginTop = "10px";
@@ -12,7 +12,7 @@ document.addEventListener("turbo:load", function () {
 
     // search location on "enter" keypress
     var locationSearch = document.querySelector("#locationSearch");
-    if(locationSearch){
+    if (locationSearch) {
         locationSearch.addEventListener("click", function (event) {
             event.stopPropagation();
         });
@@ -26,18 +26,20 @@ document.addEventListener("turbo:load", function () {
 
     // open create new location window
     var showCreateLocation = document.getElementById("showCreateLocation");
-    if(showCreateLocation){
+    if (showCreateLocation) {
         showCreateLocation.addEventListener("click", function (event) {
-            document.getElementById("customLocationCard").style.display = "flex";
+            document.getElementById("customLocationCard").style.display =
+                "flex";
             document.getElementById("shade").style.display = "block";
         });
     }
 
     // close create new location window
     var closeCreateLocationWindow = document.getElementById("xiconContainer");
-    if(closeCreateLocationWindow){
+    if (closeCreateLocationWindow) {
         closeCreateLocationWindow.addEventListener("click", function (event) {
-            document.getElementById("customLocationCard").style.display = "none";
+            document.getElementById("customLocationCard").style.display =
+                "none";
             document.getElementById("shade").style.display = "none";
         });
     }
@@ -98,6 +100,7 @@ const returnLocations = async () => {
                     var locId = locations[i].id;
                     locationIdArr.push(locId);
                     var locationInstance = await getInstances(locId);
+                    //can add number of results
                     htmlString =
                         "<div class='locationItem'><div class='locName'><div>" +
                         locations[i].name +

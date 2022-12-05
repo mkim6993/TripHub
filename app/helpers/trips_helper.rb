@@ -120,6 +120,18 @@ module TripsHelper
         readable_date += year
     end
 
+    def invited_users(trip_id)
+        trip_users = TripUser.where(trip_id: trip_id)
+        usernames = []
+        trip_users.each do | tripU |
+            user = User.where(id: tripU.user_id)
+            puts "##########################"
+            puts user.username
+            usernames.append(user.username);
+        end
+        return usernames
+    end
+
     def usersearch(search)
         user = User.where("username LIKE ?", "%#{search}%")
         respond_to do |format|

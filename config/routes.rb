@@ -37,15 +37,13 @@ Rails.application.routes.draw do
   get 'likesupdate', to:"likes#update"
   post "/create_location", to: "trips#create_location"
   get '/search_user', to: 'users#search'
+  post "/add_search_location", to: "trips#add_search_location"
 
   get 'followuser', to: 'star_fans#follow'
   get 'follows', to: 'star_fans#follows'
 
-  # Add Locations to Trip from Search or new Location
-  get "/triplocation_instances", to: "trip_locations#triplocation_instances"
-  get "/search", to: "locations#search"
-  post "/create_location", to: "trips#create_location"
-  post "/add_search_location", to: "trips#add_search_location"
+  # invite user from show
+  post "/invite_user", to: "trips#invite"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
