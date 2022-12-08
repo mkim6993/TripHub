@@ -7,7 +7,7 @@
 <p id="notice"><%= notice %></p>
 
 <% provide(:title, "Home") %>
- <%= form_tag(tripsearch_path, :method => "get") do %>
+ <%= form_tag(tripsearch_path, :method => "get", id: "searchFormOnIndex") do %>
     <div class = "searchfields">
       <%= search_field_tag :name, params[:name], placeholder: "Search Trips by Name", class: "form-control" %>
       <%= search_field_tag :saves, params[:saves], placeholder: "Filter Trips by Min Saves", class: "form-control" %>
@@ -51,19 +51,18 @@
         <div class="singleTripDetails">
           <div class="singleTripBold">
             <a href="/trips/<%= trip.id %>" id="tripTitleLink"><%= trip.title %></a>
-            <div><%= trip.upvotes %> saves</div>
+            <div><%= get_likes(trip) %> 
+              <% if get_likes(trip) == 1 %>
+                like
+              <% else %>
+                likes
+              <% end %>
+            </div>
           </div>
           <div class="singleTripBoldUser">
           <%= link_to user_path(User.where("username = ?", trip.create_by).ids),  :style => 'color:black' do %>
             <div class="singleUserText"><%= trip.create_by %></div>
           <% end %>
-            <div><%= get_likes(trip) %> 
-            <% if get_likes(trip) == 1 %>
-            like
-            <% else %>
-            likes
-            <% end %>
-            </div>
           </div>
           <div class="singleTripNorm"><%= trip.trip_date %></div>
         </div>
@@ -73,6 +72,10 @@
       </div>
       <% end %>
     <% end %>
+    <div class="singleTripBoxD"></div>
+    <div class="singleTripBoxD"></div>
+    <div class="singleTripBoxD"></div>
+    <div class="singleTripBoxD"></div>
   </div>
   <div>
       <%= will_paginate @trips, class: :"paginator"%>
