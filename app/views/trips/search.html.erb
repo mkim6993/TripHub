@@ -6,13 +6,6 @@
     <% if trip.public == true  or current_user.id == User.where("username = ?", trip.create_by).ids or !following?(User.where("username = ?", trip.create_by).first)%>
       <div class="singleTripBox">
         <div class="singleTripImage">
-          <%= image_tag("path.JPG", :class => "indexImages", :alt => "path") %>
-          <div class="arrowRight">
-            <%= image_tag("arrow_right.png", :alt => "arrow") %>  
-          </div>
-          <div class="arrowLeft">
-            <%= image_tag("arrow_left.png", :alt => "arrow") %>  
-          </div>
           <div class="bookmark">
           <% if liked?(trip) %>
             <%= link_to '<ion-icon name="heart-outline" style="font-size: 30px; margin-left: 10px; color: white" class="socialIconBtn"></ion-icon>'.html_safe, likesupdate_path(trip: trip) %>
@@ -21,23 +14,33 @@
           <% end %>
           </div>
           <div id="save"></div>
+          
+          <% imgs = [] %>
+          <%TripLocation.where(trip_id: trip.id).each do |triploc|%>
+            <% file = Location.where(id: triploc.location_id)[0].images[0] %>
+            <%if !file.nil?%>
+              <% imgs.append(file) %>
+            <%end%>
+          <% end %>
+          <%if imgs.length > 0%>
+            <%=carousel_for(imgs)%>
+          <%end%>
         </div>
         <div class="singleTripDetails">
           <div class="singleTripBold">
             <a href="/trips/<%= trip.id %>" id="tripTitleLink"><%= trip.title %></a>
-            <div><%= trip.upvotes %> saves</div>
+            <div><%= get_likes(trip) %> 
+              <% if get_likes(trip) == 1 %>
+                like
+              <% else %>
+                likes
+              <% end %>
+            </div>
           </div>
           <div class="singleTripBoldUser">
-          <%= link_to user_path(User.where("username LIKE ?", trip.create_by).ids), :style => 'color:black' do %>
+          <%= link_to user_path(User.where("username = ?", trip.create_by).ids),  :style => 'color:black' do %>
             <div class="singleUserText"><%= trip.create_by %></div>
           <% end %>
-            <div><%= get_likes(trip) %> 
-            <% if get_likes(trip) == 1 %>
-            like
-            <% else %>
-            likes
-            <% end %>
-            </div>
           </div>
           <div class="singleTripNorm"><%= trip.trip_date %></div>
         </div>
@@ -47,4 +50,8 @@
       </div>
       <% end %>
     <% end %>
+  
+  </div>
+  <div>
+      <%= will_paginate @results, class: :"paginator"%>
   </div>

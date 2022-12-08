@@ -6,6 +6,7 @@
   color: black;
   text-decoration: none;
   font-weight: bold;
+  flex: 1;
 }
 
 #newTripForm {
@@ -481,4 +482,9 @@ $gray: #9b9b9b;
 
 .detailText {
   flex: 10;
+}
+
+#searchFormOnIndex {
+  display: flex;
+  justify-content: center;
 }

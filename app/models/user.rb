@@ -26,6 +26,9 @@ class User < ApplicationRecord
   has_many :trips, through: :trip_users
 
   has_many :likes
+  has_many :liked_trips, through: :likes
+
+  belongs_to :trip, optional: true
 
   amoeba do
     enable

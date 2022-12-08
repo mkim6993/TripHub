@@ -1,31 +1,39 @@
 document.addEventListener("turbo:load", function () {
     let popBtn = document.querySelector("#popUp");
-    popBtn.addEventListener("click", function (event) {
-        event.stopPropagation();
-        popup();
-    });
+    if(popBtn){
+        popBtn.addEventListener("click", function (event) {
+            event.stopPropagation();
+            popup();
+        });
+    }
     
     let searchBtn = document.querySelector("#showUsers");
-    searchBtn.addEventListener("click", function (event) {
-        event.stopPropagation();
-        showSearch();
-    });
-
+    if(searchBtn){
+        searchBtn.addEventListener("click", function (event) {
+            event.stopPropagation();
+            showSearch();
+        });
+    }
+    
     let userSearch = document.querySelector("#userSearch");
-    userSearch.addEventListener("click", function (event) {
-        event.stopPropagation();
-    });
+    if(userSearch){
+        userSearch.addEventListener("click", function (event) {
+            event.stopPropagation();
+        });
+    }
 
     let searchBar = document.querySelector("#searchUser");
     let searchResults = document.querySelector("#userResults");
-    searchBar.addEventListener("click", function (event) {
-        event.preventDefault();
-        if (searchResults.style.maxHeight) {
-            searchResults.style.maxHeight = null;
-        } else {
-            searchResults.style.maxHeight = searchResults.scrollHeight + "px";
-        }
-    });
+    if(searchBar){
+        searchBar.addEventListener("click", function (event) {
+            event.preventDefault();
+            if (searchResults.style.maxHeight) {
+                searchResults.style.maxHeight = null;
+            } else {
+                searchResults.style.maxHeight = searchResults.scrollHeight + "px";
+            }
+        });
+    }
 });
 
 const getData = (searchInput) => {

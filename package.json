@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "stimulus-content-loader": "^4.0.1"
+  }
+}

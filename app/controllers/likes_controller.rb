@@ -41,11 +41,13 @@ class LikesController < ApplicationController
     like = Like.where(user:current_user, trip: Trip.find(params[:trip]))
     if like == []
       Like.create(user:current_user, trip: Trip.find(params[:trip]))
-      Trip.find(params[:trip]).shares += 1
+      Trip.find(params[:trip]).update(upvotes: Like.where(trip: Trip.find(params[:trip])).count)
+      Trip.find(params[:trip]).save
       # @like.save
     else
       like.destroy_all
-      Trip.find(params[:trip]).shares += -1
+      Trip.find(params[:trip]).update(upvotes: Like.where(trip: Trip.find(params[:trip])).count)
+      Trip.find(params[:trip]).save
     end
     respond_to do |format|     
       format.html { redirect_to request.referrer}

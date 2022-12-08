@@ -1,6 +1,13 @@
 <%= render "layouts/flash" %>
+<%# <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">     %>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://toert.github.io/Isolated-Bootstrap/versions/4.0.0-beta/iso_bootstrap4.0.0min.css">
+<p id="notice"><%= notice %></p>
+
 <% provide(:title, "Home") %>
- <%= form_tag(tripsearch_path, :method => "get") do %>
+ <%= form_tag(tripsearch_path, :method => "get", id: "searchFormOnIndex") do %>
     <div class = "searchfields">
       <%= search_field_tag :name, params[:name], placeholder: "Search Trips by Name", class: "form-control" %>
       <%= search_field_tag :saves, params[:saves], placeholder: "Filter Trips by Min Saves", class: "form-control" %>
@@ -21,13 +28,6 @@
     <% if trip.public == true %>
       <div class="singleTripBox">
         <div class="singleTripImage">
-          <%= image_tag("path.JPG", :class => "indexImages", :alt => "path") %>
-          <div class="arrowRight">
-            <%= image_tag("arrow_right.png", :alt => "arrow") %>  
-          </div>
-          <div class="arrowLeft">
-            <%= image_tag("arrow_left.png", :alt => "arrow") %>  
-          </div>
           <div class="bookmark">
           <% if liked?(trip) %>
             <%= link_to '<ion-icon name="heart-outline" style="font-size: 30px; margin-left: 10px; color: white" class="socialIconBtn"></ion-icon>'.html_safe, likesupdate_path(trip: trip) %>
@@ -36,23 +36,33 @@
           <% end %>
           </div>
           <div id="save"></div>
+          
+          <% imgs = [] %>
+          <%TripLocation.where(trip_id: trip.id).each do |triploc|%>
+            <% file = Location.where(id: triploc.location_id)[0].images[0] %>
+            <%if !file.nil?%>
+              <% imgs.append(file) %>
+            <%end%>
+          <% end %>
+          <%if imgs.length > 0%>
+            <%=carousel_for(imgs)%>
+          <%end%>
         </div>
         <div class="singleTripDetails">
           <div class="singleTripBold">
             <a href="/trips/<%= trip.id %>" id="tripTitleLink"><%= trip.title %></a>
-            <div><%= trip.upvotes %> saves</div>
+            <div><%= get_likes(trip) %> 
+              <% if get_likes(trip) == 1 %>
+                like
+              <% else %>
+                likes
+              <% end %>
+            </div>
           </div>
           <div class="singleTripBoldUser">
           <%= link_to user_path(User.where("username = ?", trip.create_by).ids),  :style => 'color:black' do %>
             <div class="singleUserText"><%= trip.create_by %></div>
           <% end %>
-            <div><%= get_likes(trip) %> 
-            <% if get_likes(trip) == 1 %>
-            like
-            <% else %>
-            likes
-            <% end %>
-            </div>
           </div>
           <div class="singleTripNorm"><%= trip.trip_date %></div>
         </div>
@@ -62,6 +72,10 @@
       </div>
       <% end %>
     <% end %>
+    <div class="singleTripBoxD"></div>
+    <div class="singleTripBoxD"></div>
+    <div class="singleTripBoxD"></div>
+    <div class="singleTripBoxD"></div>
   </div>
   <div>
       <%= will_paginate @trips, class: :"paginator"%>

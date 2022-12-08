@@ -1,6 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+three:
   create_by: MyString
   trip_date: 2022-09-23
   title: MyString
@@ -10,7 +10,7 @@ one:
   public: false
   parent: 1
 
-two:
+four:
   create_by: MyString
   trip_date: 2022-09-23
   title: MyString
