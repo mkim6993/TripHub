@@ -80,3 +80,7 @@
 .inviteUserBtn {
     border-radius: 5px;
 }
+
+/* <%= invited_users(@trip.id).each do | trip_user | %>
+        <div>@<%= trip_user %></div>
+      <% end %> */
