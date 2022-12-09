@@ -12,9 +12,10 @@ https://trello.com/w/team6784/home
 
 https://infinite-coast-27462.herokuapp.com/
 
-### Team Roled
+### Team Roles
 
 Team 6:
+
 Cole Feuer: full stack, primarily backend  
 Jason Tigas: full stack, primarily backend  
 Min Sung Kim: full stack, primarily frontend  
