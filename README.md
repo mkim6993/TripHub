@@ -4,7 +4,7 @@
 
 Our product is a platform that provides an easy and convenient way for people to make travel plans with friends, and see the plans of other people to make visiting new places even more fun. Anyone can use our product to search for places and events near them to build their own trip plan, and get ispiration from other users' trips to see how they structured their day.
 
-### Trello Link
+### Google Doc Link(We used Google Docs instead of trello to stay organized)
 
 https://trello.com/w/team6784/home
 
@@ -12,13 +12,14 @@ https://trello.com/w/team6784/home
 
 https://infinite-coast-27462.herokuapp.com/
 
-### Preliminary Teammate Interests
+### Team Roles
 
 Team 6:
-Cole Feuer: primarily backend  
-Jason Tigas: full stack  
-Min Sung Kim: primarily frontend  
-Hiro Chen: probably the app UI design.
+
+Cole Feuer: full stack, primarily backend  
+Jason Tigas: full stack, primarily backend  
+Min Sung Kim: full stack, primarily frontend  
+Hiro Chen: backend
 
 ### Explanation of Schema
 
