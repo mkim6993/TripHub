@@ -43,6 +43,7 @@ class UsersController < ApplicationController
         format.html { redirect_to user_url(@user), success: "Sign up successful" }
         format.json { render :show, status: :created, location: @user }
         flash.now[:success] = "Sign up successful"
+        UserMailer.with(user: @user).signup_email.deliver_now
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -66,10 +67,11 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
+    puts "DESTORY"
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+      format.html { redirect_to users_url}
       format.json { head :no_content }
     end
   end
