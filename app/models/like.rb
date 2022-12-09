@@ -1,4 +1,4 @@
 class Like < ApplicationRecord
-  belongs_to :user
   belongs_to :trip
+  belongs_to :user
 end

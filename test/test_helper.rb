@@ -7,7 +7,8 @@ class ActiveSupport::TestCase
   parallelize(workers: :number_of_processors)
 
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
+  #fixtures :all
+  fixtures %w(users trips articles likes locations star_fans trip_locations trip_users) 
 
   # Add more helper methods to be used by all tests here...
   def is_logged_in?

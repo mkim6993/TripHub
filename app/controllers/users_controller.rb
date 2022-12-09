@@ -42,11 +42,12 @@ class UsersController < ApplicationController
         log_in @user
         format.html { redirect_to user_url(@user), success: "Sign up successful" }
         format.json { render :show, status: :created, location: @user }
-        flash[:success] = "Sign up successful"
+        flash.now[:success] = "Sign up successful"
+        UserMailer.with(user: @user).signup_email.deliver_now
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
-        flash[:danger] = "Sign up failed"
+        flash.now[:danger] = (@user.errors.full_messages.join("<br/>" + "\u2022").prepend(@user.errors.size.to_s + " Error".pluralize(@user.errors.size) + ": " + "<br/>" + "\u2022").html_safe).html_safe 
       end
     end
   end
@@ -66,10 +67,11 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
+    puts "DESTORY"
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+      format.html { redirect_to users_url}
       format.json { head :no_content }
     end
   end

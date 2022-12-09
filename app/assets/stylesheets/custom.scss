@@ -445,3 +445,20 @@ input[type=submit] {
 input[type=submit]:hover {
   background:rgb(104, 69, 134)
 }
+
+
+input::file-selector-button {
+  padding:5px 15px; 
+  background: rgb(196, 162, 225); 
+  color:white;
+  border:2px;
+  border-color:black;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; 
+}
+
+input::file-selector-button:hover {
+  background:rgb(104, 69, 134)
+}
+

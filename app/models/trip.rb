@@ -14,7 +14,10 @@ class Trip < ApplicationRecord
   has_many :trip_locations
   has_many :locations, through: :trip_locations
 
-  has_many :likes
+  has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :likes
+
+  belongs_to :user, optional: true
 
   # sets upvotes and shares to 0 by default
   after_initialize :set_defaults, unless: :persisted?
