@@ -15,6 +15,7 @@ https://infinite-coast-27462.herokuapp.com/
 ### Team Roles
 
 Team 6:
+
 Cole Feuer: full stack, primarily backend  
 Jason Tigas: full stack, primarily backend  
 Min Sung Kim: full stack, primarily frontend  
