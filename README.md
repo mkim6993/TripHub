@@ -2,7 +2,7 @@
 
 ### Summary
 
-Our product is mainly about provide a easy and convenient way for people to make travel plan and form groups with people who have same interests. For users who want to travel to a new place or are already arrive there and would like to make a trip plan. They can use our product to search the wonderful places and events, check other users' post, form group with other users, and then post their own posts after the trip.
+Our product is a platform that provides an easy and convenient way for people to make travel plans with friends, and see the plans of other people to make visiting new places even more fun. Anyone can use our product to search for places and events near them to build their own trip plan, and get ispiration from other users' trips to see how they structured their day.
 
 ### Trello Link
 
