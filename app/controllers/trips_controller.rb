@@ -4,7 +4,7 @@ class TripsController < ApplicationController
 
   # GET /trips or /trips.json
   def index
-    @trips = Trip.all.paginate(:page => params[:page], :per_page => 6)
+    @trips = Trip.all.paginate(:page => params[:page], :per_page => 20)
   end
 
   # GET /trips/1 or /trips/1.json
@@ -94,11 +94,7 @@ class TripsController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @trip.errors, status: :unprocessable_entity }
-        flash[:danger] = @trip.errors.size.to_s + " Error".pluralize(@trip.errors.size) + ": " 
-        @trip.errors.full_messages.each do |msg|
-          flash[:danger] += msg + "   "
-          puts flash[:danger]
-        end
+        flash.now[:danger] = (@trip.errors.full_messages.join("<br/>" + "\u2022").prepend(@trip.errors.size.to_s + " Error".pluralize(@trip.errors.size) + ": " + "<br/>" + "\u2022").html_safe).html_safe 
       end
     end
     
@@ -107,10 +103,11 @@ class TripsController < ApplicationController
 
   def search
     if params[:month].blank? || params[:day].blank? || params[:year].blank?
-      @results = Trip.where("lower(title) LIKE ?", "%#{params[:name].downcase}%").and(Trip.where("upvotes >= ?", params[:saves].to_i)) 
+      @results = Trip.where("lower(title) LIKE ?", "%#{params[:name].downcase}%").and(Trip.where("upvotes >= ?", params[:saves].to_i)).paginate(:page => params[:page], :per_page => 20) 
     else 
-      @results = Trip.where("lower(title) LIKE ?", "%#{params[:name].downcase}%").and(Trip.where("upvotes >= ?", params[:saves].to_i)).and(Trip.where("trip_date > ?", params[:year] + "-" + params[:month] + "-" + params[:day]))
+      @results = Trip.where("lower(title) LIKE ?", "%#{params[:name].downcase}%").and(Trip.where("upvotes >= ?", params[:saves].to_i)).and(Trip.where("trip_date > ?", params[:year] + "-" + params[:month] + "-" + params[:day])).paginate(:page => params[:page], :per_page => 20)
     end
+   
   end
 
 
@@ -123,7 +120,7 @@ class TripsController < ApplicationController
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @trip.errors, status: :unprocessable_entity }
-        flash[:danger] = @trip.errors.full_messages
+        flash.now[:danger] = (@trip.errors.full_messages.join("<br/>" + "\u2022").prepend(@trip.errors.size.to_s + " Error".pluralize(@trip.errors.size) + ": " + "<br/>" + "\u2022").html_safe).html_safe 
       end
     end
   end

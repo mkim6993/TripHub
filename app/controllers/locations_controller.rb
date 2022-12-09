@@ -30,6 +30,7 @@ class LocationsController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @location.errors, status: :unprocessable_entity }
+         flash.now[:danger] = (@location.errors.full_messages.join("<br/>" + "\u2022").prepend(@location.errors.size.to_s + " Error".pluralize(@location.errors.size) + ": " + "<br/>" + "\u2022").html_safe).html_safe 
       end
     end
   end
@@ -43,6 +44,7 @@ class LocationsController < ApplicationController
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @location.errors, status: :unprocessable_entity }
+        flash.now[:danger] = (@location.errors.full_messages.join("<br/>" + "\u2022").prepend(@location.errors.size.to_s + " Error".pluralize(@location.errors.size) + ": " + "<br/>" + "\u2022").html_safe).html_safe
       end
     end
   end

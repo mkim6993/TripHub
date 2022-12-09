@@ -23,7 +23,7 @@ module SessionsHelper
 
   # Logs out the current user.
   def log_out
-    flash[:notice] = "You have been logged out."
+    flash.now[:notice] = "You have been logged out."
     @current_user = nil
     reset_session
   end
