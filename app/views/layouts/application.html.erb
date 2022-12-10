@@ -11,6 +11,43 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= render 'layouts/shim' %>
     <%= javascript_importmap_tags %>
+    
+    <script type="text/javascript">
+      const merged_trip = [];
+
+      function add_location_to_trip(location_id, start_time, end_time, location_name) {
+        if(merged_trip.length == 0){
+          merged_trip.push([location_id, start_time, end_time, location_name])
+          console.log(merged_trip)
+        }
+        else{
+          var [s1hours, s1minutes] = start_time.split(":");
+          var [e1hours, e1minutes] = end_time.split(":");
+          var s1total = parseInt(s1hours)*60 + parseInt(s1minutes);
+          var e1total = parseInt(e1hours)*60 + parseInt(e1minutes);
+          for(let x = 0; x < merged_trip.length; x++){
+            var [s2hours, s2minutes] = merged_trip[x][1].split(":");
+            var [e2hours, e2minutes] = merged_trip[x][2].split(":");
+            var s2total = parseInt(s2hours)*60 + parseInt(s2minutes);
+            var e2total = parseInt(e2hours)*60 + parseInt(e2minutes);
+            if((s1total>=s2total && s1total<e2total) || (e1total>s2total && e1total<=e2total) || (s1total<=s2total && e1total>=e2total)){
+              return;
+            }
+          }
+          merged_trip.push([location_id, start_time, end_time, location_name])
+          console.log(merged_trip)
+        }
+      }
+      
+      function remove_location_from_trip(arr_index){
+        if(arr_index == 0){
+          merged_trip.shift();
+        }
+        else{
+          merged_trip.splice(arr_index, 1);
+        }
+      }
+    </script>
   </head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

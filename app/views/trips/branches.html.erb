@@ -4,35 +4,50 @@
   </li>
 </ul>
 
+<span id="trip_id" style="display: none;"><%=@trip.id%></span>
+
 <div>
   <button id="merge">Merge Trips</button>
   <div id="mergeWindow">
-    <div style="margin-bottom: 15px;">
+    <div style="margin-bottom: 15px; margin-top: 15px;">
       <%pop_trips = getMostPopularRelated(@trip)%>
       <%pop_trips.each do |top_trip|%>
         <div class="tripLocsColumn">
+          <div class="mergeTripTitle">
+            <%=top_trip.title%>
+            <%=get_likes(top_trip)%>
+          </div>
           <%trip_locs = TripLocation.where(trip_id: top_trip.id)%>
-          <%trip_locs.sort_by { |loc| loc.start_time }%>
+          <%trip_locs = trip_locs.sort_by { |loc| 
+            l1, l2 = loc.start_time.split(':') 
+            l1.to_i*60+l2.to_i
+          }%>
           <%total_end_minutes = 0%>
           <%trip_locs.each do |trip_loc|%>
-
             <%l1hours, l1minutes = trip_loc.start_time.split(':')%>
             <%total_start_minutes = l1hours.to_i*60 + l1minutes.to_i%>
 
-            <div class="spacer" style="<%="height: " + (((total_start_minutes-total_end_minutes)/1440.0)*100).to_s + 'vh;'%>"></div>
+            <div class="spacer" style="<%="height: " + (((total_start_minutes-total_end_minutes)/1440.0)*125).to_s + 'vh;'%>"></div>
   
             <%l1hours, l1minutes = trip_loc.end_time.split(':')%>
             <%total_end_minutes = l1hours.to_i*60 + l1minutes.to_i%>
 
-            <div class="locTime" style="<%="height:" + (((total_end_minutes-total_start_minutes)/1440.0)*100).to_s + 'vh;'%>">
-              <%=Location.find_by(id: trip_loc.location_id).name%>
-              <button onclick="myFunction()">Click me!</button>
+            <div class="locTime" style="<%="height:" + (((total_end_minutes-total_start_minutes)/1440.0)*125).to_s + 'vh;'%>">
+              <div class="locName"> 
+                <%loc_name = Location.find_by(id: trip_loc.location_id).name%> 
+                <%=loc_name%> 
+              </div>
+              <button class="mergeButton" onclick="add_location_to_trip(<%=trip_loc.location_id%>, '<%=trip_loc.start_time%>', '<%=trip_loc.end_time%>', '<%=loc_name%>')">Add Location</button>
             </div>
-
           <%end%>
         </div>
       <%end%>
-      
+      <div class="tripLocsColumn" id="resultsColumn">
+        <div class="mergeTripTitle">Merged Trip</div>
+        <div id="display_merged"></div>
+        <div id="submit_merge"><button class="submitButton">Finalize Trip</button></div>
+        <div id="cancel_merge"><button class="cancelButton">Cancel</button></div>
+      </div>
     </div>
   </div>
 </div>

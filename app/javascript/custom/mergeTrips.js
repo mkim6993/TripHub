@@ -6,20 +6,33 @@ document.addEventListener("turbo:load", function () {
             popup();
         });
     }
-});
 
-const getData = (searchInput) => {
-    return $.ajax({
-        type: "GET",
-        dataType: "json",
-        url: "/search_user",
-        data: { search: searchInput },
-        success: function (data) {
-            console.log(data);
-            console.log("success");
-        },
-    });
-};
+    let merged_display = document.getElementsByClassName("mergeButton");
+    if(merged_display.length > 0){
+        for (let i = 0; i < merged_display.length; i++){
+            merged_display[i].addEventListener('click', function(event) {
+                event.stopPropagation();
+                disp_merged();
+            })
+        }
+    }
+
+    let submit_merge = document.getElementById("submit_merge");
+    if(submit_merge){
+        submit_merge.addEventListener('click', function(event) {
+            event.stopPropagation();
+            finalize_trip(merged_trip);
+        })
+        
+    }
+
+    const element = document.getElementById("display_merged");
+    if(element){
+        element.addEventListener("click", ()=>{
+            disp_merged();
+        })
+    }
+});
 
 const popup = async () => {
     $('#mergeScreen').css({ opacity: 0.7, 'width':$(document).width(),'height':$(document).height()});
@@ -28,37 +41,41 @@ const popup = async () => {
     userSearch.style.display = 'block';
 }
 
-const showSearch = async () => {
 
-    document.getElementById("userResults").innerHTML = "";
-    var htmlString =
-        "<div id='noResult'>No results. Create a new location?</div>";
-    const userSearch = document.getElementById("userSearch").value;
-    if (userSearch == "") {
-        alert("no search");
-    } else {
-        try {
-            var users = await getData(userSearch);
-            console.log("here", users);
-            if (users.length != 0) {
-                htmlString = "";
-                for (let i = 0; i < users.length; i++) {
-                    htmlString +=
-                        "<div class='userItem'><div class='usrName'>" +
-                        users[i].name +
-                        "</div><div class='usrDetailAndImage'><div class='usrDetails'><div class='detailText'>" +
-                        users[i].username +
-                        "</div><div class='detailText'>" +
-                        users[i].email +
-                           "</div></div></div></div>";
-                }
-            }
-            document.getElementById("userResults").innerHTML += htmlString;
-            let userResults = document.querySelector("#userResults");
-            userResults.style.maxHeight = userResults.scrollHeight + "px";
-        } catch (err) {
-            console.log("there was an error when fetching data", err);
-            document.getElementById("searchResults").innerHTML += htmlString;
-        }
-    }
+const finalize_trip = (loc_array) => {
+    var t_id = document.getElementById("trip_id").innerHTML
+    console.log("finalized_trip")
+    $.ajax({
+        type: "POST",
+        url: "/finalize_trip",
+        data: { location_array: loc_array, trip_id: t_id },
+    });
 };
+
+const disp_merged = async () => {
+    console.log("complete")
+    var display_trip = "";
+    var total_start_minutes = 0;
+    var total_end_minutes = 0;
+    var l1hours = 0;
+    var l1minutes = 0;
+
+    for(let x = 0; x < merged_trip.length; x++){
+        [l1hours, l1minutes] = merged_trip[x][1].split(':');
+        total_start_minutes = parseInt(l1hours)*60 + parseInt(l1minutes);
+
+        display_trip += '<div class="spacer" style="height: ' + (((total_start_minutes-total_end_minutes)/1440.0)*125).toString() + 'vh;"></div>';
+  
+        [l1hours, l1minutes] = merged_trip[x][2].split(':');
+        total_end_minutes = parseInt(l1hours)*60 + parseInt(l1minutes);
+
+        display_trip += '<div class="locTime" style="height: ' + (((total_end_minutes-total_start_minutes)/1440.0)*125).toString() + 'vh;">';
+        display_trip += '<div class="locName">';
+        display_trip += merged_trip[x][3];
+        display_trip += '</div>';
+        display_trip += '<button class="mergeButton" onclick="remove_location_from_trip('+ x.toString() +')">Remove Location</button>';
+        display_trip += '</div>'
+    } 
+    
+    document.getElementById("display_merged").innerHTML = display_trip;
+}

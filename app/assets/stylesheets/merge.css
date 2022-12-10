@@ -1,5 +1,5 @@
 #mergeWindow{
-    background-color: rgb(220, 188, 239);
+    background: linear-gradient(90deg, #cc9ef4 83.34%, white 16.66%);
     color: black;
     border-radius: 25px;
     height: 65%;
@@ -26,7 +26,7 @@
   
 .tripLocsColumn{
   float: left;
-  width: 20%;
+  width: 16.66%;
 }
 
 .spacer{
@@ -35,5 +35,44 @@
 }
 
 .locTime{
+  background-color: rgb(220, 188, 239);
+  border-radius: 8px;
+}
+
+.mergeButton{
+  background-color: #cc9ef4;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  margin-block: 5px;
+}
+
+.locName{
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.mergeTripTitle{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#resultsColumn{
   background-color: white;
+}
+
+.submitButton{
+  background-color: rgb(94, 135, 101);
+  border: none;
+  color: white;
+  border-radius: 8px;
+  margin-block: 5px;
+}
+
+.cancelButton{
+  background-color: rgb(157, 157, 157);
+  border: none;
+  color: white;
+  border-radius: 8px;
+  margin-block: 5px;
 }

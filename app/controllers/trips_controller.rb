@@ -35,15 +35,27 @@ class TripsController < ApplicationController
     # TripUser.create(:user_id => params[:user_id], :trip_id => params[:id].id)
   end
 
+  def finalize_trip
+    trip_id = params[:trip_id]
+    location_array = params[:location_array]
+
+    # TripLocation.where(trip_id:)
+  end
+
   # post method when new location is created from /trips/:id/locations
   def create_location
-    trip_id = location_params["trip_id"]
-    start_time = location_params["start_time"]
-    end_time = location_params["end_time"]
-    modified_location_params = location_params
+    trip_id = params["trip_id"]
+    start_time = params["start_time"]
+    end_time = params["end_time"]
+    modified_location_params = params
     modified_location_params.extract!(:trip_id)
     modified_location_params.extract!(:start_time)
     modified_location_params.extract!(:end_time)
+    modified_location_params.extract!(:authenticity_token)
+    modified_location_params.extract!(:commit)
+    modified_location_params.extract!(:controller)
+    modified_location_params.extract!(:action)
+    modified_location_params["image"] = nil
 
     puts "^^^^^^^^^^^^^^^^^"
     puts trip_id
