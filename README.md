@@ -131,4 +131,6 @@ user_id: integer
 #### To Run Tests:
 ```rails test```
 
-
+---
+Min Sung Kim: mkim6993
+Cole Feuer: 
