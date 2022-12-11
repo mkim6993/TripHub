@@ -2,10 +2,11 @@
 
 <%= render "form", user: @user %>
 
+
 <br>
-
-<%= button_to "Destroy this user", @user, method: :delete %>
-
+<div style = "text-align:center">
+    <%= button_to "Delete Account", @user, method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}}, :class => "delete_button" %>
+</div>
 <%# <div class="backbotton">
   <%= link_to "Show this user", @user %> 
 <%# </div> %>

@@ -462,3 +462,19 @@ input::file-selector-button:hover {
   background:rgb(104, 69, 134)
 }
 
+.delete_button {
+  font-size: large;
+  background-color: rgb(244, 158, 158);
+  border: none;
+  color: white;
+  border-radius: 8px;
+}
+
+.delete_button:hover {
+  font-size: large;
+  background-color: rgb(255, 0, 0);
+  border: none;
+  color: white;
+  border-radius: 8px;
+}
+
