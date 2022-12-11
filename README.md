@@ -52,10 +52,10 @@ Then there are some buttons on the header, the trips function can help the users
 ### Preliminary Teammate Interests
 
 Team 6:
-Cole Feuer: primarily backend  
-Jason Tigas: full stack  
-Min Sung Kim: primarily frontend  
-Hiro Chen: probably the app UI design.
+Cole Feuer: primarily backend  (CDFire)
+Jason Tigas: full stack  (jtigs)
+Min Sung Kim: primarily frontend  (mkim6993)
+Hiro Chen: probably the app UI design. (Hirochen458)
 
 ### Explanation of Schema
 
@@ -130,7 +130,3 @@ user_id: integer
 
 #### To Run Tests:
 ```rails test```
-
----
-Min Sung Kim: mkim6993
-Cole Feuer: 
