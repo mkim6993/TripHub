@@ -36,10 +36,16 @@ class TripsController < ApplicationController
   end
 
   def finalize_trip
-    trip_id = params[:trip_id]
-    location_array = params[:location_array]
+    trip_id = params[:trip_id].to_i
+    loc_array = params[:location_array]
+    num_locations = params[:num_locations].to_i
 
-    # TripLocation.where(trip_id:)
+    cur_locs = TripLocation.where(trip_id: trip_id).destroy_all
+    
+    for x in 0..(num_locations-1) do
+      cur_loc = loc_array[x.to_s]
+      TripLocation.create(trip_id: trip_id, location_id: cur_loc[0].to_i, start_time: cur_loc[1], end_time: cur_loc[2])
+    end
   end
 
   # post method when new location is created from /trips/:id/locations

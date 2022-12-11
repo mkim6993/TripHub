@@ -26,6 +26,15 @@ document.addEventListener("turbo:load", function () {
         
     }
 
+    let cancel_merge = document.getElementById("cancel_merge");
+    if(cancel_merge){
+        cancel_merge.addEventListener('click', function(event) {
+            event.stopPropagation();
+            exit_merge();
+        })
+        
+    }
+
     const element = document.getElementById("display_merged");
     if(element){
         element.addEventListener("click", ()=>{
@@ -41,6 +50,14 @@ const popup = async () => {
     userSearch.style.display = 'block';
 }
 
+const exit_merge = async () => {
+    $('#mergeScreen').css({ opacity: 0, 'width':0,'height':0});
+
+    var userSearch = document.getElementById("mergeWindow")
+    userSearch.style.display = 'none';
+    
+}
+
 
 const finalize_trip = (loc_array) => {
     var t_id = document.getElementById("trip_id").innerHTML
@@ -48,7 +65,7 @@ const finalize_trip = (loc_array) => {
     $.ajax({
         type: "POST",
         url: "/finalize_trip",
-        data: { location_array: loc_array, trip_id: t_id },
+        data: { location_array: loc_array, trip_id: t_id, num_locations: loc_array.length },
     });
 };
 

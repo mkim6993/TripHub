@@ -35,6 +35,13 @@
             }
           }
           merged_trip.push([location_id, start_time, end_time, location_name])
+          merged_trip.sort(function(a, b){ 
+            [s1hours, s1minutes] = a[1].split(":");
+            [s2hours, s2minutes] = b[1].split(":");
+            s1total = parseInt(s1hours)*60 + parseInt(s1minutes);
+            s2total = parseInt(s2hours)*60 + parseInt(s2minutes);
+            return s1total - s2total;
+          });
           console.log(merged_trip)
         }
       }
