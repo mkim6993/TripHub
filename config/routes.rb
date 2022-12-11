@@ -47,6 +47,8 @@ Rails.application.routes.draw do
   post "/create_location", to: "trips#create_location"
   post "/add_search_location", to: "trips#add_search_location"
 
+  post "/finalize_trip", to: "trips#finalize_trip"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

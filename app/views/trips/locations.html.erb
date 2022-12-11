@@ -38,8 +38,7 @@
       <div id="xiconContainer">
         <%= image_tag("xicon.png", :alt => "close create location window", id:"xicon") %>
       </div>
-      <%= form_for @location, url: "/create_location" do |form| %>
-
+      <%= form_with url: "/create_location" do |form| %>
         <div class="rowBlock">
           <div class="columnBlock">
             <div class="form__group field">
@@ -48,7 +47,12 @@
             </div>
 
             <div class ="form__group field" style="margin-top: 5px">
-              <textarea placeholder="Description" name="location[description]" id="location_description"></textarea>
+              <textarea placeholder="Description" name="description" id="location_description"></textarea>
+            </div>
+
+            <div class ="form__group field" style="margin-top: 24px;">
+              <%= form.time_field :start_time, placeholder: "Start Time", class: "form__field" %>
+              <label for="start_time" class="form__label">Start Time</label>
             </div>
           </div>
           
@@ -71,6 +75,11 @@
             <div class ="form__group field">
               <%= form.number_field :price, placeholder: "Price", class: "form__field" %>
               <label for="price" class="form__label">Price</label>
+            </div>
+
+            <div class ="form__group field">
+              <%= form.time_field :end_time, placeholder: "End Time", class: "form__field" %>
+              <label for="end_time" class="form__label">End Time</label>
             </div>
           </div>
         </div>
