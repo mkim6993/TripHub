@@ -1,0 +1,78 @@
+#mergeWindow{
+    background: linear-gradient(90deg, #cc9ef4 83.34%, white 16.66%);
+    color: black;
+    border-radius: 25px;
+    height: 65%;
+    width: 80%;
+    z-index: 10;
+    position: fixed;
+    display: none;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    overflow: scroll;
+}
+
+#mergeScreen{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #000;
+}
+
+.mergeRow {
+    display: flex;
+}
+  
+.tripLocsColumn{
+  float: left;
+  width: 16.66%;
+}
+
+.spacer{
+  background-color: white;
+  display: inline-block;
+}
+
+.locTime{
+  background-color: rgb(220, 188, 239);
+  border-radius: 8px;
+}
+
+.mergeButton{
+  background-color: #cc9ef4;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  margin-block: 5px;
+}
+
+.locName{
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.mergeTripTitle{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#resultsColumn{
+  background-color: white;
+}
+
+.submitButton{
+  background-color: rgb(94, 135, 101);
+  border: none;
+  color: white;
+  border-radius: 8px;
+  margin-block: 5px;
+}
+
+.cancelButton{
+  background-color: rgb(157, 157, 157);
+  border: none;
+  color: white;
+  border-radius: 8px;
+  margin-block: 5px;
+}

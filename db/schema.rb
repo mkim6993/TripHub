@@ -82,6 +82,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_09_002529) do
     t.integer "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "start_time"
+    t.string "end_time"
   end
 
   create_table "trip_users", force: :cascade do |t|
