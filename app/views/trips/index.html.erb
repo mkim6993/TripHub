@@ -9,7 +9,7 @@
  <%= form_tag(tripsearch_path, :method => "get", id: "searchFormOnIndex") do %>
     <div class = "searchfields">
       <%= search_field_tag :name, params[:name], placeholder: "Search Trips by Name", class: "form-control" %>
-      <%= search_field_tag :saves, params[:saves], placeholder: "Filter Trips by Min Saves", class: "form-control" %>
+      <%= search_field_tag :saves, params[:saves], placeholder: "Filter Trips by Min Likes", class: "form-control" %>
       Before Date:
       <%= select_tag :month, options_for_select(month_collector), prompt: "Month", class: :"datefields"%>
       <%= select_tag :day, options_for_select(day_collector), prompt: "Day", class: :"datefields"%>

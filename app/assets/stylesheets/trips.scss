@@ -18,14 +18,18 @@
 }
 
 #tripInputFields {
-    padding: 15px;
-    width: 50%;
-    background-color: rgb(218, 218, 255);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    border-radius: 10px;
+  margin:auto;
+  padding: 15px;
+  width: 50%;
+  background-color: rgb(247, 229, 255);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  text-align:left;
+  border: #8c47c7;
+  border-style: solid;
+  border-width: 2px;
 }
 
 #addLocation {
@@ -542,6 +546,25 @@ $gray: #9b9b9b;
 
 #backToTrip:hover {
   background-color: rgb(123, 82, 159);
+}
+
+#backToAllTrips {
+  display: inline-flex; 
+  flex-direction: row;
+  justify-items: center;
+  align-content: center;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: black;
+}
+
+#backToAllTrips:hover {
+  background-color: rgb(194, 186, 204);
+  text-decoration: none;
+  text-emphasis: none;
+  text-decoration: underline;
+  text-decoration-color: rgb(194, 186, 204);
 }
 
 .rmBtnStyles {
