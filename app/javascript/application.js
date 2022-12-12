@@ -6,4 +6,5 @@ import "./custom/menu";
 import "./custom/searchLocations";
 import "./custom/addUserToTrip";
 import "./custom/showTrip";
+import "./custom/mergeTrips";
 //= require jquery
