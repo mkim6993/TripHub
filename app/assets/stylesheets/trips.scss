@@ -21,15 +21,13 @@
   margin:auto;
   padding: 15px;
   width: 50%;
-  background-color: rgb(247, 229, 255);
+  background-color: rgb(217, 208, 228); 
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
   text-align:left;
-  border: #8c47c7;
-  border-style: solid;
-  border-width: 2px;
+  border: 5px solid rgb(134, 120, 146);
 }
 
 #addLocation {
@@ -226,6 +224,10 @@
 .new_location {
     display: flex;
     flex-direction: column;
+}
+
+#timeForm{
+  display: none;
 }
 
 /* form styles */

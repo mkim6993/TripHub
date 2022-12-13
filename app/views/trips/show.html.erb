@@ -117,4 +117,21 @@
   <div id="backToHome">
     <ion-icon name="return-down-back-outline" style="font-size: 30px; margin-right: 10px;"></ion-icon><div>Back To Home</div>
   </div>
+
+  <div class="bottomNavigation">
+    <%= link_to "View related trips", "/trips/" << get_original_parent(@trip.id).to_s << "/branches" %>
+    <% if !current_user.nil? %>
+      <%if TripUser.where(trip_id: @trip.id).pluck(:user_id).include? current_user.id%>
+        |
+        <%= link_to "Create new version", "/trips/" << @trip.id.to_s << "/new_child" %>
+      <%end%>
+      <% if @trip.create_by == current_user.username %>
+        |
+        <%= link_to "Edit this trip", edit_trip_path(@trip) %> |
+        <%= button_to "Destroy this trip", @trip, method: :delete %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
+
+<div id='screen'></div>

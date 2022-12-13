@@ -45,6 +45,8 @@ Rails.application.routes.draw do
   # invite user from show
   post "/invite_user", to: "trips#invite"
 
+  post "/finalize_trip", to: "trips#finalize_trip"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

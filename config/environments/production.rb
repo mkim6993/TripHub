@@ -94,4 +94,15 @@ Rails.application.configure do
 
   #set active storage to amazon s3
   config.active_storage.service = :amazon
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => "triphubinfo@gmail.com",
+    :password             => "ycythfjhuzdxsdiw",
+    :authentication       => "plain"
+  }
+
 end

@@ -62,6 +62,8 @@ Rails.application.configure do
   # Store files locally.
   config.active_storage.service = :local
 
+  config.action_view.preload_links_header = false
+  
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 

@@ -3,34 +3,37 @@
   
 <div class="formcontainer">
   <div class="formbox">
-    <div id="headerTitle">    
+    <div id="headerTitle2">    
       <a href="<%= root_path %>">
     <%= image_tag("THLogo.png", :alt => "TripHub logo", class:"logo") %>  </a></div>
-  <div>
-    <%= form.label :username, style: "display: block" %>
-    <%= form.text_field :username %>
-  </div>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
+    
+   <div class ="form__group field">
+  <%= form.text_field :username, placeholder: "Username", class: "form__field" %>
+  <label for="username" class="form__label">Username</label>
+</div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
 
-  <div>
-    <%= form.label :password, style: "display: block" %>
-    <%= form.text_field :password %>
-  </div>
+  <div class ="form__group field">
+  <%= form.text_field :name, placeholder: "Name", class: "form__field" %>
+  <label for="name" class="form__label">Name</label>
+</div>
+
+   <div class ="form__group field">
+  <%= form.text_field :email, placeholder: "Email", class: "form__field" %>
+  <label for="email" class="form__label">Email</label>
+</div>
+
+   <div class ="form__group field">
+  <%= form.password_field :password, placeholder: "Password", class: "form__field" %>
+  <label for="password" class="form__label">Password</label>
+</div>
 
   <% if !@user.id.nil? %>
-    <div>
-      <%= form.label :user_slogen, style: "display: block" %>
-      <%= form.text_area :user_slogen %>
-    </div>
+     <div class ="form__group field">
+  <%= form.text_field :user_slogen, placeholder: "User Slogen", class: "form__field" %>
+  <label for="user_slogen" class="form__label">User Slogen</label>
+</div>
 
     <%# <div>
       <%= link_to "back to profile", @user %> 
