@@ -65,12 +65,27 @@ $gray: #9b9b9b;
 
 
 #locationInputFields {
+    margin:auto;
     padding: 15px;
     width: 50%;
-    background-color: rgb(218, 218, 255);
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
+    border: 5px solid rgb(134, 120, 146);
+    background-color: rgb(217, 208, 228); 
     border-radius: 10px;
+}
+
+#description {
+  resize: none;
+  width: 200px;
+  background-color: rgb(217, 208, 228);
+  border: 1px solid rgb(178, 178, 178);
+  border-radius: 10px;
+  height: 160px;
+  padding: 8px;
+}
+
+#description:click {
+  color: rgb(255, 0, 0);
 }

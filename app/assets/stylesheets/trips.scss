@@ -18,14 +18,16 @@
 }
 
 #tripInputFields {
-    padding: 15px;
-    width: 50%;
-    background-color: rgb(218, 218, 255);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    border-radius: 10px;
+  margin:auto;
+  padding: 15px;
+  width: 50%;
+  background-color: rgb(217, 208, 228); 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  text-align:left;
+  border: 5px solid rgb(134, 120, 146);
 }
 
 #addLocation {
@@ -375,7 +377,6 @@ $gray: #9b9b9b;
   display: flex;
   flex-direction: row;
   // background-color: red;
-  gap: 0px;
   margin-left: 20px;
   align-items: center;
 }
@@ -467,9 +468,7 @@ $gray: #9b9b9b;
 .locationName {
   font-size: 30px;
   font-weight: bold;
-  border-bottom: 1px solid rgb(221, 221, 221);
   padding-bottom: 5px;
-  margin-bottom: 5px;
 }
 
 .iconAndDes {
@@ -477,6 +476,7 @@ $gray: #9b9b9b;
   flex-direction: row;
   border-bottom: 1px solid rgb(221, 221, 221);
   padding-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .detailIcons {
@@ -548,7 +548,34 @@ $gray: #9b9b9b;
   background-color: rgb(123, 82, 159);
 }
 
+#backToAllTrips {
+  display: inline-flex; 
+  flex-direction: row;
+  justify-items: center;
+  align-content: center;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: black;
+}
+
+#backToAllTrips:hover {
+  background-color: rgb(194, 186, 204);
+  text-decoration: none;
+  text-emphasis: none;
+  text-decoration: underline;
+  text-decoration-color: rgb(194, 186, 204);
+}
+
 .rmBtnStyles {
   background-color: none;
   border: none;
+}
+
+#tripCollaboratorsList {
+  margin-left: 5px;
+  // background-color: aqua;
+  right: 0px;
+  font-size: 15px;
+  color: rgb(99, 99, 99);
 }

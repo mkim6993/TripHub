@@ -1,4 +1,4 @@
-<h3>Search Results</h3>
+<h3 style = "text-align: center">Search Results</h3>
 
 <div>
   <div id="trips">
@@ -52,6 +52,10 @@
     <% end %>
   
   </div>
-  <div>
+  <%= link_to "/trips/", method: "get", class: "rmBtnStyles" do %>
+            <div id="backToAllTrips">
+              <ion-icon name="return-down-back-outline" style="font-size: 30px; margin-right: 10px;"></ion-icon><div>Back To All Trips</div>
+            </div>
+          <% end %>
       <%= will_paginate @results, class: :"paginator"%>
   </div>

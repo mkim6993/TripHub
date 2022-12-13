@@ -22,6 +22,9 @@ class LocationsController < ApplicationController
   # POST /locations or /locations.json
   def create
     @location = Location.new(location_params)
+    puts "^^^^^^^^^^^^^^^^^"
+    puts location_params
+    puts "^^^^^^^^^^^^^^^^^"
 
     respond_to do |format|
       if @location.save

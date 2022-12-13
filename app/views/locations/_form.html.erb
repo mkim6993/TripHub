@@ -1,55 +1,57 @@
 <%= form_with(model: location) do |form| %>
-  <% if location.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(location.errors.count, "error") %> prohibited this location from being saved:</h2>
+  
 
-      <ul>
-        <% location.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+   
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class ="form__group field">
+    <%= form.text_field :name, placeholder: "Name", class: "form__field" %>
+    <label for="name" class="form__label">Name</label>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+
+    
+  <div class ="form__group field" style="margin-top: 5px">
+              <textarea placeholder="Description" name="description" id="description"></textarea>
+            </div>
+
+
+  
+  <div class ="form__group field">
+    <%= form.text_field :address, placeholder: "Address", class: "form__field" %>
+    <label for="address" class="form__label">Address</label>
   </div>
 
-  <div>
-    <%= form.label :address, style: "display: block" %>
-    <%= form.text_field :address %>
+
+  
+
+
+  
+  <div class ="form__group field">
+    <%= form.text_field :contact, placeholder: "Contact", class: "form__field" %>
+    <label for="contact" class="form__label">Contact</label>
   </div>
 
-  <div>
-    <%= form.label :contact, style: "display: block" %>
-    <%= form.text_field :contact %>
+
+
+  
+  <div class ="form__group field">
+    <%= form.number_field :price, placeholder: "Price", class: "form__field" %>
+    <label for="price" class="form__label">Price</label>
   </div>
 
-  <div>
-    <%= form.label :price, style: "display: block" %>
-    <%= form.number_field :price %>
+
+  
+  <div class ="form__group field">
+    <%= form.text_field :open_times, placeholder: "Open Times", class: "form__field" %>
+    <label for="open_times" class="form__label">Open Times</label>
   </div>
 
-  <div>
-    <%= form.label :image, style: "display: block" %>
-    <%= form.text_field :image %>
+
+  <div class ="form__group field">
+    <%= form.file_field :images, placeholder: "Images", class: "form__field" %>
+    <label for="images" class="form__label">Images</label>
   </div>
 
-  <div>
-    <%= form.label :open_times, style: "display: block" %>
-    <%= form.text_field :open_times %>
-  </div>
-
-  <div>
-    <%= form.label :images, style: "display: block" %><br>
-    <%= form.file_field :images, multiple: true %><br>
-  </div>
 
   <div>
     <%= form.submit %>

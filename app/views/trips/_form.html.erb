@@ -13,10 +13,10 @@
   <label for="title" class="form__label">Title</label>
 </div>
 
-<div class ="form__group field">
-  <%= form.text_field :description, placeholder: "Description", class: "form__field" %>
-  <label for="description" class="form__label">Description</label>
-</div>
+ <div class ="form__group field" style="margin-top: 5px">
+              <textarea placeholder="Description" name="description" id="description"></textarea>
+            </div>
+
 
 
   <div>
@@ -29,7 +29,7 @@
 
  <div class ="form__group field">
   <%= form.check_box :public %>
-  <label for="description" class="form__label">Public</label>
+  <label for="description" class="form__label" style = "justify-content:left">Public</label>
 </div>
 
   <%# parent id %>

@@ -20,7 +20,7 @@
           <li><%= link_to "Create Location", new_location_path %></li>
           <li class="dropdown">
             <a href="#" id="account" class="dropdown-toggle">
-              Account <b class="caret"></b>
+              <%= current_user.username %> <b class="caret"></b>
             </a>
             <ul id="dropdown-menu" class="dropdown-menu">
               <li class = "dropdown-item"><%= link_to "Profile", current_user %></li>
@@ -35,15 +35,5 @@
         <% end %>
       </ul>
     </nav>
-    <div id="quickProfileContainer">
-      <div id="quickProfile">
-        <div id="quickProfileAction">
-        <% if logged_in? %>
-          <%= current_user.username %>
-        <% end %>
-        </div>
-        <div id="quickProfilePhoto"></div>
-      </div>
-    </div>
   </div>
 </header>
