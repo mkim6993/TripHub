@@ -1,11 +1,10 @@
 <%= render 'layouts/flash' %>
+<div style = "text-align:center">
 <div class="pageTitleText">Create a new Location</div>
 <div id = "locationInputFields">
 <%= render "form", location: @location %>
 </div>
+</div>
 
 <br>
 
-<div>
-  <%= link_to "Back to locations", locations_path %>
-</div>

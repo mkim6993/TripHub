@@ -31,6 +31,15 @@
     margin-left: 20px;
   }
 
+  #headerTitle2 {
+    font-size: 30px;
+    margin-bottom: 12px;
+    margin-top: 4px;
+    margin-left: 20px;
+    border-radius: 5px;
+    background-color: rgb(104, 69, 134);
+  }
+
   .headerTitleText {
     color: white;
   }
@@ -461,3 +470,66 @@ input::file-selector-button {
 input::file-selector-button:hover {
   background:rgb(104, 69, 134)
 }
+
+.delete_button {
+  font-size: large;
+  background-color: rgb(244, 158, 158);
+  border: none;
+  color: white;
+  border-radius: 8px;
+}
+
+.delete_button:hover {
+  font-size: large;
+  background-color: rgb(255, 0, 0);
+  border: none;
+  color: white;
+  border-radius: 8px;
+}
+
+
+a:link { 
+  color: black;
+}
+a:visited { 
+  color: black;
+}
+
+a:active { 
+  color: black;
+}
+
+
+#userInputFields {
+  margin:auto;
+  padding: 15px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 5px solid rgb(134, 120, 146);
+  background-color: rgb(217, 208, 228); 
+  border-radius: 10px;
+}
+
+#myVideo {
+  position: fixed;
+  object-fit: cover;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Add some content at the bottom of the video/page */
+.content {
+  position: fixed;
+  color: #f1f1f1;
+  width: 30%;
+  padding: 20px;
+  text-align: center;
+  left:35%;
+  bottom: 30%;
+  background: rgba(0, 0, 0, 0.5);
+}
+

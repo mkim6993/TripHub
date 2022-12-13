@@ -72,6 +72,12 @@ class StarFansController < ApplicationController
   def follows
     if params[:type] == 'follower'
       @follows = StarFan.where(star_id: params[:id]).pluck(:fan_id)
+      puts "FOLLOWERS"
+      puts @follows
+      puts params[:id]
+      puts "========"
+      puts StarFan.where(star_id: params[:id]).pluck(:fan_id)
+      puts "========"
     elsif params[:type] == 'following'
       @follows = StarFan.where(fan_id: params[:id]).pluck(:star_id)
     end
