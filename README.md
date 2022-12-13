@@ -15,7 +15,7 @@ https://trello.com/w/team6784/home
 
 ### Heroku Link
 
-https://infinite-coast-27462.herokuapp.com/
+https://triphubteam6.herokuapp.com/
 
 ### How to install
 
