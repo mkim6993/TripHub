@@ -73,7 +73,10 @@
       </div>
     </div>
   </div>
-  <%triplocs = TripLocation.where(:trip_id => @trip.id)%>
+  <%triplocs = TripLocation.where(:trip_id => @trip.id).sort_by { |tl| 
+    hours, minutes = tl.start_time.split(":") 
+    hours.to_i*60+minutes.to_i
+  }%>
   <%if !triplocs.nil?%>
     <%triplocs.each do |triploc|%>
       <div id="tripImageDetails">
@@ -96,8 +99,9 @@
           <div class="locationName"><%= loc.name %></div>
           <div class="iconAndDes"><ion-icon name="information-circle-outline" class="detailIcons" color="secondary"></ion-icon><div class="detailText"><%= loc.description %></div></div>
           <div class="rowCenter"><ion-icon name="location-outline" class="detailIcons" color="secondary"></ion-icon><div class="detailText"><%= loc.address %></div></div>
+          <div class="rowCenter"><ion-icon name="time-outline" class="detailIcons" color="secondary"></ion-icon><div class="detailText"><%= convert_time(triploc.start_time) + "-" + convert_time(triploc.end_time) %></div></div>
           <div class="rowCenter"><ion-icon name="logo-usd" class="detailIcons" color="secondary"></ion-icon><div class="detailText"><%= loc.price %></div></div>
-          <div class="rowCenter"><ion-icon name="time-outline" class="detailIcons" color="secondary"></ion-icon><div class="detailText"><%= loc.open_times %></div></div>
+          <!--<div class="rowCenter"><ion-icon name="time-outline" class="detailIcons" color="secondary"></ion-icon><div class="detailText"><%= loc.open_times %></div></div>-->
           <div class="rowCenter"><ion-icon name="call-outline" class="detailIcons" color="secondary"></ion-icon><div class="detailText"><%= loc.contact %></div></div>
           <div id="locationActions">
             <%= button_to 'Remove this location', {:controller => "trip_locations", :action => "destroy", :triploc_id => triploc.id, :trip_id => triploc.trip_id} , :method=>:delete, class: "removeLocationBtn"  %>
