@@ -3,6 +3,7 @@
 <div>
   <div id="trips">
     <% @results.each do |trip| %>
+    <% if logged_in? %>
     <% if trip.public == true  or current_user.id == User.where("username = ?", trip.create_by).ids or !following?(User.where("username = ?", trip.create_by).first)%>
       <div class="singleTripBox">
         <div class="singleTripImage">
@@ -48,6 +49,54 @@
           <%= link_to "Show this trip", trip %>
         
       </div>
+      <% end %>
+      <% else %>
+        <% if trip.public == true %>
+        <div class="singleTripBox">
+        <div class="singleTripImage">
+          <div class="bookmark">
+          <% if liked?(trip) %>
+            <%= link_to '<ion-icon name="heart-outline" style="font-size: 30px; margin-left: 10px; color: white" class="socialIconBtn"></ion-icon>'.html_safe, likesupdate_path(trip: trip) %>
+          <% else %>
+            <%= link_to '<ion-icon name="heart" style="font-size: 30px; margin-left: 10px; color: white" class="socialIconBtn"></ion-icon>'.html_safe, likesupdate_path(trip: trip) %>
+          <% end %>
+          </div>
+          <div id="save"></div>
+          
+          <% imgs = [] %>
+          <%TripLocation.where(trip_id: trip.id).each do |triploc|%>
+            <% file = Location.where(id: triploc.location_id)[0].images[0] %>
+            <%if !file.nil?%>
+              <% imgs.append(file) %>
+            <%end%>
+          <% end %>
+          <%if imgs.length > 0%>
+            <%=carousel_for(imgs)%>
+          <%end%>
+        </div>
+        <div class="singleTripDetails">
+          <div class="singleTripBold">
+            <a href="/trips/<%= trip.id %>" id="tripTitleLink"><%= trip.title %></a>
+            <div><%= get_likes(trip) %> 
+              <% if get_likes(trip) == 1 %>
+                like
+              <% else %>
+                likes
+              <% end %>
+            </div>
+          </div>
+          <div class="singleTripBoldUser">
+          <%= link_to user_path(User.where("username = ?", trip.create_by).ids),  :style => 'color:black' do %>
+            <div class="singleUserText"><%= trip.create_by %></div>
+          <% end %>
+          </div>
+          <div class="singleTripNorm"><%= trip.trip_date %></div>
+        </div>
+        
+          <%= link_to "Show this trip", trip %>
+        
+      </div>
+      <% end %>
       <% end %>
     <% end %>
   
