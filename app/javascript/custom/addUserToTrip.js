@@ -75,14 +75,11 @@ const popup = async () => {
 };
 
 const addUserToTrip = (userId) => {
-    var url = window.location.href;
-    for (let i = 0; i < 4; i++) {
-        url = url.substring(url.indexOf("/") + 1);
-    }
+    var tripId = document.getElementById("tripIdContaining").innerHTML;
     $.ajax({
         type: "POST",
         url: "/invite_user",
-        data: { user_id: userId, trip_id: url },
+        data: { user_id: userId, trip_id: tripId },
     });
 };
 

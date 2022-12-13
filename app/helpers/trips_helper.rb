@@ -120,16 +120,22 @@ module TripsHelper
         readable_date += year
     end
 
-    def invited_users(trip_id)
-        trip_users = TripUser.where(trip_id: trip_id)
-        usernames = []
-        trip_users.each do | tripU |
-            user = User.where(id: tripU.user_id)
-            puts "##########################"
-            puts user.username
-            usernames.append(user.username);
+    def invited_users(trip_id, root_user_id)
+        trip_users = TripUser.where(trip_id: trip_id).to_a
+        userids = []
+        trip_users.each do | tu |
+            userids.append(tu.user_id)
         end
-        return usernames
+        puts "##############"
+        usernames = "<div>"
+        userids.each do | id |
+            user = User.find_by(id: id).username
+            if user != root_user_id
+                usernames << " @" << user 
+            end
+        end
+        usernames << "</div>"
+        return raw(usernames)
     end
 
     def usersearch(search)
@@ -139,6 +145,17 @@ module TripsHelper
         end
     end
 
+    def belong_to_user?(user_id, trip_id)
+        trip = Trip.find_by(id: trip_id)
+        user = User.find_by(id: user_id)
+
+        if trip.create_by == user.username
+            return true
+        else
+            return false
+        end
+    end
+    
     def convert_time(time)
         hours, minutes = time.split(":")
         hours = hours.to_i

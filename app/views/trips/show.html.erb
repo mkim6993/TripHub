@@ -2,6 +2,7 @@
 <div id="individualPost">
   <div id="tripHeaders">
     <div id="headerPrimary">
+      <div id="tripIdContaining" style="display: none"><%= @trip.id %></div>
       <div id="postTitle">
         <div>
           <%= @trip.title %>
@@ -17,10 +18,6 @@
           <% end %>
         </div>
       </div>  
-      
-      <%# invited_users code here %>
-      
-      
     </div>
     <%# Invite user to trip popup and search %>
     <div class="flexRowCenter">
@@ -67,6 +64,7 @@
     <div id="nameAndDescription">
       <div id="tripCreatorName">
         @<%= @trip.create_by %>
+        <div id="tripCollaboratorsList"><%= invited_users(@trip.id, @trip.create_by) %></div>
       </div>
       <div id="tripDescriptionBox">
         <ion-icon name="reader-outline" style="font-size: 25px; margin-right: 10px" color="secondary"></ion-icon><%= @trip.description %>
@@ -97,6 +95,7 @@
         <div id="tripDetails">
           <% loc = get_loc_info(triploc.location_id)%>
           <div class="locationName"><%= loc.name %></div>
+          <div class="iconAndDes"><div class="detailText" style="margin-left: 5px; margin-bottom: 5px;"><%= triploc.start_time %> - <%= triploc.end_time %></div></div>
           <div class="iconAndDes"><ion-icon name="information-circle-outline" class="detailIcons" color="secondary"></ion-icon><div class="detailText"><%= loc.description %></div></div>
           <div class="rowCenter"><ion-icon name="location-outline" class="detailIcons" color="secondary"></ion-icon><div class="detailText"><%= loc.address %></div></div>
           <div class="rowCenter"><ion-icon name="time-outline" class="detailIcons" color="secondary"></ion-icon><div class="detailText"><%= convert_time(triploc.start_time) + "-" + convert_time(triploc.end_time) %></div></div>
@@ -104,14 +103,16 @@
           <!--<div class="rowCenter"><ion-icon name="time-outline" class="detailIcons" color="secondary"></ion-icon><div class="detailText"><%= loc.open_times %></div></div>-->
           <div class="rowCenter"><ion-icon name="call-outline" class="detailIcons" color="secondary"></ion-icon><div class="detailText"><%= loc.contact %></div></div>
           <div id="locationActions">
-            <%= button_to 'Remove this location', {:controller => "trip_locations", :action => "destroy", :triploc_id => triploc.id, :trip_id => triploc.trip_id} , :method=>:delete, class: "removeLocationBtn"  %>
+            <% if belong_to_user?(current_user.id, @trip.id) %>
+              <%= button_to 'Remove this location', {:controller => "trip_locations", :action => "destroy", :triploc_id => triploc.id, :trip_id => triploc.trip_id} , :method=>:delete, class: "removeLocationBtn"  %>
+            <% end %>
           </div>
         </div>
       </div>
     <%end%>
   <%end%>
   <% if !current_user.nil? %>
-    <% if current_user.trips.exists?(@trip.id) %>
+    <% if belong_to_user?(current_user.id, @trip.id) %>
       <div id="addNewLoc">
         <ion-icon name="add-circle-outline" style="font-size: 25px; margin-right: 5px;"></ion-icon>
         <%= link_to "Add a new location", "/trips/" << @trip.id.to_s << "/locations", id: "addNewLocButton" %>
@@ -120,21 +121,6 @@
   <% end %>
   <div id="backToHome">
     <ion-icon name="return-down-back-outline" style="font-size: 30px; margin-right: 10px;"></ion-icon><div>Back To Home</div>
-  </div>
-
-  <div class="bottomNavigation">
-    <%= link_to "View related trips", "/trips/" << get_original_parent(@trip.id).to_s << "/branches" %>
-    <% if !current_user.nil? %>
-      <%if TripUser.where(trip_id: @trip.id).pluck(:user_id).include? current_user.id%>
-        |
-        <%= link_to "Create new version", "/trips/" << @trip.id.to_s << "/new_child" %>
-      <%end%>
-      <% if @trip.create_by == current_user.username %>
-        |
-        <%= link_to "Edit this trip", edit_trip_path(@trip) %> |
-        <%= button_to "Destroy this trip", @trip, method: :delete %>
-      <% end %>
-    <% end %>
   </div>
 </div>
 
