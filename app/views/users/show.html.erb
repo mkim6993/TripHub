@@ -5,11 +5,14 @@
 
 		<div class="profile">
 
-			<div class="profile-image">
-
+			<%# <div class="profile-image">
+<%# 
 				<img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt="">
+        
+        <img src="https://drive.google.com/file/d/1D7aYLCRY4GQNJ81frzWEY8PIDn-QhZG_/view?usp=share_link" alt=""> %>
 
-			</div>
+
+			<%# </div> %>
 
 			<div class="profile-user-settings">
 
@@ -21,6 +24,10 @@
 				<button class="btn profile-edit-btn">
           <%= link_to "Setting",  edit_user_path%>
         </button>
+        <button class="btn profile-edit-btn">
+          <%= link_to "Log out",  logout_path, data: { "turbo-method": :delete } %>
+        </button>
+        
         <% else %>
           <% if following?(@user) %>
             <button class="btn profile-edit-btn">
@@ -50,11 +57,11 @@
 				<p><%= @user.user_slogen %></p>
 
 			</div>
-      <% if current_user.id == @user.id %>
-       <div class="sign-out-button">
+      <%# <% if current_user.id == @user.id %>
+       <%# <div class="sign-out-button">
             <%= link_to "Log out",  logout_path, data: { "turbo-method": :delete } %>
-       </div> 
-      <% end %>
+       <%# </div>  %> 
+      <%# <% end %>
 		</div>
 	</div>
 </header>
