@@ -375,7 +375,6 @@ $gray: #9b9b9b;
   display: flex;
   flex-direction: row;
   // background-color: red;
-  gap: 0px;
   margin-left: 20px;
   align-items: center;
 }
@@ -467,9 +466,7 @@ $gray: #9b9b9b;
 .locationName {
   font-size: 30px;
   font-weight: bold;
-  border-bottom: 1px solid rgb(221, 221, 221);
   padding-bottom: 5px;
-  margin-bottom: 5px;
 }
 
 .iconAndDes {
@@ -477,6 +474,7 @@ $gray: #9b9b9b;
   flex-direction: row;
   border-bottom: 1px solid rgb(221, 221, 221);
   padding-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .detailIcons {
@@ -551,4 +549,12 @@ $gray: #9b9b9b;
 .rmBtnStyles {
   background-color: none;
   border: none;
+}
+
+#tripCollaboratorsList {
+  margin-left: 5px;
+  // background-color: aqua;
+  right: 0px;
+  font-size: 15px;
+  color: rgb(99, 99, 99);
 }
