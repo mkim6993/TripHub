@@ -43,24 +43,6 @@ After creating an account, users still edit their account by clicking the settin
 
 Then there are some buttons on the header, the trips function can help the users to filter and find their desired trips and then click that trip for trip details, invite users, attend the trips, or create related trips. The My trip button can direct to users’ attended trips or the trips they created. Then there are create a trip and create location buttons which are used to create a location that is not showing up or create a trip that no one created before. But it is important to create the location first and then the trip second. At last, there is a dropdown button for user accounts. The profile can navigate to the user’s profile page, settings can let the user edit their profile page and the brutal log out button.
 
-### How to install
-
-It is easy to install our application.
-
-First, on the terminal, just clone this GitHub repo below:
-
-https://github.com/mkim6993/TripHub
-
-Second, open the file just cloned in any editor; VScode is recommended.
-
-Third, in the terminal, type “bundle install” to install some essential packages.
-
-Fourth, in the terminal, type “rails server” to activate the application.
-
-Fifth, open a browser and go to the link http://localhost:3000.
-
-Sixth, sit tight and start your journey.
-
 ### How to use
 
 Our application is easy, but most functionalities can only be used after logging in. If not, there still have some previews of trip posts. So the first step is to create an account with us. It’s easy. Just click the login button and the sign-up button in the middle of the screen.
