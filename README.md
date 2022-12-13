@@ -8,13 +8,6 @@ Our app is based on rails on ruby along with HTML and CSS. Rails are much more m
 
 The challenges we met are how to attract more users to use our app because, in many client-based new applications, it takes time to acquire users in the beginning. Then after users, we need to provide more functionalities in the future, such as implementing Google map API so we can interact with it and users can easily add map details and locations to their posts; what’s more, we also want to have more API implementation such as, log in or sign up via many other accounts like google or Facebook. Also, it is very important to maintain the stability of our app, reduce the occurrence of errors and make the whole application run smoothly and quickly.
 
-Our app is based on rails on ruby along with HTML and CSS. Rails are much more manageable and straightforward to read when programming. And using HTML with CSS is to provide an excellent UI for our users.
-
-The challenges we met are how to attract more users to use our app because, in many client-based new applications, it takes time to acquire users in the beginning. Then after users, we need to provide more functionalities in the future, such as implementing Google map API so we can interact with it and users can easily add map details and locations to their posts; what’s more, we also want to have more API implementation such as, log in or sign up via many other accounts like google or Facebook. Also, it is very important to maintain the stability of our app, reduce the occurrence of errors and make the whole application run smoothly and quickly.
-
-Our app is based on rails on ruby along with HTML and CSS. Rails are much more manageable and straightforward to read when programming. And using HTML with CSS is to provide an excellent UI for our users.
-
-The challenges we met are how to attract more users to use our app because, in many client-based new applications, it takes time to acquire users in the beginning. Then after users, we need to provide more functionalities in the future, such as implementing Google map API so we can interact with it and users can easily add map details and locations to their posts; what’s more, we also want to have more API implementation such as, log in or sign up via many other accounts like google or Facebook. Also, it is very important to maintain the stability of our app, reduce the occurrence of errors and make the whole application run smoothly and quickly.
 
 ### Trello Link
 
