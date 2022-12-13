@@ -155,4 +155,14 @@ module TripsHelper
             return false
         end
     end
+    
+    def convert_time(time)
+        hours, minutes = time.split(":")
+        hours = hours.to_i
+        if hours > 12
+            return (hours-12).to_s + ":" + minutes + " PM"
+        end
+        return hours.to_s + ":" + minutes + " AM"
+    end
+
 end
