@@ -68,7 +68,11 @@
 
 <div>
   <div id="trips">
+    <%if @trip.nil?%>
+      This user doesn't have posts.
+    <%end%>
     <% @trips.each do |trip| %>
+
     <% if trip.public == true  or current_user.id == @user.id or !following?(@user)%>
      <div class="singleTripBox">
         <div class="singleTripImage">
