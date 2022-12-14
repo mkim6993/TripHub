@@ -16,7 +16,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
           <li><%= link_to "Create Trip", new_trip_path %></li>
-          <li><%= link_to "Create Location", new_location_path %></li>
+          <!---<li><%= link_to "Create Location", new_location_path %></li>--->
           <li class="dropdown">
             <a href="#" id="account" class="dropdown-toggle">
               <%= current_user.username %> <b class="caret"></b>
