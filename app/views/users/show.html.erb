@@ -20,27 +20,25 @@
           <%= @user.name %>
         </h1>
 
-        <%if !current_user.nil?%>
-          <% if current_user.id == @user.id %>
-          <button class="btn profile-edit-btn">
-            <%= link_to "Setting",  edit_user_path%>
-          </button>
-          <button class="btn profile-edit-btn">
-            <%= link_to "Log out",  logout_path, data: { "turbo-method": :delete } %>
-          </button>
-          
+        <% if current_user.id == @user.id %>
+				<button class="btn profile-edit-btn">
+          <%= link_to "Setting",  edit_user_path%>
+        </button>
+        <button class="btn profile-edit-btn">
+          <%= link_to "Log out",  logout_path, data: { "turbo-method": :delete } %>
+        </button>
+        
+        <% else %>
+          <% if following?(@user) %>
+            <button class="btn profile-edit-btn">
+            <%= link_to "Follow",  followuser_path(:star => @user.id, :fan => current_user.id)%>
+           </button>
           <% else %>
-            <% if following?(@user) %>
-              <button class="btn profile-edit-btn">
-              <%= link_to "Follow",  followuser_path(:star => @user.id, :fan => current_user.id)%>
+            <button class="btn profile-edit-btn">
+            <%= link_to "Unfollow",  followuser_path(:star => @user.id, :fan => current_user.id)%>
             </button>
-            <% else %>
-              <button class="btn profile-edit-btn">
-              <%= link_to "Unfollow",  followuser_path(:star => @user.id, :fan => current_user.id)%>
-              </button>
-            <% end %>
           <% end %>
-        <%else%>
+        <% end %>
 
 			</div>
 
@@ -75,7 +73,6 @@
     <%end%>
     <% @trips.each do |trip| %>
 
-    <%if !current_user.nil?%>
     <% if trip.public == true  or current_user.id == @user.id or !following?(@user)%>
      <div class="singleTripBox">
         <div class="singleTripImage">
@@ -123,5 +120,4 @@
       </div>
       <% end %>
     <% end %>
-    <%end%>
   </div>
