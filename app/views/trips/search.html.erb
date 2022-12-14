@@ -1,3 +1,4 @@
+<% if !@results.empty?%>
 <h3 style = "text-align: center">Search Results</h3>
 
 <div>
@@ -59,3 +60,15 @@
           <% end %>
       <%= will_paginate @results, class: :"paginator"%>
   </div>
+<% else %>
+<!-- The video -->
+<video autoplay muted loop id="myVideo">
+  <source src="https://cdn.pixabay.com/vimeo/735655812/Girl%20-%20125678.mp4?width=1280&expiry=1671029684&hash=b46f13a938816a5a195fbeedccbe83d69c02f5ce" type="video/mp4">
+</video>
+
+<!-- Optional: some overlay text to describe the video -->
+<div class="nosearch">
+  <h1>No Search Results</h1>
+   <%= link_to '<h3 style = "color: white">Back to all trips</h3>'.html_safe, trips_path %>
+</div>
+<% end %>

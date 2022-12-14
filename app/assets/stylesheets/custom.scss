@@ -529,6 +529,17 @@ a:active {
   padding: 20px;
   text-align: center;
   left:35%;
+  bottom: 30.5%;
+  background: rgba(0, 0, 0, 0);
+}
+
+.nosearch {
+  position: fixed;
+  color: #f1f1f1;
+  width: 30%;
+  padding: 20px;
+  text-align: center;
+  left:35%;
   bottom: 30%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(255, 0, 0, 0.5);
 }
