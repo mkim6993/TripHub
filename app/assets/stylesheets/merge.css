@@ -79,10 +79,10 @@
 }
 
 #resultsColumn{
-  background-color: #ead1ff;
+  /* background-color: #ead1ff; */
   border-radius: 10px;
   flex: .8;
-  height: 100%;
+  height: 100%; 
 }
 
 .submitButton{
