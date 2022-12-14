@@ -101,17 +101,6 @@
             <%= form.submit %>
           </div>
         </div>
-        <% if @location.errors.any? %>
-          <div style="color: red">
-            <h2><%= pluralize(@location.errors.count, "error") %> prohibited this @location from being saved:</h2>
-
-            <ul>
-              <% @location.errors.each do |error| %>
-                <li><%= error.full_message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
       <% end %>
     </div>
   </div>

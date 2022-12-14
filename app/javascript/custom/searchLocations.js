@@ -74,16 +74,22 @@ const addSearchLocationToTrip = (locationId) => {
     var tripId = document.getElementById("containingTripId").innerHTML;
     var startTime = document.getElementById("start" + locationId).value;
     var endTime = document.getElementById("end" + locationId).value;
-    $.ajax({
-        type: "POST",
-        url: "/add_search_location",
-        data: {
-            location_id: locationId,
-            trip_id: tripId,
-            start_time: startTime,
-            end_time: endTime,
-        },
-    });
+    if (startTime == "" || endTime == "") {
+        var errorMsg = document.getElementById(locationId + "error");
+        errorMsg.innerHTML = "";
+        errorMsg.innerHTML = "Start and End Time is required";
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "/add_search_location",
+            data: {
+                location_id: locationId,
+                trip_id: tripId,
+                start_time: startTime,
+                end_time: endTime,
+            },
+        });
+    }
 };
 
 // returns results from a location search
@@ -115,7 +121,9 @@ const returnLocations = async () => {
                         locations[i].contact +
                         "</div></div><div class='locDetails'><strong>Description: </strong>" +
                         locations[i].description +
-                        "</div><div class='locDetails'><div><strong>Start Time</strong><input type='time' id='start" +
+                        "</div><div class='locDetails'><div id='" +
+                        locId +
+                        "error' style='color: red; font-size: 12px;'></div><div><strong>Start Time</strong><input type='time' id='start" +
                         locId +
                         "'></div><div><strong>End Time</strong><input type='time' id='end" +
                         locId +
