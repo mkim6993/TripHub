@@ -15,7 +15,6 @@
       <ul id="navbar-menu" class="nav navbar-nav navbar-right collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
-          <li><%= link_to "My Trips", "/users/" << current_user.id.to_s << "/trips" %></li>
           <li><%= link_to "Create Trip", new_trip_path %></li>
           <li><%= link_to "Create Location", new_location_path %></li>
           <li class="dropdown">

@@ -28,11 +28,11 @@
       <div class="singleTripBox">
         <div class="singleTripImage">
           <div class="bookmark">
-          <% if liked?(trip) %>
-            <%= link_to '<ion-icon name="heart-outline" style="font-size: 30px; margin-left: 10px; color: white" class="socialIconBtn"></ion-icon>'.html_safe, likesupdate_path(trip: trip) %>
-          <% else %>
-            <%= link_to '<ion-icon name="heart" style="font-size: 30px; margin-left: 10px; color: white" class="socialIconBtn"></ion-icon>'.html_safe, likesupdate_path(trip: trip) %>
-          <% end %>
+            <% if liked?(trip) %>
+              <%= link_to '<ion-icon name="heart-outline" style="font-size: 30px; margin-left: 10px; color: white" class="socialIconBtn"></ion-icon>'.html_safe, likesupdate_path(trip: trip) %>
+            <% else %>
+              <%= link_to '<ion-icon name="heart" style="font-size: 30px; margin-left: 10px; color: white" class="socialIconBtn"></ion-icon>'.html_safe, likesupdate_path(trip: trip) %>
+            <% end %>
           </div>
           <div id="save"></div>
           

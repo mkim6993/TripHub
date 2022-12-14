@@ -46,6 +46,10 @@ class TripsController < ApplicationController
       cur_loc = loc_array[x.to_s]
       TripLocation.create(trip_id: trip_id, location_id: cur_loc[0].to_i, start_time: cur_loc[1], end_time: cur_loc[2])
     end
+
+    respond_to do |format|
+      format.js { render :js => "window.location.href ='/trips/" + trip_id.to_s + "'"}
+    end
   end
 
   # post method when new location is created from /trips/:id/locations
