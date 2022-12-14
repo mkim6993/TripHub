@@ -3,7 +3,9 @@
   <div id="tripHeaders">
     <div id="headerPrimary">
       <div id="tripIdContaining" style="display: none"><%= @trip.id %></div>
-      <div id="userIdContaining" style="display: none"><%= current_user.id %></div>
+      <%if !current_user.nil?%>
+        <div id="userIdContaining" style="display: none"><%= current_user.id %></div>
+      <%end%>
       <div id="postTitle">
         <div>
           <%= @trip.title %>
@@ -104,8 +106,10 @@
           <!--<div class="rowCenter"><ion-icon name="time-outline" class="detailIcons" color="secondary"></ion-icon><div class="detailText"><%= loc.open_times %></div></div>-->
           <div class="rowCenter"><ion-icon name="call-outline" class="detailIcons" color="secondary"></ion-icon><div class="detailText"><%= loc.contact %></div></div>
           <div id="locationActions">
-            <% if belong_to_user?(current_user.id, @trip.id) %>
-              <%= button_to 'Remove this location', {:controller => "trip_locations", :action => "destroy", :triploc_id => triploc.id, :trip_id => triploc.trip_id} , :method=>:delete, class: "removeLocationBtn"  %>
+            <%if !current_user.nil?%>
+              <% if belong_to_user?(current_user.id, @trip.id) %>
+                <%= button_to 'Remove this location', {:controller => "trip_locations", :action => "destroy", :triploc_id => triploc.id, :trip_id => triploc.trip_id} , :method=>:delete, class: "removeLocationBtn"  %>
+              <% end %>
             <% end %>
           </div>
         </div>
