@@ -71,16 +71,25 @@ const getInstances = (locationId) => {
 
 // add selected location to Trip
 const addSearchLocationToTrip = (locationId) => {
-    var url = window.location.href;
-    for (let i = 0; i < 4; i++) {
-        url = url.substring(url.indexOf("/") + 1);
+    var tripId = document.getElementById("containingTripId").innerHTML;
+    var startTime = document.getElementById("start" + locationId).value;
+    var endTime = document.getElementById("end" + locationId).value;
+    if (startTime == "" || endTime == "") {
+        var errorMsg = document.getElementById(locationId + "error");
+        errorMsg.innerHTML = "";
+        errorMsg.innerHTML = "Start and End Time is required";
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "/add_search_location",
+            data: {
+                location_id: locationId,
+                trip_id: tripId,
+                start_time: startTime,
+                end_time: endTime,
+            },
+        });
     }
-    url = url.substring(0, url.indexOf("/"));
-    $.ajax({
-        type: "POST",
-        url: "/add_search_location",
-        data: { location_id: locationId, trip_id: url },
-    });
 };
 
 // returns results from a location search
@@ -112,7 +121,13 @@ const returnLocations = async () => {
                         locations[i].contact +
                         "</div></div><div class='locDetails'><strong>Description: </strong>" +
                         locations[i].description +
-                        "</div></div><div class='addLocationBtnContainer'><button class='addLocationBtn' id='code" +
+                        "</div><div class='locDetails'><div id='" +
+                        locId +
+                        "error' style='color: red; font-size: 12px;'></div><div><strong>Start Time</strong><input type='time' id='start" +
+                        locId +
+                        "'></div><div><strong>End Time</strong><input type='time' id='end" +
+                        locId +
+                        "'></div></div></div><div class='addLocationBtnContainer'><button class='addLocationBtn' id='code" +
                         locId +
                         "'>Add this location</button></div></div>";
                     document.getElementById("searchResults").innerHTML +=

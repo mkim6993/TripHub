@@ -5,11 +5,14 @@
 
 		<div class="profile">
 
-			<div class="profile-image">
-
+			<%# <div class="profile-image">
+<%# 
 				<img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt="">
+        
+        <img src="https://drive.google.com/file/d/1D7aYLCRY4GQNJ81frzWEY8PIDn-QhZG_/view?usp=share_link" alt=""> %>
 
-			</div>
+
+			<%# </div> %>
 
 			<div class="profile-user-settings">
 
@@ -21,6 +24,10 @@
 				<button class="btn profile-edit-btn">
           <%= link_to "Setting",  edit_user_path%>
         </button>
+        <button class="btn profile-edit-btn">
+          <%= link_to "Log out",  logout_path, data: { "turbo-method": :delete } %>
+        </button>
+        
         <% else %>
           <% if following?(@user) %>
             <button class="btn profile-edit-btn">
@@ -50,28 +57,25 @@
 				<p><%= @user.user_slogen %></p>
 
 			</div>
-      <% if current_user.id == @user.id %>
-       <div class="sign-out-button">
+      <%# <% if current_user.id == @user.id %>
+       <%# <div class="sign-out-button">
             <%= link_to "Log out",  logout_path, data: { "turbo-method": :delete } %>
-       </div> 
-      <% end %>
+       <%# </div>  %> 
+      <%# <% end %>
 		</div>
 	</div>
 </header>
 
 <div>
   <div id="trips">
+    <%if @trips.nil?%>
+      This user doesn't have posts.
+    <%end%>
     <% @trips.each do |trip| %>
+
     <% if trip.public == true  or current_user.id == @user.id or !following?(@user)%>
-      <div class="singleTripBox">
+     <div class="singleTripBox">
         <div class="singleTripImage">
-          <%= image_tag("path.JPG", :class => "indexImages", :alt => "path") %>
-          <div class="arrowRight">
-            <%= image_tag("arrow_right.png", :alt => "arrow") %>  
-          </div>
-          <div class="arrowLeft">
-            <%= image_tag("arrow_left.png", :alt => "arrow") %>  
-          </div>
           <div class="bookmark">
           <% if liked?(trip) %>
             <%= link_to '<ion-icon name="heart-outline" style="font-size: 30px; margin-left: 10px; color: white" class="socialIconBtn"></ion-icon>'.html_safe, likesupdate_path(trip: trip) %>
@@ -80,23 +84,33 @@
           <% end %>
           </div>
           <div id="save"></div>
+          
+          <% imgs = [] %>
+          <%TripLocation.where(trip_id: trip.id).each do |triploc|%>
+            <% file = Location.where(id: triploc.location_id)[0].images[0] %>
+            <%if !file.nil?%>
+              <% imgs.append(file) %>
+            <%end%>
+          <% end %>
+          <%if imgs.length > 0%>
+            <%=carousel_for(imgs)%>
+          <%end%>
         </div>
         <div class="singleTripDetails">
           <div class="singleTripBold">
             <a href="/trips/<%= trip.id %>" id="tripTitleLink"><%= trip.title %></a>
-            <div><%= trip.upvotes %> saves</div>
+            <div><%= get_likes(trip) %> 
+              <% if get_likes(trip) == 1 %>
+                like
+              <% else %>
+                likes
+              <% end %>
+            </div>
           </div>
           <div class="singleTripBoldUser">
-          <%= link_to user_path(User.where("username LIKE ?", trip.create_by).ids) do %>
-            <div class="singleUserText"><%= trip.create_by %></div>
+          <%= link_to user_path(User.where("username = ?", trip.create_by).ids),  :style => 'color:black' do %>
+            <div class="singleUserText">@<%= trip.create_by %></div>
           <% end %>
-            <div><%= get_likes(trip) %> 
-            <% if get_likes(trip) == 1 %>
-            like
-            <% else %>
-            likes
-            <% end %>
-            </div>
           </div>
           <div class="singleTripNorm"><%= trip.trip_date %></div>
         </div>

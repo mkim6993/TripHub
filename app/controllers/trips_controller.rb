@@ -46,6 +46,10 @@ class TripsController < ApplicationController
       cur_loc = loc_array[x.to_s]
       TripLocation.create(trip_id: trip_id, location_id: cur_loc[0].to_i, start_time: cur_loc[1], end_time: cur_loc[2])
     end
+
+    respond_to do |format|
+      format.js { render :js => "window.location.href ='/trips/" + trip_id.to_s + "'"}
+    end
   end
 
   # post method when new location is created from /trips/:id/locations
@@ -53,29 +57,21 @@ class TripsController < ApplicationController
     trip_id = params["trip_id"]
     start_time = params["start_time"]
     end_time = params["end_time"]
-    modified_location_params = params
-    modified_location_params.extract!(:trip_id)
-    modified_location_params.extract!(:start_time)
-    modified_location_params.extract!(:end_time)
-    modified_location_params.extract!(:authenticity_token)
-    modified_location_params.extract!(:commit)
-    modified_location_params.extract!(:controller)
-    modified_location_params.extract!(:action)
-    modified_location_params["image"] = nil
+    modified_location_params = {"name"=>params["name"], "description"=>params["description"], "address"=>params["address"], "contact"=>params["contact"], "open_times"=>params["open_times"], "price"=>params["price"], "images"=>params["images"]}
 
     puts "^^^^^^^^^^^^^^^^^"
     puts trip_id
     puts modified_location_params
     @location = Location.new(modified_location_params)
-    puts @location.id
+    puts @location
     puts "^^^^^^^^^^^^^^^^^"
 
     respond_to do |format|
       if @location.save
+        puts "saving location ----------------333333"
         TripLocation.create(trip_id: trip_id, location_id: @location.id, start_time: start_time, end_time: end_time)
         format.html { redirect_to "/trips/" << trip_id.to_s, notice: "Location was successfully added." }
         format.json { render :show, status: :created, location: @location }
-        return @location.id
       else
         format.html { redirect_to trip_locations_path, id: trip_id, :locals=> {:location=> @location}, status: :unprocessable_entity }
         puts "controller_________________________________"
@@ -104,7 +100,9 @@ class TripsController < ApplicationController
   def add_search_location
     location_id = params[:location_id]
     trip_id = params[:trip_id]
-    @trip_location = TripLocation.new(trip_id: trip_id, location_id: location_id)
+    start_time = params[:start_time]
+    end_time = params[:end_time]
+    @trip_location = TripLocation.new(trip_id: trip_id, location_id: location_id, start_time: start_time, end_time: end_time)
 
     respond_to do |format|
       if @trip_location.save

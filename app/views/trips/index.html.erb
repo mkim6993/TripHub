@@ -9,7 +9,7 @@
  <%= form_tag(tripsearch_path, :method => "get", id: "searchFormOnIndex") do %>
     <div class = "searchfields">
       <%= search_field_tag :name, params[:name], placeholder: "Search Trips by Name", class: "form-control" %>
-      <%= search_field_tag :saves, params[:saves], placeholder: "Filter Trips by Min Saves", class: "form-control" %>
+      <%= search_field_tag :saves, params[:saves], placeholder: "Filter Trips by Min Likes", class: "form-control" %>
       Before Date:
       <%= select_tag :month, options_for_select(month_collector), prompt: "Month", class: :"datefields"%>
       <%= select_tag :day, options_for_select(day_collector), prompt: "Day", class: :"datefields"%>
@@ -28,11 +28,11 @@
       <div class="singleTripBox">
         <div class="singleTripImage">
           <div class="bookmark">
-          <% if liked?(trip) %>
-            <%= link_to '<ion-icon name="heart-outline" style="font-size: 30px; margin-left: 10px; color: white" class="socialIconBtn"></ion-icon>'.html_safe, likesupdate_path(trip: trip) %>
-          <% else %>
-            <%= link_to '<ion-icon name="heart" style="font-size: 30px; margin-left: 10px; color: white" class="socialIconBtn"></ion-icon>'.html_safe, likesupdate_path(trip: trip) %>
-          <% end %>
+            <% if liked?(trip) %>
+              <%= link_to '<ion-icon name="heart-outline" style="font-size: 30px; margin-left: 10px; color: white" class="socialIconBtn"></ion-icon>'.html_safe, likesupdate_path(trip: trip) %>
+            <% else %>
+              <%= link_to '<ion-icon name="heart" style="font-size: 30px; margin-left: 10px; color: white" class="socialIconBtn"></ion-icon>'.html_safe, likesupdate_path(trip: trip) %>
+            <% end %>
           </div>
           <div id="save"></div>
           
@@ -79,3 +79,4 @@
   <div>
       <%= will_paginate @trips, class: :"paginator"%>
   </div>
+

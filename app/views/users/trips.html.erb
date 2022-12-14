@@ -5,7 +5,7 @@
         <div id="individualPost">
         <div id="tripHeaders">
             <div id="postTitle">
-            <%= trip.title %>
+            <a href="/trips/<%= trip.id %>" id="tripTitleLink"><%= trip.title %></a>
             </div>
             <div id="postLocationDate">
             <%= trip.trip_date %>

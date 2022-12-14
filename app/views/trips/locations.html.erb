@@ -27,6 +27,7 @@
         </div>
         <div id="searchResults">
         </div>
+        <div id="containingTripId" style="display: none;"><%= @trip.id %></div>
         <div style="position: absolute; bottom: 10px; left: 15px; ">
           <%= link_to "/trips/" << @trip.id.to_s, method: "get", class: "rmBtnStyles" do %>
             <div id="backToTrip">
@@ -100,17 +101,6 @@
             <%= form.submit %>
           </div>
         </div>
-        <% if @location.errors.any? %>
-          <div style="color: red">
-            <h2><%= pluralize(@location.errors.count, "error") %> prohibited this @location from being saved:</h2>
-
-            <ul>
-              <% @location.errors.each do |error| %>
-                <li><%= error.full_message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
       <% end %>
     </div>
   </div>
