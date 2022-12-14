@@ -12,4 +12,4 @@ amazon:
   access_key_id: AKIA2UUQKPGKGCLAWHUM
   secret_access_key: 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
   region: us-east-1
-  bucket: triphubstorage-<%= Rails.env %>
+  bucket: triphubstorage
