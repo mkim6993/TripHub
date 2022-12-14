@@ -9,7 +9,7 @@ local:
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 amazon:
   service: S3
-  access_key_id: AKIA5BCYCD2747FV2PI2
-  secret_access_key: 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
+  access_key_id: AKIA5BCYCD27TLILMEIP
+  secret_access_key: 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
   region: us-east-1
   bucket: triphubstorage
