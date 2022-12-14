@@ -9,7 +9,6 @@
 <div>
   <button id="merge">Merge Trips</button>
   <div id="mergeWindow">
-    <div style="margin-bottom: 15px; margin-top: 15px;">
       <%pop_trips = getMostPopularRelated(@trip)%>
       <%pop_trips.each do |top_trip|%>
         <div class="tripLocsColumn">
@@ -36,8 +35,8 @@
               <div class="locName"> 
                 <%loc_name = Location.find_by(id: trip_loc.location_id).name%> 
                 <%=loc_name%> 
+                <button class="mergeButton" onclick="add_location_to_trip(<%=trip_loc.location_id%>, '<%=trip_loc.start_time%>', '<%=trip_loc.end_time%>', '<%=loc_name%>')">Add</button>
               </div>
-              <button class="mergeButton" onclick="add_location_to_trip(<%=trip_loc.location_id%>, '<%=trip_loc.start_time%>', '<%=trip_loc.end_time%>', '<%=loc_name%>')">Add Location</button>
             </div>
           <%end%>
         </div>
@@ -48,7 +47,6 @@
         <div id="submit_merge"><button class="submitButton">Finalize Trip</button></div>
         <div id="cancel_merge"><button class="cancelButton">Cancel</button></div>
       </div>
-    </div>
   </div>
 </div>
 

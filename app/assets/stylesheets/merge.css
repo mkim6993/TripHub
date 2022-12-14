@@ -1,5 +1,6 @@
 #mergeWindow{
-    background: linear-gradient(90deg, #cc9ef4 83.34%, white 16.66%);
+    background-color: #cc9ef4;
+    /* background-color: blue; */
     color: black;
     border-radius: 25px;
     height: 65%;
@@ -11,6 +12,13 @@
     top: 50%;
     transform: translate(-50%, -50%);
     overflow: scroll;
+    /* padding: 20px; */
+    /* display: flex; */
+    flex-direction: row;
+}
+
+#mergeWindow::-webkit-scrollbar {
+  display: none;
 }
 
 #mergeScreen{
@@ -26,7 +34,10 @@
   
 .tripLocsColumn{
   float: left;
-  width: 16.66%;
+  /* width: 16.66%; */
+  /* background-color: orange; */
+  border-right: 1px solid white;
+  flex: 1;
 }
 
 .spacer{
@@ -36,6 +47,7 @@
 
 .locTime{
   background-color: rgb(220, 188, 239);
+  /* background-color: yellow; */
   border-radius: 8px;
 }
 
@@ -44,21 +56,33 @@
   border: none;
   color: white;
   border-radius: 8px;
-  margin-block: 5px;
+  font-size: 12px;
+  display: inline-block;
 }
 
 .locName{
   font-weight: bold;
-  font-size: 16px;
+  font-size: 12px;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: row;
+  border: 1px solid white;
+  border-radius: 5px;
 }
 
 .mergeTripTitle{
   font-weight: bold;
   font-size: 20px;
+  padding-left: 10px;
+  /* border-radius: 10px; */
+  /* background-color: green; */
 }
 
 #resultsColumn{
-  background-color: white;
+  background-color: #ead1ff;
+  border-radius: 10px;
+  flex: .8;
+  height: 100%;
 }
 
 .submitButton{
@@ -75,4 +99,8 @@
   color: white;
   border-radius: 8px;
   margin-block: 5px;
+}
+
+#display_merged {
+  margin-bottom: 50px;
 }
