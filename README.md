@@ -21,19 +21,21 @@ https://triphubteam6.herokuapp.com/
 
 It is easy to install our application.
 
-First, on the terminal, just clone this GitHub repo below:
+1: on the terminal, just clone this GitHub repo below:
 
 https://github.com/mkim6993/TripHub
 
-Second, open the file just cloned in any editor; VScode is recommended.
+2: open the file just cloned in any editor; VScode is recommended.
 
-Third, in the terminal, type “bundle install” to install some essential packages.
+3: in the terminal, type “bundle install” to install some essential packages.
 
-Fourth, in the terminal, type “rails server” to activate the application.
+4: in the terminal, type “rails db:migrate” to set up the necessary databases.
 
-Fifth, open a browser and go to the link http://localhost:3000.
+5: in the terminal, type “rails server” to activate the application.
 
-Sixth, sit tight and start your journey.
+6: open a browser and go to the link http://localhost:3000.
+
+7: have fun planning a trip.
 
 ### How to use
 
