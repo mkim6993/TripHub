@@ -13,7 +13,7 @@ The challenges we met are how to attract more users to use our app because, in m
 
 https://trello.com/w/team6784/home
 
-### Heroku Link
+### Heroku Link (Link no longer functional due to heroku removing free dynos)
 
 https://triphubteam6.herokuapp.com/
 
